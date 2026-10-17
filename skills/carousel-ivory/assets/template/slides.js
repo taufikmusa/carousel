@@ -1,113 +1,95 @@
-// Carousel "Withdraw GAP → barang kemas" (gaya ivory premium, 7 slaid). Tukar data D + gambar img/produk.png.
-var N = 7;
-var ASSETS = { produk: 'produk.png' };
+// Carousel kisah "cincin emas 999 tanpa sentuh gaji" (carousel-ivory v2, 8 slaid, 1080x1350). Tukar D + teks.
+var N = 8;
+var DARK = [0, 7]; var NODOTS = [7];                       // indeks slaid latar maroon (hook + CTA)
+var ASSETS = { produk: 'produk.png', me: 'tunjuk-kamera.png' };
 var D = {
-  handle: '@taufik.pg',
-  tarikh: '18 Oktober 2026', gap: 592,            // harga GAP semasa RM/gram
-  tulen: '999',                                    // ketulenan: 999 / 916
-  produk: '999/24K Gold Ring', harga: 1653,        // harga paparan app
-  upah: 137, upahTermasuk: true,                    // upah sudah termasuk dalam harga paparan?
-  pos: 10,                                         // pengeposan (jika pilih pos)
+  tarikh: '18 Oktober 2026', gap: 592,   // harga GAP semasa RM/gram
+  produk: '999/24K Gold Ring', kod: 'PGJR181413', harga: 1653, upah: 137, upahTermasuk: true, pos: 10,
 };
-D.asas = D.upahTermasuk ? D.harga - D.upah : D.harga;           // harga emas tanpa upah
-D.jumlah = D.asas + D.upah + D.pos;                              // jumlah keseluruhan
-D.gram = Math.floor(D.jumlah / D.gap * 1e4) / 1e4;               // gram GAP dijual (4 tp, bundar bawah)
+D.asas = D.upahTermasuk ? D.harga - D.upah : D.harga; D.jumlah = D.asas + D.upah + D.pos;
+D.gram = Math.floor(D.jumlah / D.gap * 1e4) / 1e4;
 var RM = function (n) { return 'RM' + n.toLocaleString('en-US'); };
-var G = D.gram.toFixed(4) + 'g', JUM = RM(D.jumlah), GAPS = RM(D.gap) + '/gram', GAPD = '(' + D.tarikh + ')';
-
-function ink(s, size, wt) { return { t: s, f: F.ss(wt || 600, size), fill: K.ink }; }
-function gold(s, size) { return { t: s, f: F.pf(900, size), fill: goldFill, size: size }; }
+var G = D.gram.toFixed(4), JUM = RM(D.jumlah), GAPS = RM(D.gap) + '/gram';
 
 var SLIDES = [
-  // 1 — cover
+  // 1 — hook (maroon)
   function (i) {
-    counter(i, N);
-    head({ a: 'Kini withdraw', b: 'GAP boleh', wa: 600, wb: 790, y: 160, gap: 190 });
-    mixed([ink('Tukar kepada emas perhiasan ', 50, 600), gold(D.tulen + '!', 96)], 540, 438);
-    sparks(976, 392, 1);
-    fadePhoto(IMG.produk, 540, 740, 700, 90);
-    handle(D.handle);
+    eyebrow('Kisah sebenar', M, 120, true);
+    headline([[['Miliki cincin', 'white']], [['emas 999', 'goldl']], [['tanpa sentuh', 'white']], [['gaji bersih.', 'goldil']]], M, 290, { size: 134 });
+    para('Ramai sangka nak bawa balik cincin emas 999 rekaan moden kena keluar *duit tunai beribu ringgit* sekali gus.', M, 790, 900, 35, { dark: true });
+    medallion(IMG.produk, 540, 1070, 400, .5, .52, 1.1);
   },
-  // 2 — contoh kiraan
+  // 2 — dilema
   function (i) {
-    counter(i, N);
-    head({ a: 'Contoh kiraan', b: 'withdraw GAP', wa: 650, wb: 860, y: 168, gap: 142 });
-    mixed([ink('untuk barang kemas ', 62, 600), gold(D.tulen, 96)], 540, 408);
-    card(39, 448, 449, 525); fadePhoto(IMG.produk, 263, 650, 440, 50, false);
-    T(D.produk, 263, 864, F.ss(600, 30), K.ink, 'center'); pillText(95, 887, 340, 60, 'creamgold', RM(D.harga) + '.00', 38);
-    card(499, 448, 544, 525);
-    var rows = [[520, 'Harga emas ' + D.tulen, '(tanpa upah)', RM(D.asas)], [645, 'Upah', '', RM(D.upah)], [762, 'Pengeposan', '(jika pilih untuk pos)', RM(D.pos)]];
-    rows.forEach(function (r) {
-      var y = r[0], two = !!r[2];
-      T(r[1], 528, two ? y - 8 : y + 12, F.ss(700, 34)); if (two) T(r[2], 528, y + 30, F.ss(500, 27));
-      T('=', 806, y + 14, F.ss(700, 40)); T(r[3], 842, y + 16, F.ss(700, 44));
+    eyebrow('Dilema semua orang', M, 120);
+    headline([[['Hati mula', 'ink']], [['berbelah bahagi.', 'red']]], M, 270, { size: 124 });
+    para('Cincin emas 999 5D Hard Gold rekaan terkini memang memukau. *Berkilau, padu, dan tahan kemek.* Tengok tanda harga:', M, 480, 936, 35);
+    fadePhoto(IMG.produk, 300, 800, 520, 70); priceTag(760, 800, 440, 190, RM(D.harga), -.06);
+    card(M, 960, 936, 140, { bar: 1 }); crossCircle(150, 1030, 30); T('Bayar tunai sedebuk?', 205, 1020, F.ss(800, 34), K.maroon); T('Bajet dapur dan komitmen bulan ini pasti lari.', 205, 1064, F.ss(500, 30), K.ink);
+    card(M, 1120, 936, 140, { bar: 1 }); crossCircle(150, 1190, 30); T('Tangguh lagi?', 205, 1180, F.ss(800, 34), K.maroon); T('Harga emas dunia makin hari makin mendaki.', 205, 1224, F.ss(500, 30), K.ink);
+  },
+  // 3 — penyelesaian
+  function (i) {
+    eyebrow('Tetapi ada cara lain', M, 120);
+    headline([[['Satu ciri', 'ink']], [['yang ramai', 'ink']], [['belum perasan.', 'red']]], M, 265, { size: 116 });
+    para('Dilema ini selesai sebaik sahaja beliau membuka *sistem Public Gold* dan menggunakan ciri tersebut.', M, 590, 936, 35);
+    card(M, 730, 936, 100, { bar: 1 }); crossCircle(150, 780, 28); T('Bukan beli hutang.', 205, 792, F.ss(700, 36), K.muted);
+    card(M, 850, 936, 100, { bar: 1 }); crossCircle(150, 900, 28); T('Bukan pinjaman kad kredit.', 205, 912, F.ss(700, 36), K.muted);
+    X.save(); X.strokeStyle = 'rgba(122,15,26,.5)'; X.lineWidth = 3; [[205, 780, 'Bukan beli hutang.'], [205, 900, 'Bukan pinjaman kad kredit.']].forEach(function (r) { X.beginPath(); X.moveTo(r[0] - 4, r[1] + 1); X.lineTo(r[0] + tw(r[2], F.ss(700, 36)) + 4, r[1] + 1); X.stroke(); }); X.restore();
+    box(M, 990, 936, 270, 'red', 26); checkCircle(150, 1065, 38);
+    T('Tetapi penebusan barang kemas', 215, 1060, F.ss(700, 37), '#FFFFFF'); T('terus daripada baki gram', 215, 1108, F.ss(700, 37), '#FFFFFF'); T('Akaun Emas GAP', 215, 1156, F.pf(900, 44), goldFillL);
+    T('GAP = Gold Accumulation Program', 215, 1212, F.ss(500, 27), '#F1D78A');
+  },
+  // 4 — bermula RM100
+  function (i) {
+    eyebrow('Bermula dari RM100', M, 120);
+    headline([[['Simpanan kecil,', 'ink']], [['boleh jadi cincin.', 'red']]], M, 270, { size: 122 });
+    para('Simpanan emas GAP serendah *RM100* yang dikumpul *secara konsisten* setiap bulan boleh terus ditukarkan menjadi barang kemas *916 mahupun 999!*', M, 470, 936, 35);
+    var steps = [['Sistem kira jumlah nilai barang kemas secara automatik', 700], ['Tukar kepada gram GAP ikut harga semasa hari ini (' + GAPS + ')', 886], ['Jana Cash Voucher serta-merta', 1072]];
+    steps.forEach(function (s, k) {
+      var y = s[1]; if (k < 2) { card(M, y, 936, 140, { bar: 1 }); } else { box(M, y, 936, 140, 'red', 22); }
+      numBox(110, y + 30, 80, String(k + 1));
+      var lines = k === 2 ? ['Jana Cash Voucher serta-merta'] : (k === 0 ? ['Sistem kira jumlah nilai barang kemas', 'secara automatik'] : ['Tukar kepada gram GAP ikut harga', 'semasa hari ini (' + GAPS + ')']);
+      lines.forEach(function (l, j) { T(l, 225, y + (lines.length === 1 ? 82 : 62 + j * 42), F.ss(700, 33), k === 2 ? '#fff' : K.ink); });
+      if (k < 2) arrowDown(540, y + 140 + 4, 38);
     });
-    hair(515, 1027, 592); hair(515, 1027, 699); hair(515, 1027, 825);
-    T('Jumlah', 528, 877, F.ss(700, 36), K.maroon); T('keseluruhan', 528, 918, F.ss(700, 36), K.maroon); T('=', 744, 902, F.ss(700, 40), K.maroon);
-    pillText(786, 846, 240, 86, 'red', JUM, 50);
-    handle(D.handle);
   },
-  // 3 — langkah 1
+  // 5 — simulasi
   function (i) {
-    counter(i, N);
-    head({ a: 'Bagaimana', b: 'GAP ditolak?', wa: 600, wb: 754, y: 178, gap: 128 });
-    pillText(379, 340, 324, 66, 'gold', 'Langkah 1', 46, 'ss', 600);
-    T('Sistem akan kirakan jumlah keseluruhan', 540, 470, F.ss(500, 40), K.ink, 'center'); T('barang kemas ' + D.tulen + '.', 540, 516, F.ss(500, 40), K.ink, 'center');
-    [[62, 'Harga emas ' + D.tulen, RM(D.asas), iconBars], [388, 'Upah', RM(D.upah), iconTools], [714, 'Pengeposan', RM(D.pos), iconBox]].forEach(function (c) {
-      card(c[0], 548, 306, 274, 24); c[3](c[0] + 153, 636, 1.0); T(c[1], c[0] + 153, 728, F.ss(600, 31), K.ink, 'center'); pillText(c[0] + 20, 744, 266, 56, 'cream', c[2], 38);
-    });
-    card(60, 848, 960, 142, 26); T('Jumlah keseluruhan', 142, 934, F.ss(700, 40), K.maroon); T('=', 566, 934, F.ss(700, 44), K.ink);
-    pillText(610, 868, 374, 102, 'red', JUM, 62);
-    handle(D.handle);
+    eyebrow('Simulasi kiraan sebenar', M, 120);
+    headline([[['Gelombang', 'ink']], [['Cinta.', 'red']]], M, 262, { size: 118, maxW: 600 });
+    T(D.produk + ' · ' + D.kod, M, 420, F.ss(600, 29), K.muted, 'left', .5); T('5D Hard Gold', M, 460, F.ss(600, 29), K.muted, 'left', .5);
+    fadePhoto(IMG.produk, 840, 300, 400, 60);
+    card(M, 520, 936, 520, { r: 26 });
+    T('Harga cincin 999', 112, 612, F.ss(800, 35), K.ink); T('(termasuk upah ' + RM(D.upah) + ')', 112, 652, F.ss(500, 27), K.muted); T(RM(D.harga) + '.00', 968, 630, F.ss(800, 42), K.ink, 'right'); dotted(112, 968, 690);
+    T('Caj pengeposan berinsurans', 112, 752, F.ss(800, 35), K.ink); T('(GIT terus ke pintu rumah)', 112, 792, F.ss(500, 27), K.muted); T(RM(D.pos) + '.00', 968, 770, F.ss(800, 42), K.ink, 'right');
+    box(100, 850, 880, 160, 'red', 22); T('Jumlah keseluruhan belian', 136, 935, F.ss(700, 33), '#FFFFFF'); T(JUM + '.00', 944, 950, F.ss(800, 56), '#F8DE8E', 'right');
+    card(M, 1075, 936, 130, { bar: 1 }); T('Harga GAP semasa', 112, 1132, F.ss(800, 33), K.ink); T('(' + D.tarikh + ')', 112, 1172, F.ss(500, 27), K.muted); box(640, 1100, 330, 80, 'cream', 18); T(GAPS, 805, 1155, F.ss(800, 42), K.maroon, 'center');
   },
-  // 4 — langkah 2
+  // 6 — kiraan gram
   function (i) {
-    counter(i, N);
-    head({ a: 'Bagaimana', b: 'GAP ditolak?', wa: 640, wb: 870, y: 170, gap: 170 });
-    pillText(331, 396, 418, 92, 'gold', 'Langkah 2', 62, 'ss', 600);
-    T('Nilai ini akan ditukarkan kepada jumlah', 540, 556, F.ss(600, 42), K.ink, 'center'); T('gram mengikut harga GAP semasa.', 540, 604, F.ss(600, 42), K.ink, 'center');
-    card(39, 647, 1003, 152, 26); T('Harga GAP semasa', 86, 722, F.ss(700, 42)); T(GAPD, 86, 768, F.ss(500, 32)); T('=', 560, 740, F.ss(700, 44)); pillText(616, 672, 400, 100, 'red', GAPS, 54);
-    card(39, 820, 1003, 150, 26); T('Gram GAP yang dijual', 66, 912, F.ss(700, 38)); T('=', 492, 912, F.ss(700, 40));
-    fraction(JUM, RM(D.gap), 612, 893, 36, 150); T('=', 726, 912, F.ss(700, 40)); pillText(770, 846, 252, 92, 'red', G, 54);
-    handle(D.handle);
+    eyebrow('Berapa gram yang ditolak?', M, 120);
+    headline([[[JUM + ' ÷ ' + RM(D.gap), 'ink']]], M, 250, { size: 96 });
+        T(G, SW / 2, 610, F.pf(900, 270), goldFill, 'center', -8);
+    T('gram sahaja!', SW / 2, 720, F.ss(800, 62), K.maroon, 'center');
+    para('Sistem hanya memotong *' + G + ' gram* daripada akaun GAP beliau, mengeluarkan *Cash Voucher ' + JUM + '*, dan cincin emas 999 itu *diposkan terus ke depan pintu rumah.*', M, 830, 936, 35);
+    box(M, 1085, 936, 150, 'red', 26); T('Gaji bersih bulan tersebut', SW / 2, 1150, F.ss(700, 38), '#FFFFFF', 'center'); T('langsung tidak terusik!', SW / 2, 1200, F.pf(900, 46), goldFillL, 'center');
   },
-  // 5 — langkah 3
+  // 7 — tiga pengajaran
   function (i) {
-    counter(i, N);
-    head({ a: 'Bagaimana', b: 'GAP ditolak?', wa: 600, wb: 800, y: 172, gap: 160 });
-    pillText(353, 405, 374, 86, 'gold', 'Langkah 3', 56, 'ss', 600);
-    T('Kemudian mengeluarkan Cash Voucher', 540, 566, F.ss(600, 44), K.ink, 'center'); T('ikut nilai yang diperlukan.', 540, 616, F.ss(600, 44), K.ink, 'center');
-    T('Cash Voucher =', 60, 782, F.ss(700, 60), K.ink); pillText(556, 672, 474, 148, 'red', JUM, 100, 'ss', 700);
-    T('Voucher ini digunakan untuk', 540, 905, F.ss(600, 44), K.ink, 'center'); T('pembelian barang kemas ' + D.tulen + '.', 540, 954, F.ss(600, 44), K.ink, 'center');
-    handle(D.handle);
+    eyebrow('Tiga pengajaran penting', M, 120);
+    headline([[['Apa yang kita', 'ink']], [['belajar?', 'red']]], M, 265, { size: 118 });
+    var L = [['Barang kemas bukan sekadar perhiasan belanja hangus, tetapi *peralihan bentuk simpanan* daripada tunai kepada *aset fizikal bernilai tinggi.*', 450], ['Menabung *kecil-kecilan tetapi konsisten* jauh lebih berkuasa daripada menunggu duit berkepuk yang jarang sekali kesampaian.', 715], ['Akaun Emas GAP beri *kebebasan penuh*: kumpul gram sedikit demi sedikit, lalu pilih jongkong emas 999, dinar syariah, atau emas perhiasan idaman.', 980]];
+    L.forEach(function (r, k) { card(M, r[1], 936, 235, { bar: 1 }); numBox(112, r[1] + 28, 74, String(k + 1)); para(r[0], 215, r[1] + 62, 740, 31, { lh: 1.4 }); });
   },
-  // 6 — formula
+  // 8 — CTA (maroon + potret)
   function (i) {
-    counter(i, N);
-    head({ top: 'red', a: 'Formula', b: 'pengiraan', wa: 470, wb: 600, y: 178, gap: 118 });
-    card(96, 310, 886, 336, 30); T('GRAM GAP YANG DIJUAL =', 539, 392, F.ss(700, 44), K.ink, 'center');
-    pillText(228, 418, 623, 82, 'cream', 'Jumlah keseluruhan', 44); hair(178, 900, 520);
-    pill(195, 536, 689, 84, 'cream'); mixed([ink('Harga GAP semasa ', 44, 700), { t: '(Buy GAP)', f: F.pfi(400, 38), fill: K.ink }], 539, 592);
-    card(93, 689, 893, 340, 30); pillText(121, 659, 413, 66, 'red', 'Nota penting', 44, 'pf', 800);
-    [[769, ['Pengiraan adalah berdasarkan ', 'NILAI pembelian', ','], 'bukan berat barang kemas.'], [852, ['Lagi tinggi harga GAP semasa,'], 'lagi sedikit gram yang diperlukan.'], [934, ['Konsisten simpan, lebih banyak pilihan'], 'untuk masa depan anda!']].forEach(function (r) {
-      checkCircle(176, r[0], 33); var p = r[1];
-      if (p.length === 3) mixed([{ t: p[0], f: F.ss(500, 29), fill: K.ink }, { t: p[1], f: F.ss(800, 29), fill: K.maroon }, { t: p[2], f: F.ss(500, 29), fill: K.ink }], 238 + (tw(p[0] + p[1] + p[2], F.ss(500, 29)) + 20) / 2, r[0] - 6);
-      else T(p[0], 238, r[0] - 6, F.ss(500, 29)); T(r[2], 238, r[0] + 30, F.ss(500, 29));
-    });
-    handle(D.handle);
-  },
-  // 7 — contoh pengiraan
-  function (i) {
-    counter(i, N);
-    head({ a: 'Contoh', b: 'pengiraan', wa: 380, wb: 700, y: 172, gap: 136 });
-    var ys = [[351, 470], [482, 604], [616, 736], [747, 868]];
-    ys.forEach(function (r, k) { card(60, r[0], 960, r[1] - r[0], 24); numCircle(124, (r[0] + r[1]) / 2, 40, String(k + 1)); });
-    T('Harga GAP semasa', 204, 404, F.ss(700, 36)); T(GAPD, 204, 442, F.ss(500, 29)); T('=', 580, 424, F.ss(700, 38)); pill(632, 370, 354, 80, 'cream'); T(GAPS, 809, 426, F.ss(800, 46), K.maroon, 'center');
-    T('Gram GAP yang dijual =', 204, 556, F.ss(700, 30)); fraction(JUM, RM(D.gap), 636, 540, 30, 130); T('=', 722, 556, F.ss(700, 34)); pill(760, 508, 232, 70, 'cream'); T(G, 876, 556, F.ss(800, 42), K.maroon, 'center');
-    var w3 = tw('Jadi, sistem akan memotong ', F.ss(600, 35)); T('Jadi, sistem akan memotong', 204, 664, F.ss(600, 35)); pill(204 + w3, 628, 232, 64, 'cream'); T(G, 204 + w3 + 116, 674, F.ss(800, 40), K.maroon, 'center'); T('daripada akaun GAP anda.', 204, 712, F.ss(600, 35));
-    var w4 = tw('Dan mengeluarkan ', F.ss(600, 35)), cvw = tw('Cash Voucher ' + JUM, F.ss(800, 36)) + 44; T('Dan mengeluarkan', 204, 794, F.ss(600, 35)); pill(204 + w4, 756, cvw, 62, 'cream'); T('Cash Voucher ' + JUM, 204 + w4 + cvw / 2, 802, F.ss(800, 36), K.maroon, 'center'); T('untuk pembelian barang kemas ' + D.tulen + '.', 204, 842, F.ss(600, 35));
-    X.save(); rr(60, 887, 960, 125, 34); X.fillStyle = gradY(887, 1012, [[0, '#A8101C'], [1, '#620411']]); X.fill(); X.strokeStyle = '#D9AE45'; X.lineWidth = 3.5; X.stroke(); X.restore();
-    T('Belum ada akaun GAP?', 540, 945, F.pf(800, 52), goldFill(945, 52), 'center'); T('Daftar percuma dan mula menabung ikut kemampuan anda.', 540, 990, F.ss(500, 29), '#fff', 'center');
-    handle(D.handle);
+    eyebrow('Soalan untuk korang', M, 120, true);
+    headline([[['Jongkong emas', 'goldl']], [['atau cincin', 'white']], [['perhiasan?', 'goldil']]], M, 280, { size: 104, maxW: 760 });
+    para('Korang lebih suka tebus gram GAP jadi *jongkong emas* atau *cincin perhiasan* macam ni?', M, 600, 520, 34, { dark: true });
+    T('Komen di bawah', M, 800, F.ss(700, 30), '#F1D78A'); arrowDown(M + 20, 825, 50, '#E3BB55');
+    cutoutBC(IMG.me, 800, SH, 880);
+    T('Moga perkongsian ini bermanfaat.', M, 1075, F.ss(500, 28), '#F6E9D0');
+    T('Taufik Musa', M, 1150, F.pf(900, 60), goldFillL); T('Dealer Public Gold', M, 1194, F.ss(700, 28), '#FFFFFF', 'left', 1.5);
   },
 ];
