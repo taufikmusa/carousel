@@ -24,6 +24,6 @@ Render: `python3 music.py && node render.js` dalam folder projek.
 - `carousel-maroon` = promo impian: latar foto emas kabur, tajuk Poppins italic putih + pil maroon, kad tier angka emas, doodle kuning.
 - `carousel-editorial` = gaya putih majalah, nombor oren gergasi, tulisan tangan (rujukan "9 Money Milestones").
 - `carousel-palette` = krim Swiss editorial: digit watercolour gergasi, tajuk Inter 900 2-warna, kotak seni + 4 swatch hex, CTA "SAVE IT FOR LATER" (rujukan "5 Color Palette", 7 slaid). Attach gambar + copywriting → terus buat 7 slaid.
-- `carousel-ivory` = kisah + kiraan produk emas, gading + maroon 1080x1080 (1:1 Facebook/IG; 4:5 ada dalam references) (8 slaid): tajuk Playfair rata kiri, tag harga, kad resit, medalion foto, slaid hook/CTA maroon + potret Taufik. Edit objek `D` dalam slides.js (harga GAP, tarikh, harga produk, upah, pos) — kiraan automatik.
+- `carousel-ivory` = kisah + kiraan produk emas, gading + tema warna (emerald/navy/maroon, pilih THEME) 1080x1080 (1:1 Facebook/IG; 4:5 ada dalam references) (8 slaid): tajuk Playfair rata kiri, tag harga, kad resit, medalion foto, slaid hook/CTA maroon + potret Taufik. Edit objek `D` dalam slides.js (harga GAP, tarikh, harga produk, upah, pos) — kiraan automatik.
 - Potret/selfie Taufik HANYA di slaid TERAKHIR (CTA). Cover & slaid isi tanpa potret (nampak macam iklan).
 - Baca SKILL.md skill tu dahulu; mula dengan `sh skills/<skill>/scripts/new_carousel.sh carousel-<topik> <pose...>`.

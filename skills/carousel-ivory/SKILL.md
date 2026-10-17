@@ -36,9 +36,14 @@ references/rujukan/                        7 slaid rujukan asal (gaya sahaja)
 ## API engine.js
 `headline([[ [teks,gaya],... ], ...], x, y, {size, maxW, lh})` gaya: ink red gold white cream goldi whitei **goldl/goldil** (emas TERANG — wajib di latar maroon) · `eyebrow(s,x,y,dark)` · `para(s,x,y,w,size,{dark,lh})` (`*frasa*` = highlight) · `card(x,y,w,h,{bar,r,dark})` · `box(x,y,w,h,'red'|'gold'|'cream')` · `numBox` `checkCircle` `crossCircle` `arrowDown` `dotted` `priceTag(cx,cy,w,h,label,rot)` · `fadePhoto(im,cx,cy,w)` `medallion(im,cx,cy,d,fx,fy,zoom)` `cutoutBC(im,cx,bottomY,h)` · `T` `tw` · fill emas `goldFill`, `goldFillL`, `redFill`. `var DARK=[..]` slaid maroon, `var NODOTS=[..]`.
 
+## Tema warna
+`var THEME = 'emerald' | 'navy' | 'maroon'` di slides.js — gaya sama, warna berbeza (hijau zamrud / biru malam / merah maroon, semua + emas). Pilih tema BERBEZA daripada post sebelumnya supaya tak nampak sama.
+
 ## Peraturan
+- Jangan guna "korang" dalam teks slaid — guna "anda" (nampak pro), walaupun copywriting asal ada "korang".
+- Slaid CTA: letak PG Code + WhatsApp Taufik (objek D: `pgcode`, `wa`) di bawah nama.
 - Highlight 2–4 frasa penting setiap perenggan (`*...*`).
-- Teks atas latar maroon guna emas terang (`goldl`/`goldFillL`), bukan `gold`.
+- Teks atas latar gelap guna emas terang (`goldl`/`goldFillL`), bukan `gold`.
 - Angka dari app/Taufik sahaja (harga GAP bertarikh, harga produk, upah). "Labour Fee Included" → `upahTermasuk:true`. Pengeposan ikut Taufik.
 - Potret Taufik hanya slaid CTA (outline putih). Font: Playfair Display 700/800/900 + italic 700, Source Serif 4 500–800 (`assets/fonts/`).
 - Bahasa Melayu Malaysia.

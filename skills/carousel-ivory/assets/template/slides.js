@@ -1,10 +1,11 @@
 // Carousel kisah "cincin emas 999 tanpa sentuh gaji" (carousel-ivory v2, 8 slaid, 1080x1080 — sesuai Facebook/Instagram 1:1).
 // Versi 4:5 (1080x1350): lihat references/slides-4x5.js. Tukar D + teks.
 var N = 8;
+var THEME = 'emerald';                   // 'emerald' | 'navy' | 'maroon' — gaya sama, warna berbeza
 var DARK = [0, 7]; var NODOTS = [7];     // slaid maroon (hook + CTA); CTA tanpa titik kemajuan
 var ASSETS = { produk: 'produk.png', me: 'tunjuk-kamera.png' };
 var D = {
-  tarikh: '18 Oktober 2026', gap: 592,   // harga GAP semasa RM/gram
+  tarikh: '18 Oktober 2026', gap: 592, pgcode: 'PG00359605', wa: '60132740711',   // harga GAP semasa RM/gram
   produk: '999/24K Gold Ring', kod: 'PGJR181413', harga: 1653, upah: 137, upahTermasuk: true, pos: 10,
 };
 D.asas = D.upahTermasuk ? D.harga - D.upah : D.harga; D.jumlah = D.asas + D.upah + D.pos;
@@ -15,7 +16,7 @@ var G = D.gram.toFixed(4), JUM = RM(D.jumlah), GAPS = RM(D.gap) + '/gram';
 var SLIDES = [
   // 1 — hook (maroon)
   function (i) {
-    eyebrow('Kisah sebenar', M, 96, true);
+    eyebrow('Tahu tak anda?', M, 96, true);
     headline([[['Miliki cincin', 'white']], [['emas 999', 'goldl']], [['tanpa sentuh', 'white']], [['gaji bersih.', 'goldil']]], M, 238, { size: 114 });
     para('Ramai sangka nak bawa balik cincin emas 999 rekaan moden kena keluar *duit tunai beribu ringgit* sekali gus.', M, 690, 520, 31, { dark: true });
     medallion(IMG.produk, 800, 800, 330, .5, .52, 1.1);
@@ -36,7 +37,7 @@ var SLIDES = [
     para('Dilema ini selesai sebaik sahaja beliau membuka *sistem Public Gold* dan menggunakan ciri tersebut.', M, 480, 936, 31);
     card(M, 565, 936, 82, { bar: 1 }); crossCircle(146, 606, 24); T('Bukan beli hutang.', 192, 618, F.ss(700, 32), K.muted);
     card(M, 663, 936, 82, { bar: 1 }); crossCircle(146, 704, 24); T('Bukan pinjaman kad kredit.', 192, 716, F.ss(700, 32), K.muted);
-    X.save(); X.strokeStyle = 'rgba(122,15,26,.5)'; X.lineWidth = 3; [[192, 606, 'Bukan beli hutang.'], [192, 704, 'Bukan pinjaman kad kredit.']].forEach(function (r) { X.beginPath(); X.moveTo(r[0] - 4, r[1] + 1); X.lineTo(r[0] + tw(r[2], F.ss(700, 32)) + 4, r[1] + 1); X.stroke(); }); X.restore();
+    X.save(); X.strokeStyle = 'rgba(' + TH.rgb + ',.5)'; X.lineWidth = 3; [[192, 606, 'Bukan beli hutang.'], [192, 704, 'Bukan pinjaman kad kredit.']].forEach(function (r) { X.beginPath(); X.moveTo(r[0] - 4, r[1] + 1); X.lineTo(r[0] + tw(r[2], F.ss(700, 32)) + 4, r[1] + 1); X.stroke(); }); X.restore();
     box(M, 775, 936, 215, 'red', 26); checkCircle(146, 850, 34);
     T('Tetapi penebusan barang kemas', 200, 845, F.ss(700, 33), '#FFFFFF'); T('terus daripada baki gram', 200, 886, F.ss(700, 33), '#FFFFFF'); T('Akaun Emas GAP', 200, 934, F.pf(900, 42), goldFillL);
     T('GAP = Gold Accumulation Program', 200, 968, F.ss(500, 24), '#F1D78A');
@@ -84,12 +85,13 @@ var SLIDES = [
   },
   // 8 — CTA (maroon + potret)
   function (i) {
-    eyebrow('Soalan untuk korang', M, 96, true);
+    eyebrow('Soalan untuk anda', M, 96, true);
     headline([[['Jongkong emas', 'goldl']], [['atau cincin', 'white']], [['perhiasan?', 'goldil']]], M, 225, { size: 96, maxW: 620 });
-    para('Korang lebih suka tebus gram GAP jadi *jongkong emas* atau *cincin perhiasan* macam ni?', M, 500, 450, 30, { dark: true });
+    para('Anda lebih suka tebus gram GAP jadi *jongkong emas* atau *cincin perhiasan* macam ni?', M, 500, 450, 30, { dark: true });
     T('Komen di bawah', M, 668, F.ss(700, 27), '#F1D78A'); arrowDown(M + 20, 690, 44, '#E3BB55');
     cutoutBC(IMG.me, 790, SH, 760);
-    T('Moga perkongsian ini bermanfaat.', M, 836, F.ss(500, 26), '#F6E9D0');
-    T('Taufik Musa', M, 906, F.pf(900, 54), goldFillL); T('Dealer Public Gold', M, 946, F.ss(700, 26), '#FFFFFF', 'left', 1.5);
+    T('Moga perkongsian ini bermanfaat.', M, 786, F.ss(500, 26), '#F6E9D0');
+    T('Taufik Musa', M, 848, F.pf(900, 54), goldFillL); T('Dealer Public Gold', M, 886, F.ss(700, 25), '#FFFFFF', 'left', 1.5);
+    [['PG CODE', D.pgcode, 930], ['WHATSAPP', D.wa, 962]].forEach(function (r) { T(r[0], M, r[2], F.ss(700, 21), '#E3BB55', 'left', 2.5); T(r[1], M + 160, r[2], F.ss(800, 25), '#FFFFFF', 'left', 1); });
   },
 ];

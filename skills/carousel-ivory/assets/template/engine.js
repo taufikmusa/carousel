@@ -3,6 +3,13 @@
 // slides.js defines: N, DARK (indeks slaid gelap), ASSETS {key:'file'}, SLIDES [fn(i)] (local coords 0..1080).  DO NOT EDIT per carousel.
 const SW = 1080, SH = window.SH_OVERRIDE || 1080, M = 72;
 const K = { bg: '#FBF8F3', ink: '#1B1512', red1: '#B5121F', red2: '#6C0613', maroon: '#7A0F1A', gold1: '#D9AE45', gold2: '#B27F17', gold3: '#7B500C', line: '#E7D2A0', cream: '#FBEBC9', card: '#FFFFFF', muted: '#6B5E57' };
+// Tema warna (set `var THEME = 'emerald'|'navy'|'maroon'` di slides.js). Gaya sama, warna utama berbeza.
+const THEMES = {
+  maroon: { r1: '#B5121F', r2: '#6C0613', m: '#7A0F1A', b1: '#B5121F', b2: '#6A0512', d0: '#3A050D', d1: '#8F1020', d2: '#5E0A15', d3: '#2D030A', rgb: '122,15,26', sh: '100,0,10', tint: '#F1E4DD' },
+  emerald: { r1: '#0F7A5C', r2: '#063F30', m: '#0A5240', b1: '#0F7A5C', b2: '#053A2C', d0: '#04241B', d1: '#0F6A50', d2: '#073D2E', d3: '#031A13', rgb: '10,82,64', sh: '0,50,35', tint: '#E3EEE8' },
+  navy: { r1: '#1F4E9A', r2: '#0B2250', m: '#14316B', b1: '#245BB0', b2: '#0A1F4A', d0: '#050E24', d1: '#1B4A94', d2: '#0E2A5C', d3: '#040B1C', rgb: '20,49,107', sh: '0,20,60', tint: '#E3E9F3' },
+};
+const TH = THEMES[window.THEME || 'maroon']; Object.assign(K, { red1: TH.r1, red2: TH.r2, maroon: TH.m });
 const cv = document.getElementById('c'); cv.width = SW * N; cv.height = SH; cv.style.width = (SW * N / 4) + 'px'; cv.style.height = (SH / 4) + 'px';
 const X = cv.getContext('2d');
 const IMG = {};
@@ -48,7 +55,7 @@ function para(s, x, y, w, size = 36, o = {}) {
 // ---- ui blocks ----
 function footer(i, n, dark) {
   T('@taufik.pg', M, SH - 58, F.ss(700, 25), dark ? '#F1D78A' : K.maroon, 'left', 1);
-  if ((window.NODOTS || []).includes(i)) return; const gap = 24, cw = 12; let x = SW - M; for (let k = n - 1; k >= 0; k--) { const cur = k === i, w = cur ? 40 : cw; x -= w; rr(x, SH - 70, w, 12, 6); X.fillStyle = cur ? (dark ? '#E3BB55' : K.maroon) : (dark ? 'rgba(255,255,255,.28)' : 'rgba(122,15,26,.22)'); X.fill(); x -= gap - 10; }
+  if ((window.NODOTS || []).includes(i)) return; const gap = 24, cw = 12; let x = SW - M; for (let k = n - 1; k >= 0; k--) { const cur = k === i, w = cur ? 40 : cw; x -= w; rr(x, SH - 70, w, 12, 6); X.fillStyle = cur ? (dark ? '#E3BB55' : K.maroon) : (dark ? 'rgba(255,255,255,.28)' : 'rgba(' + TH.rgb + ',.22)'); X.fill(); x -= gap - 10; }
 }
 function card(x, y, w, h, o = {}) {
   const r = o.r ?? 22; X.save();
@@ -58,14 +65,14 @@ function card(x, y, w, h, o = {}) {
 }
 function box(x, y, w, h, kind, r = 18) {
   X.save(); rr(x, y, w, h, r);
-  if (kind === 'red') { X.fillStyle = gradY(y, y + h, [[0, '#B5121F'], [1, '#6A0512']]); X.shadowColor = 'rgba(100,0,10,.3)'; X.shadowBlur = 16; X.shadowOffsetY = 6; X.fill(); }
+  if (kind === 'red') { X.fillStyle = gradY(y, y + h, [[0, TH.b1], [1, TH.b2]]); X.shadowColor = 'rgba(' + TH.sh + ',.3)'; X.shadowBlur = 16; X.shadowOffsetY = 6; X.fill(); }
   if (kind === 'gold') { X.fillStyle = gradY(y, y + h, [[0, '#DDB04A'], [.55, '#B07C14'], [1, '#8A5C0C']]); X.shadowColor = 'rgba(120,80,10,.3)'; X.shadowBlur = 12; X.shadowOffsetY = 4; X.fill(); }
   if (kind === 'cream') { X.fillStyle = K.cream; X.fill(); X.strokeStyle = '#F0DAA5'; X.lineWidth = 2; X.stroke(); }
   X.restore();
 }
 function numBox(x, y, s, t) { box(x, y, s, s, 'gold', s * .26); T(t, x + s / 2, y + s * .68, F.ss(800, s * .56), '#fff', 'center'); }
 function checkCircle(cx, cy, r, col) { const g = X.createRadialGradient(cx - r * .3, cy - r * .4, r * .1, cx, cy, r); g.addColorStop(0, '#F0CF70'); g.addColorStop(.6, '#C08A1E'); g.addColorStop(1, '#8A5C0C'); X.save(); X.beginPath(); X.arc(cx, cy, r, 0, 7); X.fillStyle = g; X.fill(); X.strokeStyle = '#fff'; X.lineWidth = r * .16; X.lineCap = 'round'; X.lineJoin = 'round'; X.beginPath(); X.moveTo(cx - r * .38, cy + r * .02); X.lineTo(cx - r * .08, cy + r * .32); X.lineTo(cx + r * .42, cy - r * .3); X.stroke(); X.restore(); }
-function crossCircle(cx, cy, r) { X.save(); X.beginPath(); X.arc(cx, cy, r, 0, 7); X.fillStyle = '#F1E4DD'; X.fill(); X.strokeStyle = K.maroon; X.lineWidth = r * .16; X.lineCap = 'round'; const d = r * .36; X.beginPath(); X.moveTo(cx - d, cy - d); X.lineTo(cx + d, cy + d); X.moveTo(cx + d, cy - d); X.lineTo(cx - d, cy + d); X.stroke(); X.restore(); }
+function crossCircle(cx, cy, r) { X.save(); X.beginPath(); X.arc(cx, cy, r, 0, 7); X.fillStyle = TH.tint; X.fill(); X.strokeStyle = K.maroon; X.lineWidth = r * .16; X.lineCap = 'round'; const d = r * .36; X.beginPath(); X.moveTo(cx - d, cy - d); X.lineTo(cx + d, cy + d); X.moveTo(cx + d, cy - d); X.lineTo(cx - d, cy + d); X.stroke(); X.restore(); }
 function arrowDown(cx, y, len = 36, col = K.gold2) { X.save(); X.strokeStyle = col; X.lineWidth = 6; X.lineCap = 'round'; X.lineJoin = 'round'; X.beginPath(); X.moveTo(cx, y); X.lineTo(cx, y + len); X.moveTo(cx - 14, y + len - 14); X.lineTo(cx, y + len); X.lineTo(cx + 14, y + len - 14); X.stroke(); X.restore(); }
 function dotted(x1, x2, y, col = '#C9A864') { X.save(); X.strokeStyle = col; X.lineWidth = 3; X.setLineDash([2, 9]); X.lineCap = 'round'; X.beginPath(); X.moveTo(x1, y); X.lineTo(x2, y); X.stroke(); X.restore(); }
 function priceTag(cx, cy, w, h, label, rot = -.06) {
@@ -89,7 +96,7 @@ function fadePhoto(im, cx, cy, w, fade = 70, glow = true) {
 // circular medallion: gold double ring + photo cover-fit inside
 function medallion(im, cx, cy, d, fx = .5, fy = .5, zoom = 1) {
   const r = d / 2; X.save(); X.shadowColor = 'rgba(0,0,0,.45)'; X.shadowBlur = 50; X.shadowOffsetY = 20; X.beginPath(); X.arc(cx, cy, r + 16, 0, 7); X.fillStyle = gradY(cy - r, cy + r, [[0, '#F0D27A'], [.5, '#B88418'], [1, '#7B500C']]); X.fill(); X.restore();
-  X.save(); X.beginPath(); X.arc(cx, cy, r + 4, 0, 7); X.fillStyle = '#2D030A'; X.fill(); X.restore();
+  X.save(); X.beginPath(); X.arc(cx, cy, r + 4, 0, 7); X.fillStyle = TH.d3; X.fill(); X.restore();
   X.save(); X.beginPath(); X.arc(cx, cy, r, 0, 7); X.clip(); X.fillStyle = '#F6F3EC'; X.fillRect(cx - r, cy - r, d, d);
   const s = Math.max(d / im.width, d / im.height) * zoom, w = im.width * s, h = im.height * s; X.drawImage(im, cx - w * fx, cy - h * fy, w, h); X.restore();
 }
@@ -98,8 +105,8 @@ function cutoutBC(im, cx, by, h) { const w = h * im.width / im.height; X.drawIma
 // ---- backgrounds ----
 function paper(i, x0, dark) {
   if (dark) {
-    X.fillStyle = '#3A050D'; X.fillRect(x0, 0, SW, SH);
-    let g = X.createRadialGradient(x0 + SW * .5, SH * .62, 60, x0 + SW * .5, SH * .62, SW * 1.05); g.addColorStop(0, '#8F1020'); g.addColorStop(.55, '#5E0A15'); g.addColorStop(1, '#2D030A'); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
+    X.fillStyle = TH.d0; X.fillRect(x0, 0, SW, SH);
+    let g = X.createRadialGradient(x0 + SW * .5, SH * .62, 60, x0 + SW * .5, SH * .62, SW * 1.05); g.addColorStop(0, TH.d1); g.addColorStop(.55, TH.d2); g.addColorStop(1, TH.d3); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
     g = X.createRadialGradient(x0 + SW, 0, 20, x0 + SW, 0, 620); g.addColorStop(0, 'rgba(240,200,110,.22)'); g.addColorStop(1, 'rgba(240,200,110,0)'); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
     const R = rng(x0 + 9); X.save(); for (let k = 0; k < 70; k++) { X.globalAlpha = .1 + R() * .3; X.fillStyle = '#F0D27A'; X.beginPath(); X.arc(x0 + R() * SW, R() * SH, .8 + R() * 2.2, 0, 7); X.fill(); } X.restore(); return;
   }
