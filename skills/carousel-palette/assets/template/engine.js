@@ -9,8 +9,9 @@ const X = cv.getContext('2d');
 const IMG = {};
 const F = { num: s => `900 ${s}px IN`, bold: s => `800 ${s}px IN`, body: s => `500 ${s}px IN`, mono: s => `700 ${s}px MO` };
 function rng(s) { return () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-function txt(s, x, y, f, fill = K.ink, align = 'left', ls = 0) { X.save(); X.font = f; X.textAlign = align; X.letterSpacing = ls + 'px'; X.fillStyle = fill; X.fillText(s, x, y); X.restore(); }
-function tw(s, f, ls = 0) { X.save(); X.font = f; X.letterSpacing = ls + 'px'; const w = X.measureText(s).width; X.restore(); return w; }
+let wsp = 0;
+function txt(s, x, y, f, fill = K.ink, align = 'left', ls = 0) { X.save(); X.font = f; X.wordSpacing = wsp + 'px'; X.textAlign = align; X.letterSpacing = ls + 'px'; X.fillStyle = fill; X.fillText(s, x, y); X.restore(); }
+function tw(s, f, ls = 0) { X.save(); X.font = f; X.wordSpacing = wsp + 'px'; X.letterSpacing = ls + 'px'; const w = X.measureText(s).width; X.restore(); return w; }
 function rr(x, y, w, h, r) { X.beginPath(); X.roundRect(x, y, w, h, r); }
 
 // ---- header: "02/07" left, optional hairline, @handle right ----
@@ -22,7 +23,7 @@ function header(x0, i, n, rule = false) {
 }
 // one line of 2-tone text. parts = [[text, colour], ...]; tight tracking by default
 function richLine(parts, x, y, size, ls = -size * .045, font = F.num) {
-  let cx = x; parts.forEach(([t, c]) => { txt(t, cx, y, font(size), c || K.ink, 'left', ls); cx += tw(t, font(size), ls); }); return cx;
+  const w0 = wsp; wsp = size * .07; let cx = x; parts.forEach(([t, c]) => { txt(t, cx, y, font(size), c || K.ink, 'left', ls); cx += tw(t, font(size), ls); }); wsp = w0; return cx;
 }
 // stack of title lines: lines = [{p:[[t,c]], size, lh}] ; returns last baseline
 function titleStack(lines, x, y) {
@@ -30,7 +31,11 @@ function titleStack(lines, x, y) {
 }
 // wide-tracked mono/bold label e.g. PALETTE 01
 function eyebrow(s, x, y, size = 30) { txt(s.toUpperCase(), x, y, F.bold(size), K.ink, 'left', size * .2); }
-function tagline(s, x, y, size = 38) { txt(s, x, y, F.body(size), K.ink); }
+// wraps to maxW; returns baseline of the last line
+function tagline(s, x, y, size = 38, maxW = SW - 2 * M, lh = 1.3) {
+  let line = '', cy = y; s.split(' ').forEach(w => { const t = line ? line + ' ' + w : w; if (tw(t, F.body(size)) > maxW && line) { txt(line, x, cy, F.body(size), K.ink); cy += size * lh; line = w; } else line = t; });
+  txt(line, x, cy, F.body(size), K.ink); return cy;
+}
 function caption(s, x, y, size = 28) { txt(s.toUpperCase(), x, y, F.bold(size), K.ink, 'left', size * .18); }
 
 // ---- giant watercolour numeral / glyph (bleeds off canvas, clipped by slide) ----
@@ -91,10 +96,11 @@ function coverLayout(x, i, n, o) {
 function itemLayout(x, i, n, o) {
   header(x, i, n);
   eyebrow(o.eyebrow, x + M, 170);
-  const lines = o.title.map(p => ({ p: [[p[0], p[1] || K.ink]], size: o.size ?? 140, lh: .9 }));
-  const by = titleStack(lines, x + M, 170 + 40 + (o.size ?? 140) * .78);
-  tagline(o.tagline, x + M, by + 66);
-  const top = by + 108, bot = o.sw ? 1084 : 1196;
+  let size = o.size ?? 140; o.title.forEach(p => { wsp = size * .07; const w = tw(p[0], F.num(size), -size * .045); wsp = 0; if (w > SW - 2 * M) size = Math.floor(size * (SW - 2 * M) / w); });
+  const lines = o.title.map(p => ({ p: [[p[0], p[1] || K.ink]], size, lh: .9 }));
+  const by = titleStack(lines, x + M, 170 + 40 + size * .78);
+  const ty = tagline(o.tagline, x + M, by + 66, o.tsize ?? 34);
+  const top = ty + 42, bot = o.sw ? 1084 : 1196;
   artBox(IMG[o.im], x + M, top, SW - 2 * M, bot - top, o.fx, o.fy);
   if (o.sw) swatches(o.sw, x + M, 1112, SW - 2 * M);
   caption(o.caption || 'Save post ni', x + M, 1296);
@@ -105,7 +111,8 @@ function ctaLayout(x, i, n, o) {
   const lines = [{ p: [[o.l1, K.ink]], size: o.size ?? 128, lh: .9 }, { p: [[o.l2, o.col || K.blue]], size: o.size ?? 128, lh: .9 }];
   const by = titleStack(lines, x + M, 270);
   txt(o.follow, x + M, by + 100, F.num(58), K.ink, 'left', -2);
-  (o.strokes || ['#2A4BA0', '#C9A24A', '#D96B3A', '#E9D9A8', '#4A2E5C']).forEach((c, k) => brushStroke(x + 150 + k * 95, 640 + (k % 2) * 40 - k * 28, x + 260 + k * 95, 1100 + (k % 2) * 60 - k * 30, 90, c, k + 4));
+  if (o.sub) tagline(o.sub, x + M, by + 180, 34, SW - 2 * M);
+  (o.strokes || ['#2A4BA0', '#C9A24A', '#D96B3A', '#E9D9A8', '#4A2E5C']).forEach((c, k) => brushStroke(x + 150 + k * 95, 800 + (k % 2) * 30 - k * 24, x + 260 + k * 95, 1170 + (k % 2) * 40 - k * 28, 90, c, k + 4));
   cutoutBC(IMG[o.im], x + SW / 2 + 40, SH - 20, o.imH ?? 700);
 }
 

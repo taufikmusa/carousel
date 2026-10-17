@@ -32,7 +32,7 @@ references/rujukan/       7 tangkapan skrin rujukan
 ## Layout API
 - `coverLayout(x,i,N,{num, numCol, numX, numY, numSize, lines:[{p:[[teks,warna]],size,lh}], titleY, im, imH, imBleed, imDrop})`
 - `itemLayout(x,i,N,{eyebrow, title:[[baris1,warna],[baris2,warna]], size(=140), tagline, im, fx, fy, sw:[{c,l,t,tc,line}], caption})` — tanpa `sw`, gambar jadi lebih tinggi.
-- `ctaLayout(x,i,N,{l1,l2,col,follow,im,imH,strokes:[warna...]})`
+- `ctaLayout(x,i,N,{l1,l2,col,follow,sub,im,imH,size,strokes:[warna...]})  (sub = perenggan kecil bawah "follow")`
 - Primitif: `header` `richLine` `titleStack` `eyebrow` `tagline` `caption` `ghost` `brushStroke` `artBox` `cutoutBR` `cutoutBC` `swatches` `txt` `tw`.
 - `swatches` boleh jadi "chip" bukan warna sahaja: `t` = teks dalam kotak (cth `5g`), `l` = label bawah, `line:1` = garis halus untuk warna cerah.
 
