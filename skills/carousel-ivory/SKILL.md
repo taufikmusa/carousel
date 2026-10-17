@@ -1,9 +1,11 @@
 ---
 name: carousel-ivory
-description: 'Carousel IG 1080x1350 gaya PREMIUM GADING & MAROON untuk KISAH + KIRAAN produk emas (cincin/gelang/kemas, withdraw GAP). Slaid hook dan CTA latar maroon berserbuk emas; slaid isi gading dengan eyebrow emas huruf besar, tajuk Playfair rata kiri (hitam/merah tua/emas), perenggan Source Serif dengan penanda highlighter, kad putih berbar emas, tag harga emas, kad resit titik-titik, bar jumlah merah, kotak langkah bernombor, medalion foto bulat, titik kemajuan di bawah, potret Taufik outline putih di slaid CTA. Guna bila Taufik beri copywriting kisah/simulasi kiraan produk emas (cth tebus GAP jadi cincin) + gambar produk, atau minta gaya premium merah-emas. Data (harga GAP, tarikh, harga produk, upah, pos) dalam objek D; jumlah dan gram dikira automatik.'
+description: 'Carousel IG/Facebook 1080x1080 (1:1; 4:5 pilihan) gaya PREMIUM GADING & MAROON untuk KISAH + KIRAAN produk emas (cincin/gelang/kemas, withdraw GAP). Slaid hook dan CTA latar maroon berserbuk emas; slaid isi gading dengan eyebrow emas huruf besar, tajuk Playfair rata kiri (hitam/merah tua/emas), perenggan Source Serif dengan penanda highlighter, kad putih berbar emas, tag harga emas, kad resit titik-titik, bar jumlah merah, kotak langkah bernombor, medalion foto bulat, titik kemajuan di bawah, potret Taufik outline putih di slaid CTA. Guna bila Taufik beri copywriting kisah/simulasi kiraan produk emas (cth tebus GAP jadi cincin) + gambar produk, atau minta gaya premium merah-emas. Data (harga GAP, tarikh, harga produk, upah, pos) dalam objek D; jumlah dan gram dikira automatik.'
 ---
 
-# carousel-ivory v2 — kisah premium gading + maroon (1080x1350, 8 slaid)
+# carousel-ivory v2 — kisah premium gading + maroon (1080x1080 1:1 default, 8 slaid)
+
+**Saiz**: default 1:1 (Facebook/IG). Untuk 4:5 (1080x1350) guna `references/slides-4x5.js` sebagai `slides.js` (ia set `SH_OVERRIDE=1350`). Susun semula koordinat jika tukar saiz — jangan regang imej.
 
 Dibina daripada rujukan `references/rujukan/` (kiraan withdraw GAP, gaya sahaja) TETAPI diubah supaya tidak nampak meniru: tajuk rata kiri, eyebrow, titik kemajuan, tag harga, resit, kad berbar, slaid maroon, medalion. JANGAN kembali ke susunan rujukan (tajuk tengah emas-italic + garis, kad bergaris emas, kaunter 1/7).
 
