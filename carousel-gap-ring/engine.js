@@ -1,7 +1,7 @@
-// carousel-ivory engine v2 — premium ivory/maroon carousel (1080x1080 default, 4:5 pilihan): left-aligned Playfair headlines (ink/red/gold),
+// carousel-ivory engine v2 — premium ivory/maroon carousel (1080x1440 default; 1:1 dan 4:5 dalam references): left-aligned Playfair headlines (ink/red/gold),
 // eyebrow labels, highlighter paragraphs, soft cards with gold bar, receipt rows, price tag, medallion photo, dark maroon hook/CTA slides.
 // slides.js defines: N, DARK (indeks slaid gelap), ASSETS {key:'file'}, SLIDES [fn(i)] (local coords 0..1080).  DO NOT EDIT per carousel.
-const SW = 1080, SH = window.SH_OVERRIDE || 1080, M = 72;
+const SW = 1080, SH = window.SH_OVERRIDE || 1440, M = 72;
 const K = { bg: '#FBF8F3', ink: '#1B1512', red1: '#B5121F', red2: '#6C0613', maroon: '#7A0F1A', gold1: '#D9AE45', gold2: '#B27F17', gold3: '#7B500C', line: '#E7D2A0', cream: '#FBEBC9', card: '#FFFFFF', muted: '#6B5E57' };
 // Tema warna (set `var THEME = 'emerald'|'navy'|'maroon'` di slides.js). Gaya sama, warna utama berbeza.
 const THEMES = {
