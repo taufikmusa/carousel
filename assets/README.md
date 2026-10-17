@@ -52,6 +52,9 @@ Tajuk Anton besar huruf besar, blok berus merah/kuning/hitam, potret outline put
 
 ## fonts/
 Anton (tajuk gaya thumbnail), Playfair Display 900/700i, Inter 500/800/900, JetBrains Mono 700.
+**Tambah font baru (Google Fonts):** `sh assets/add_font.sh "Nama Font" [berat] [i]` → simpan TTF ke `assets/fonts/` (cth `sh assets/add_font.sh "Bebas Neue"`, italic: `... "DM Serif Display" 400 i`). Nama mesti sama seperti di fonts.google.com. Lepas tu commit.
+**Font tajuk menarik (dah ada, lihat `rujukan-gaya/senarai-font-baru.png`):** BebasNeue-400 (kondens tinggi) · ArchivoBlack-400 (tebal padat) · Oswald-700 · Montserrat-900 (lebar tebal) · BricolageGrotesque-800 (moden, personaliti) · SpaceGrotesk-700 (teknologi) · Unbounded-800 (lebar futuristik) · LilitaOne-400 (ceria, kartun) · Syne-800 (sangat lebar, berani) · Fraunces-900 (serif hangat) · BigShouldersDisplay-900 (kondens kuat) · DMSerifDisplay-400 / 400i (elegan, premium).
+Pakai dalam `carousel-palette`: letak `var HEAD = {family:'BR', file:'BricolageGrotesque-800.ttf', w:800, ls:-.03};` di baris pertama `slides.js` (font kondens macam Bebas/Oswald/BigShoulders: `ls:0` dan besarkan `size` ~ +25%).
 
 ## kartun/ (watak kartun keluarga — PNG lutsinar, outline putih)
 | Watak | Folder | Pose (nama fail `<watak>-<pose>.png`) |

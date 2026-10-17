@@ -3,6 +3,6 @@
 # Salin template ke <repo>/<nama-projek>/, jana potret outline putih (assets/sticker.sh) ke img/.
 set -e
 SK=$(cd "$(dirname "$0")/.." && pwd); REPO=$(cd "$SK/../.." && pwd); P="$REPO/$1"; shift
-mkdir -p "$P/img"; cp -r "$SK/assets/template/." "$P/"; printf 'out/\n' > "$P/.gitignore"
+mkdir -p "$P/img"; cp -r "$SK/assets/template/." "$P/"; cp -n "$REPO"/assets/fonts/* "$P/fonts/" 2>/dev/null || true; printf 'out/\n' > "$P/.gitignore"
 for pose in "$@"; do sh "$REPO/assets/sticker.sh" "$REPO/assets/taufik/taufik-$pose.png" "$P/img/$pose.png" 16; done
 echo "siap: $P  (salin gambar emas: cp $REPO/assets/emas/<fail>.jpg $P/img/)"

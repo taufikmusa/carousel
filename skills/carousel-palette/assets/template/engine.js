@@ -7,7 +7,9 @@ const K = { bg: '#F3EFE7', ink: '#121212', blue: '#2A4BA0', orange: '#EE8130', m
 const cv = document.getElementById('c'); cv.width = SW * N; cv.height = SH; cv.style.width = (SW * N / 4) + 'px'; cv.style.height = (SH / 4) + 'px';
 const X = cv.getContext('2d');
 const IMG = {};
-const F = { num: s => `900 ${s}px IN`, bold: s => `800 ${s}px IN`, body: s => `500 ${s}px IN`, mono: s => `700 ${s}px MO` };
+// Font tajuk: default Inter 900. Tukar dengan `var HEAD = {family:'BR', file:'BricolageGrotesque-800.ttf', w:800, ls:-.03}` di slides.js (fail dari assets/fonts/).
+const H = Object.assign({ family: 'IN', w: 900, ls: -.045 }, window.HEAD || {});
+const F = { num: s => `${H.w} ${s}px ${H.family}`, bold: s => `800 ${s}px IN`, body: s => `500 ${s}px IN`, mono: s => `700 ${s}px MO` };
 function rng(s) { return () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 let wsp = 0;
 function txt(s, x, y, f, fill = K.ink, align = 'left', ls = 0) { X.save(); X.font = f; X.wordSpacing = wsp + 'px'; X.textAlign = align; X.letterSpacing = ls + 'px'; X.fillStyle = fill; X.fillText(s, x, y); X.restore(); }
@@ -22,7 +24,7 @@ function header(x0, i, n, rule = false) {
   txt('@taufik.pg', x0 + SW - M, 92, F.bold(30), K.ink, 'right', 0);
 }
 // one line of 2-tone text. parts = [[text, colour], ...]; tight tracking by default
-function richLine(parts, x, y, size, ls = -size * .045, font = F.num) {
+function richLine(parts, x, y, size, ls = size * H.ls, font = F.num) {
   const w0 = wsp; wsp = size * .07; let cx = x; parts.forEach(([t, c]) => { txt(t, cx, y, font(size), c || K.ink, 'left', ls); cx += tw(t, font(size), ls); }); wsp = w0; return cx;
 }
 // stack of title lines: lines = [{p:[[t,c]], size, lh}] ; returns last baseline
@@ -104,7 +106,7 @@ function coverLayout(x, i, n, o) {
 function itemLayout(x, i, n, o) {
   header(x, i, n);
   eyebrow(o.eyebrow, x + M, 170);
-  let size = o.size ?? 140; o.title.forEach(p => { wsp = size * .07; const w = tw(p[0], F.num(size), -size * .045); wsp = 0; if (w > SW - 2 * M) size = Math.floor(size * (SW - 2 * M) / w); });
+  let size = o.size ?? 140; o.title.forEach(p => { wsp = size * .07; const w = tw(p[0], F.num(size), size * H.ls); wsp = 0; if (w > SW - 2 * M) size = Math.floor(size * (SW - 2 * M) / w); });
   const lines = o.title.map(p => ({ p: [[p[0], p[1] || K.ink]], size, lh: .93 }));
   const by = titleStack(lines, x + M, 170 + 40 + size * .78);
   const ty = tagline(o.tagline, x + M, by + 66, o.tsize ?? 34, SW - 2 * M, 1.42, o.hl || K.orange);
@@ -133,6 +135,7 @@ function paper(x0) {
 }
 
 window.ready = Promise.all([
+  ...(H.file ? [new FontFace(H.family, `url(fonts/${H.file})`, { weight: '100 900' }).load().then(f => document.fonts.add(f))] : []),
   ...[F.num(40), F.bold(40), F.body(40), F.mono(40)].map(f => document.fonts.load(f)),
   ...Object.entries(ASSETS).map(([k, f]) => new Promise((res, rej) => { const i = new Image(); i.onload = () => { IMG[k] = i; res(); }; i.onerror = () => rej(new Error('missing img/' + f)); i.src = 'img/' + f; })),
 ]).then(() => {

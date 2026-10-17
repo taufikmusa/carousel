@@ -36,6 +36,9 @@ references/rujukan/       7 tangkapan skrin rujukan
 - Primitif: `header` `richLine` `titleStack` `eyebrow` `tagline` `caption` `ghost` `brushStroke` `artBox` `cutoutBR` `cutoutBC` `swatches` `txt` `tw`.
 - `swatches` boleh jadi "chip" bukan warna sahaja: `t` = teks dalam kotak (cth `5g`), `l` = label bawah, `line:1` = garis halus untuk warna cerah.
 
+## Tukar font tajuk
+Default Inter 900. Untuk rupa lain, baris pertama `slides.js`: `var HEAD = {family:'BR', file:'BricolageGrotesque-800.ttf', w:800, ls:-.03};` (`family` nama bebas, `file` dari `assets/fonts/`, `ls` = jarak huruf × saiz). Pilihan menarik: Bricolage Grotesque, Archivo Black, Montserrat 900, Unbounded, Syne, Fraunces, DM Serif Display, Bebas Neue, Big Shoulders (lihat `assets/README.md`). Font kondens (Bebas/Oswald/Big Shoulders): `ls:0`, besarkan `size` ~25%. Font baru: `sh assets/add_font.sh "Nama Font"`.
+
 ## Peraturan
 - **Highlight WAJIB**: dalam `tagline`/`sub`, bungkus 2–4 frasa penting dengan `*...*` (tebal + penanda highlighter warna `hl`, default oren). Elak mata bosan tengok perenggan kosong.
 - 7 slaid default: 1 cover + 5 isi + 1 CTA (ikut N dari copywriting). Satu idea satu slaid.
