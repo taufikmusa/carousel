@@ -1,9 +1,9 @@
 // Carousel "hadiah ulang tahun perkahwinan" (carousel-ivory v2, 8 slaid, 1080x1080 = 1:1). Watak GENERIK (tiada nama/kisah rekaan).
 // Tukar THEME (emerald navy maroon electric earth soft luxury fresh), D dan teks. Versi 3:4 / 4:5 + contoh kisah cincin: references/.
 var N = 8;
-var THEME = 'electric';
+var THEME = 'earth';
 var DARK = [0, 7]; var NODOTS = [7];     // slaid gelap (hook + CTA); CTA tanpa titik kemajuan
-var ASSETS = { produk: 'produk.jpg', me: 'tunjuk-kamera.png' };
+var ASSETS = { produk: 'produk.jpg', me: 'pegang-jongkong.png' };
 var D = {
   tarikh: '18 Oktober 2026', gap: 592,                                   // harga GAP semasa RM/gram (Buy GAP)
   pgcode: 'PG00359605', wa: '60132740711', web: 'simpanemasfizikal.com',
@@ -92,7 +92,7 @@ var SLIDES = [
     headline([[['Kumpul gram', 'goldl']], [['senyap-senyap', 'white']], [['untuk kejutan?', 'goldil']]], M, 225, { size: 96, maxW: 570 });
     para('Para suami, pernah terfikir nak *kumpul gram GAP senyap-senyap* untuk buat kejutan pada isteri?', M, 490, 450, 30, { dark: true });
     T('Komen di bawah', M, 668, F.ss(700, 27), TH.eyeD); arrowDown(M + 20, 688, 44, TH.eyeD);
-    cutoutBC(IMG.me, 790, SH, 760);
+    cutoutBC(IMG.me, 850, SH, 730);
     T('Moga perkongsian ini bermanfaat.', M, 780, F.ss(500, 26), TH.dkText);
     T('Taufik Musa', M, 838, F.pf(900, 54), goldFillL); T('Dealer Public Gold', M, 874, F.ss(700, 25), '#FFFFFF', 'left', 1.5);
     [['PG CODE', D.pgcode, 916], ['WHATSAPP', D.wa, 946], ['LAMAN', D.web, 976]].forEach(function (r) { T(r[0], M, r[2], F.ss(700, 21), TH.eyeD, 'left', 2.5); T(r[1], M + 160, r[2], F.ss(800, 25), '#FFFFFF', 'left', 1); });
