@@ -1,7 +1,7 @@
 // Carousel kisah "cincin emas 999 tanpa sentuh gaji" (carousel-ivory v2, 8 slaid, 1080x1080 — sesuai Facebook/Instagram 1:1).
 // Versi 4:5 (1080x1350): lihat references/slides-4x5.js. Tukar D + teks.
 var N = 8;
-var THEME = 'emerald';                   // 'emerald' | 'navy' | 'maroon' — gaya sama, warna berbeza
+var THEME = 'maroon';                   // 'emerald' | 'navy' | 'maroon' — gaya sama, warna berbeza
 var DARK = [0, 7]; var NODOTS = [7];     // slaid maroon (hook + CTA); CTA tanpa titik kemajuan
 var ASSETS = { produk: 'produk.png', me: 'tunjuk-kamera.png' };
 var D = {
