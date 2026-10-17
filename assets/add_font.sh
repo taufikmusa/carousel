@@ -4,7 +4,7 @@
 #                                                              cth: sh assets/add_font.sh "DM Serif Display" 400 i   (italic)
 # Hasil: assets/fonts/NamaFont-<berat>[i].ttf  (font variable: satu fail boleh pelbagai berat)
 set -e
-FAM="$1"; W="${2:-400}"; IT="$3"; [ -n "$FAM" ] || { echo "Guna: sh assets/add_font.sh \"Nama Font\" [berat] [i]"; exit 1; }
+FAM="$1"; W="${2:-400}"; IT="$3"; case "$W" in *..*) echo "Nota: guna SATU berat setiap panggilan (cth 700), bukan julat — julat hanya ambil berat pertama.";; esac; [ -n "$FAM" ] || { echo "Guna: sh assets/add_font.sh \"Nama Font\" [berat] [i]"; exit 1; }
 DIR=$(cd "$(dirname "$0")" && pwd)/fonts; Q=$(printf %s "$FAM" | sed 's/ /+/g')
 if [ -n "$IT" ]; then SPEC="ital,wght@1,$W"; SUF="${W}i"; else SPEC="wght@$W"; SUF="$W"; fi
 CSS=$(curl -fsS --max-time 30 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120 Safari/537.36" "https://fonts.googleapis.com/css2?family=$Q:$SPEC") || { echo "Font '$FAM' tak jumpa / berat $W tak wujud"; exit 1; }
