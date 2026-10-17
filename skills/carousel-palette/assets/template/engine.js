@@ -37,8 +37,11 @@ function tagline(s, x, y, size = 38, maxW = SW - 2 * M, lh = 1.3, hl = K.orange)
   const fw = h => h ? F.bold(size) : F.body(size), sp = tw(' ', F.body(size)); const lines = []; let cur = [], cw = 0;
   words.forEach(w => { const ww = tw(w.t, fw(w.h)); if (cur.length && cw + sp + ww > maxW) { lines.push(cur); cur = []; cw = 0; } cw += (cur.length ? sp : 0) + ww; cur.push({ ...w, ww }); });
   lines.push(cur);
-  lines.forEach((ln, li) => { let cx = x; const by = y + li * size * lh;
-    ln.forEach((w, k) => { if (w.h) { X.save(); X.globalAlpha = .42; X.fillStyle = hl; X.fillRect(cx - 6, by - size * .86, w.ww + (ln[k + 1] && ln[k + 1].h ? sp : 0) + 12 - (ln[k + 1] && ln[k + 1].h ? 0 : 0), size * 1.14); X.restore(); } txt(w.t, cx, by, fw(w.h), K.ink); cx += w.ww + sp; }); });
+  lines.forEach((ln, li) => { const by = y + li * size * lh; let cx = x;
+    X.save(); X.globalAlpha = .42; X.fillStyle = hl; X.beginPath();
+    ln.forEach((w, k) => { if (w.h) X.rect(cx - 6, by - size * .86, w.ww + (ln[k + 1] && ln[k + 1].h ? sp : 0) + 12, size * 1.14); cx += w.ww + sp; });
+    X.fill(); X.restore(); cx = x;
+    ln.forEach(w => { txt(w.t, cx, by, fw(w.h), K.ink); cx += w.ww + sp; }); });
   return y + (lines.length - 1) * size * lh;
 }
 function caption(s, x, y, size = 28) { txt(s.toUpperCase(), x, y, F.bold(size), K.ink, 'left', size * .18); }
