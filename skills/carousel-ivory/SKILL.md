@@ -1,11 +1,11 @@
 ---
 name: carousel-ivory
-description: 'Carousel IG/Facebook 1080x1440 (3:4; 1:1 dan 4:5 pilihan) gaya PREMIUM GADING & MAROON untuk KISAH + KIRAAN produk emas (cincin/gelang/kemas, withdraw GAP). Slaid hook dan CTA latar maroon berserbuk emas; slaid isi gading dengan eyebrow emas huruf besar, tajuk Playfair rata kiri (hitam/merah tua/emas), perenggan Source Serif dengan penanda highlighter, kad putih berbar emas, tag harga emas, kad resit titik-titik, bar jumlah merah, kotak langkah bernombor, medalion foto bulat, titik kemajuan di bawah, potret Taufik outline putih di slaid CTA. Guna bila Taufik beri copywriting kisah/simulasi kiraan produk emas (cth tebus GAP jadi cincin) + gambar produk, atau minta gaya premium merah-emas. Data (harga GAP, tarikh, harga produk, upah, pos) dalam objek D; jumlah dan gram dikira automatik.'
+description: 'Carousel IG/Facebook 1080x1080 (1:1; 3:4 dan 4:5 pilihan) gaya PREMIUM GADING & MAROON untuk KISAH + KIRAAN produk emas (cincin/gelang/kemas, withdraw GAP). Slaid hook dan CTA latar maroon berserbuk emas; slaid isi gading dengan eyebrow emas huruf besar, tajuk Playfair rata kiri (hitam/merah tua/emas), perenggan Source Serif dengan penanda highlighter, kad putih berbar emas, tag harga emas, kad resit titik-titik, bar jumlah merah, kotak langkah bernombor, medalion foto bulat, titik kemajuan di bawah, potret Taufik outline putih di slaid CTA. Guna bila Taufik beri copywriting kisah/simulasi kiraan produk emas (cth tebus GAP jadi cincin) + gambar produk, atau minta gaya premium merah-emas. Data (harga GAP, tarikh, harga produk, upah, pos) dalam objek D; jumlah dan gram dikira automatik.'
 ---
 
-# carousel-ivory v2 — kisah premium gading + tema warna (1080x1440 3:4 default, 8 slaid)
+# carousel-ivory v2 — kisah premium gading + tema warna (1080x1080 1:1 default, 8 slaid)
 
-**Saiz**: default 3:4 (1080x1440). 1:1 (Facebook) = `references/slides-1x1.js`, 4:5 (IG) = `references/slides-4x5.js` — salin sebagai `slides.js` (ia set `SH_OVERRIDE`). Koordinat disusun semula untuk setiap saiz; jangan regang imej.
+**Saiz**: default 1:1 (1080x1080, Facebook/IG). 3:4 (1080x1440) = `references/slides-3x4.js`, 4:5 (1080x1350) = `references/slides-4x5.js` — salin sebagai `slides.js` (ia set `SH_OVERRIDE`). Koordinat disusun semula untuk setiap saiz; jangan regang imej. Taufik pilih 1:1 sebagai saiz tetap kecuali diminta lain.
 
 Dibina daripada rujukan `references/rujukan/` (kiraan withdraw GAP, gaya sahaja) TETAPI diubah supaya tidak nampak meniru: tajuk rata kiri, eyebrow, titik kemajuan, tag harga, resit, kad berbar, slaid maroon, medalion. JANGAN kembali ke susunan rujukan (tajuk tengah emas-italic + garis, kad bergaris emas, kaunter 1/7).
 
