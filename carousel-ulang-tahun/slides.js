@@ -1,7 +1,7 @@
 // Carousel "hadiah ulang tahun perkahwinan" (carousel-ivory v2, 8 slaid, 1080x1080 = 1:1). Watak GENERIK (tiada nama/kisah rekaan).
 // Tukar THEME (emerald navy maroon electric earth soft luxury fresh), D dan teks. Versi 3:4 / 4:5 + contoh kisah cincin: references/.
 var N = 8;
-var THEME = 'earth';
+var THEME = 'soft';
 var DARK = [0, 7]; var NODOTS = [7];     // slaid gelap (hook + CTA); CTA tanpa titik kemajuan
 var ASSETS = { produk: 'produk.jpg', me: 'pegang-jongkong.png' };
 var D = {
