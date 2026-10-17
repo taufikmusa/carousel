@@ -23,5 +23,6 @@ Render: `python3 music.py && node render.js` dalam folder projek.
 - `carousel-red` = komik pop-art merah/kuning (burst, Bangers, belon) dengan kartun Baba + pilihan Mami/Amani/Aileen + foto emas sebenar (photoPanel). Kartun boleh di mana-mana slaid.
 - `carousel-maroon` = promo impian: latar foto emas kabur, tajuk Poppins italic putih + pil maroon, kad tier angka emas, doodle kuning.
 - `carousel-editorial` = gaya putih majalah, nombor oren gergasi, tulisan tangan (rujukan "9 Money Milestones").
+- `carousel-palette` = krim Swiss editorial: digit watercolour gergasi, tajuk Inter 900 2-warna, kotak seni + 4 swatch hex, CTA "SAVE IT FOR LATER" (rujukan "5 Color Palette", 7 slaid). Attach gambar + copywriting → terus buat 7 slaid.
 - Potret/selfie Taufik HANYA di slaid TERAKHIR (CTA). Cover & slaid isi tanpa potret (nampak macam iklan).
 - Baca SKILL.md skill tu dahulu; mula dengan `sh skills/<skill>/scripts/new_carousel.sh carousel-<topik> <pose...>`.
