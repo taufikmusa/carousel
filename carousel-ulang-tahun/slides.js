@@ -7,7 +7,7 @@ var ASSETS = { produk: 'produk.jpg', me: 'tunjuk-kamera.png' };
 var D = {
   tarikh: '18 Oktober 2026', gap: 592,                                   // harga GAP semasa RM/gram (Buy GAP)
   pgcode: 'PG00359605', wa: '60132740711', web: 'simpanemasfizikal.com',
-  produk: '916/22K Gold Bangle', tulen: '916', harga: 6052, upah: 199, upahTermasuk: false, pos: 10,
+  produk: '916 Gold Bangle', kod: 'PGJG180673', berat: '11.73g', tulen: '916', harga: 6933, upah: 329, upahTermasuk: true, pos: 10,   // harga app (Labour Fee Included RM329)
 };
 D.asas = D.upahTermasuk ? D.harga - D.upah : D.harga; D.jumlah = D.asas + D.upah + D.pos;
 D.gram = Math.floor(D.jumlah / D.gap * 1e4) / 1e4;
@@ -32,15 +32,15 @@ var SLIDES = [
     eyebrow('Hadiah ulang tahun', M, 96, true);
     headline([[['Hadiahkan', 'white']], [['bangle emas 916', 'goldl']], [['tanpa sentuh', 'white']], [['simpanan kecemasan.', 'goldil']]], M, 238, { size: 108 });
     para('Ramai suami buntu bila tiba tarikh ulang tahun perkahwinan sebab *bajet hadiah* selalu lesap ditelan komitmen.', M, 700, 520, 31, { dark: true });
-    medallion(IMG.produk, 800, 800, 330, .42, .45, 1.3);
+    medallion(IMG.produk, 800, 800, 330, .5, .5, .8);
   },
   // 2 — dilema
   function (i) {
     eyebrow('Dilema sebelum ulang tahun', M, 96);
     headline([[['Hati mula', 'ink']], [['terasa berat.', 'red']]], M, 225, { size: 104 });
     para('Bayangkan harga seutas *bangle emas 916* idaman isteri: *' + JUM + '*, termasuk upah tukang dan pos berinsurans.', M, 408, 936, 31);
-    medallion(IMG.produk, 190, 575, 170, .42, .45, 1.3); priceTag(680, 575, 440, 165, JUM, -.05);
-    listCard(700, 'Keluarkan tunai RM6,000 sedebuk?', 'Bagi pekerja bergaji sederhana, hampir mustahil.');
+    fadePhoto(IMG.produk, 235, 575, 310, 55); priceTag(690, 575, 430, 160, JUM, -.05);
+    listCard(700, 'Keluarkan tunai hampir RM' + (Math.ceil(D.jumlah / 1000) * 1000).toLocaleString('en-US') + ' sedebuk?', 'Bagi pekerja bergaji sederhana, hampir mustahil.');
     listCard(792, 'Pinjaman peribadi atau kad kredit?', 'Faedah menimbun dan jiwa tak tenang.');
     listCard(884, 'Tangguh lagi?', 'Entah bila impian membahagiakan isteri tercapai.');
   },
@@ -61,8 +61,8 @@ var SLIDES = [
   // 5 — simulasi
   function (i) {
     eyebrow('Simulasi kiraan', M, 96);
-    headline([[['Bangle Emas ', 'ink'], ['916/22K', 'red']]], M, 215, { size: 104 });
-    T('Contoh kiraan · ' + D.produk + ' · PG Jewel', M, 262, F.ss(600, 26), K.muted, 'left', .5);
+    headline([[['Bangle Emas ', 'ink'], ['916', 'red']]], M, 215, { size: 104 });
+    T('Contoh kiraan · ' + D.produk + ' ' + D.kod + ' · ' + D.berat + ' · PG Jewel', M, 262, F.ss(600, 26), K.muted, 'left', .5);
     card(M, 292, 936, 540, { r: 26 });
     [['Harga emas ' + D.tulen, '(tanpa upah)', RM(D.asas) + '.00'], ['Kos upah tukang', '', RM(D.upah) + '.00'], ['Pengeposan berinsurans', '(GIT terus ke pintu rumah)', RM(D.pos) + '.00']].forEach(function (r, k) {
       var t = 322 + k * 110; T(r[0], 112, t + 38, F.ss(800, 32), K.ink); if (r[1]) T(r[1], 112, t + 72, F.ss(500, 25), K.muted); T(r[2], 968, t + 56, F.ss(800, 38), K.ink, 'right'); if (k < 2) dotted(112, 968, t + 98);
