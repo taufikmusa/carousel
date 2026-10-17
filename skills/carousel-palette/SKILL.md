@@ -31,14 +31,15 @@ references/rujukan/       7 tangkapan skrin rujukan
 
 ## Layout API
 - `coverLayout(x,i,N,{num, numCol, numX, numY, numSize, lines:[{p:[[teks,warna]],size,lh}], titleY, im, imH, imBleed, imDrop})`
-- `itemLayout(x,i,N,{eyebrow, title:[[baris1,warna],[baris2,warna]], size(=140), tagline, im, fx, fy, sw:[{c,l,t,tc,line}], caption})` — tanpa `sw`, gambar jadi lebih tinggi.
+- `itemLayout(x,i,N,{eyebrow, title:[[baris1,warna],[baris2,warna]], size(=140), tagline, hl, im, fx, fy, sw:[{c,t,tc,line}], caption})` — tanpa `sw`, gambar jadi lebih tinggi. `caption` & label hex `l` OPSYENAL (default: TIADA — Taufik tak nak "SAVE THIS PALETTE" / kod hex).
 - `ctaLayout(x,i,N,{l1,l2,col,follow,sub,im,imH,size,strokes:[warna...]})  (sub = perenggan kecil bawah "follow")`
 - Primitif: `header` `richLine` `titleStack` `eyebrow` `tagline` `caption` `ghost` `brushStroke` `artBox` `cutoutBR` `cutoutBC` `swatches` `txt` `tw`.
 - `swatches` boleh jadi "chip" bukan warna sahaja: `t` = teks dalam kotak (cth `5g`), `l` = label bawah, `line:1` = garis halus untuk warna cerah.
 
 ## Peraturan
+- **Highlight WAJIB**: dalam `tagline`/`sub`, bungkus 2–4 frasa penting dengan `*...*` (tebal + penanda highlighter warna `hl`, default oren). Elak mata bosan tengok perenggan kosong.
 - 7 slaid default: 1 cover + 5 isi + 1 CTA (ikut N dari copywriting). Satu idea satu slaid.
-- Warna aksen tajuk & swatch **selaras dengan gambar** slaid tu (macam rujukan: tiap slaid ada palet sendiri). Kod hex swatch mesti benar-benar warna dalam gambar — ambil sampel dengan `convert img.jpg -resize 1x1 txt:` / kuantisasi kalau perlu.
+- Warna aksen tajuk & swatch **selaras dengan gambar** slaid tu (macam rujukan: tiap slaid ada palet sendiri). Swatch tanpa label hex (kecuali diminta); warnanya mesti benar-benar warna dalam gambar — ambil sampel dengan `convert img.jpg -resize 1x1 txt:` / kuantisasi kalau perlu.
 - Potret Taufik HANYA di slaid CTA (outline putih wajib). Cover & isi tanpa potret.
 - Ayat dari copywriting Taufik; jangan tambah fakta. Teks rekaan (tagline/caption) senaraikan dalam laporan. Angka/harga hanya dari Taufik atau sumber bertarikh.
 - Bahasa Melayu Malaysia; istilah teknikal kekal English.
