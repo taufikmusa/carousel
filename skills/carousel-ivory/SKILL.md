@@ -37,9 +37,14 @@ references/rujukan/                        7 slaid rujukan asal (gaya sahaja)
 `headline([[ [teks,gaya],... ], ...], x, y, {size, maxW, lh})` gaya: ink red gold white cream goldi whitei **goldl/goldil** (emas TERANG — wajib di latar maroon) · `eyebrow(s,x,y,dark)` · `para(s,x,y,w,size,{dark,lh})` (`*frasa*` = highlight) · `card(x,y,w,h,{bar,r,dark})` · `box(x,y,w,h,'red'|'gold'|'cream')` · `numBox` `checkCircle` `crossCircle` `arrowDown` `dotted` `priceTag(cx,cy,w,h,label,rot)` · `fadePhoto(im,cx,cy,w)` `medallion(im,cx,cy,d,fx,fy,zoom)` `cutoutBC(im,cx,bottomY,h)` · `T` `tw` · fill emas `goldFill`, `goldFillL`, `redFill`. `var DARK=[..]` slaid maroon, `var NODOTS=[..]`.
 
 ## Tema warna
-`var THEME = 'emerald' | 'navy' | 'maroon'` di slides.js — gaya sama, warna berbeza (hijau zamrud / biru malam / merah maroon, semua + emas). Pilih tema BERBEZA daripada post sebelumnya supaya tak nampak sama.
+`var THEME = '...'` di slides.js — gaya sama, warna berbeza. Pilih tema BERBEZA daripada post sebelumnya supaya tak nampak sama.
+- Berasaskan emas: `maroon` (merah tua, lihat juga skill carousel-ivory-red), `emerald`, `navy`.
+- **5 palet rujukan** (`references/palet-5-warna/`, "5 color palette"): `electric` (biru #3040FF + lime #DFFF70 + #10121B + #F5F5F0) · `earth` (hijau #3E4934 + terakota #B85C3B + krim #F3EBDD + #CDBDA5) · `soft` (lavender #DDD4FF + ungu #33204F + lime #E8F56D + #FAF8F2) · `luxury` (merah #630002 + emas #BDA174 + #F4EDE3 + #222022) · `fresh` (hijau #006638 + lime #C6CE76 + coral #FF784F + #F8F5EC).
+- Tema ditakrif ikut PERANAN (tajuk utama, kotak, label, highlighter, tag harga, gradien aksen) dalam `THEMES` di engine.js — tambah palet baharu dengan menyalin satu entri.
 
 ## Peraturan
+- **Watak GENERIK**: jangan reka nama/kisah palsu (cth "Azman", "juruteknik", "ulang tahun ke-10", "10.5 gram terkumpul"). Tulis sebagai situasi umum ("ramai suami…", "bayangkan…", "contohnya…") dan label simulasi sebagai "Contoh kiraan". Jangan salin gambar produk dari akaun orang lain — guna foto Taufik / `assets/emas/` atau minta gambar produk.
+- Kadar GAP: guna harga + tarikh yang Taufik beri (cth RM592/gram, 18 Oktober 2026).
 - Jangan guna "korang" dalam teks slaid — guna "anda" (nampak pro), walaupun copywriting asal ada "korang".
 - Slaid CTA: letak PG Code + WhatsApp Taufik (objek D: `pgcode`, `wa`) di bawah nama.
 - Highlight 2–4 frasa penting setiap perenggan (`*...*`).
