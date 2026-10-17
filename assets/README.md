@@ -70,3 +70,10 @@ Guna untuk `carousel-pastel` (pastel keluarga) dan `carousel-red` (pop-art merah
 `rujukan-gaya/poster-matlamat-10-gram.jpg`, `poster-fungsi-aplikasi-public-gold.jpg` = poster premium gelap-emas Taufik (app: baki 27.4071g, harga 25 Apr 2026 — data bertarikh).
 
 `rujukan-gaya/maroon-impian-01..04.jpg` = rujukan gaya `carousel-maroon` (orang dalam poster BUKAN Taufik — rujukan gaya sahaja; angka dana haji/kahwin dalam poster bukan data kita).
+
+## jewel/ (gambar produk PG Jewel — dipotong rapat daripada app, sesuai untuk carousel-ivory `img/produk.png|jpg`)
+| Fail | Produk | Harga app (bertarikh Okt 2026) |
+|---|---|---|
+| bangle-916-PGJG180673.jpg | 916 Gold Bangle PGJG180673 (11.73g) | RM6,933 (upah RM329 termasuk) |
+| cincin-999-gelombang-cinta-PGJR181413.png | 999/24K Gold Ring Gelombang Cinta PGJR181413 5D Hard Gold | RM1,653–RM1,970 (upah RM137–164 termasuk) |
+Harga boleh berubah — sahkan dengan Taufik sebelum guna dalam post.

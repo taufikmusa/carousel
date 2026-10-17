@@ -5,7 +5,7 @@ description: 'Carousel kisah + kiraan produk emas WARNA MERAH (maroon + emas + g
 
 # carousel-ivory-red — premium gading, tema MAROON (merah)
 
-Ini **varian warna** `carousel-ivory` dengan `THEME='maroon'` dikunci. Enjin, susunan 8 slaid, API dan peraturan semuanya sama — **baca `skills/carousel-ivory/SKILL.md` dahulu** (struktur slaid, objek `D`, highlight, 1:1 vs 4:5, "anda" bukan "korang", PG Code + WhatsApp di CTA).
+(`carousel-ivory` kini sudah DEFAULT maroon, jadi skill ini = pintasan yang mengunci maroon.) Ini **varian warna** `carousel-ivory` dengan `THEME='maroon'` dikunci. Enjin, susunan 8 slaid, API dan peraturan semuanya sama — **baca `skills/carousel-ivory/SKILL.md` dahulu** (struktur slaid, objek `D`, highlight, 1:1 vs 4:5, "anda" bukan "korang", PG Code + WhatsApp di CTA).
 
 ## Mula
 ```

@@ -1,9 +1,9 @@
 // Carousel "hadiah ulang tahun perkahwinan" (carousel-ivory v2, 8 slaid, 1080x1080 = 1:1). Watak GENERIK (tiada nama/kisah rekaan).
 // Tukar THEME (emerald navy maroon electric earth soft luxury fresh), D dan teks. Versi 3:4 / 4:5 + contoh kisah cincin: references/.
 var N = 8;
-var THEME = 'electric';
+var THEME = 'maroon';                    // DEFAULT = maroon (merah tua + emas). Tukar HANYA bila Taufik minta warna lain: emerald navy electric earth soft luxury fresh
 var DARK = [0, 7]; var NODOTS = [7];     // slaid gelap (hook + CTA); CTA tanpa titik kemajuan
-var ASSETS = { produk: 'produk.jpg', me: 'tunjuk-kamera.png' };
+var ASSETS = { produk: 'produk.png', me: 'tunjuk-kamera.png' };   // img/produk.png = gambar produk (potong rapat); me = potret outline putih
 var D = {
   tarikh: '18 Oktober 2026', gap: 592,                                   // harga GAP semasa RM/gram (Buy GAP)
   pgcode: 'PG00359605', wa: '60132740711', web: 'simpanemasfizikal.com',
