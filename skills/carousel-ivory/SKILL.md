@@ -50,6 +50,7 @@ references/rujukan/                        7 slaid rujukan asal (gaya sahaja)
 - Tema ditakrif ikut PERANAN (tajuk utama, kotak, label, highlighter, tag harga, gradien aksen) dalam `THEMES` di engine.js — tambah palet baharu dengan menyalin satu entri.
 
 ## Peraturan
+- **Salin-tampal ikut produk**: bila Taufik beri produk (tangkapan skrin pgjewel.my / app), SEMAK nama produk, ketulenan (916 vs 999), harga dan upah daripada skrin — jangan campur 916 dengan 999 atau tambah istilah (cth "5D Hard Gold") yang tiada pada produk. Bagi balik copywriting yang telah dibetulkan supaya Taufik boleh copy-paste.
 - **Watak GENERIK**: jangan reka nama/kisah palsu (cth "Azman", "juruteknik", "ulang tahun ke-10", "10.5 gram terkumpul"). Tulis sebagai situasi umum ("ramai suami…", "bayangkan…", "contohnya…") dan label simulasi sebagai "Contoh kiraan". Jangan salin gambar produk dari akaun orang lain — guna foto Taufik / `assets/emas/` atau minta gambar produk.
 - Kadar GAP: guna harga + tarikh yang Taufik beri (cth RM592/gram, 18 Oktober 2026).
 - Jangan guna "korang" dalam teks slaid — guna "anda" (nampak pro), walaupun copywriting asal ada "korang".

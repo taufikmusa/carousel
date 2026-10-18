@@ -6,7 +6,8 @@ var ASSETS = { produk: 'produk.jpg', me: 'thumbs-up.png' };
 var D = {
   tarikh: '19 Oktober 2026', gap: 592, bundar: 'round',           // bundar: 'round' (ikut copywriting 2.5473) | 'floor'
   pgcode: 'PG00359605', wa: '60132740711', web: 'simpanemasfizikal.com',
-  produk: '916/22K Gold Ring KLCC PGJR181317 1C', harga: 1498, upah: 0, upahTermasuk: false, pos: 10,
+  produk: '916/22K Gold Ring KLCC PGJR181317 1C', harga: 1498,   // app: RM802-RM1,498 (upah termasuk RM36-67), 129 sold
+   upah: 0, upahTermasuk: false, pos: 10,
 };
 D.asas = D.harga; D.jumlah = D.harga + D.pos;
 D.gram = (D.bundar === 'round' ? Math.round : Math.floor)(D.jumlah / D.gap * 1e4) / 1e4;
@@ -19,9 +20,9 @@ var SLIDES = [
   // 1 — hook (gelap)
   function (i) {
     eyebrow('Duit hantaran kahwin', M, 96, true);
-    headline([[['Cincin merisik', 'white']], [['emas 999 tulen', 'goldl']], [['tolak 2 gram', 'white']], [['simpanan GAP.', 'goldil']]], M, 238, { size: 108 });
+    headline([[['Cincin merisik', 'white']], [['emas 916 tulen', 'goldl']], [['tolak 2.5 gram', 'white']], [['simpanan GAP.', 'goldil']]], M, 238, { size: 108 });
     para('Kerap kali duit hantaran kahwin bocor hanya disebabkan *kos cincin merisik* yang melambung.', M, 700, 520, 31, { dark: true });
-    medallion(IMG.produk, 800, 800, 330, .5, .5, .8);
+    medallion(IMG.produk, 800, 800, 330, .5, .5, .58);
   },
   // 2 — dilema
   function (i) {
@@ -35,8 +36,8 @@ var SLIDES = [
   // 3 — pilihan
   function (i) {
     eyebrow('Pilihan beliau', M, 96);
-    headline([[['Cincin 999', 'ink']], [['5D Hard Gold.', 'red']]], M, 225, { size: 112 });
-    para('Beliau memilih cincin *999 5D Hard Gold* berharga *' + JUM + '*, termasuk upah dan pos berinsurans.', M, 410, 936, 33);
+    headline([[['Cincin emas 916', 'ink']], [['pilihan beliau.', 'red']]], M, 225, { size: 112 });
+    para('Beliau memilih *cincin emas 916/22K* berharga *' + JUM + '*, termasuk upah dan pos berinsurans.', M, 410, 936, 33);
     fadePhoto(IMG.produk, 540, 740, 900, 100); priceTag(840, 560, 300, 112, JUM, -.06);
   },
   // 4 — perincian
@@ -45,7 +46,7 @@ var SLIDES = [
     headline([[['Cincin Emas ', 'ink'], ['KLCC', 'red']]], M, 215, { size: 112 });
     T(D.produk, M, 266, F.ss(600, 25), K.muted, 'left', .5);
     card(M, 300, 936, 420, { r: 26 });
-    [['Harga Barang Kemas', '', RM(D.harga) + '.00'], ['Pengeposan Berinsurans', '(GIT)', RM(D.pos) + '.00']].forEach(function (r, k) {
+    [['Harga Barang Kemas', '(upah termasuk)', RM(D.harga) + '.00'], ['Pengeposan Berinsurans', '(GIT)', RM(D.pos) + '.00']].forEach(function (r, k) {
       var t = 330 + k * 105; T(r[0], 112, t + 42, F.ss(800, 34), K.ink); if (r[1]) T(r[1], 112, t + 76, F.ss(500, 26), K.muted); T(r[2], 968, t + 58, F.ss(800, 42), K.ink, 'right'); if (k < 1) dotted(112, 968, t + 98);
     });
     box(100, 560, 880, 130, 'red', 22); T('Jumlah Nilai Keseluruhan', 136, 636, F.ss(700, 30), '#FFFFFF'); T(JUM + '.00', 946, 646, F.ss(800, 56), TH.gl[0], 'right');
@@ -64,7 +65,7 @@ var SLIDES = [
   function (i) {
     eyebrow('Tiga pengajaran penting', M, 96);
     headline([[['Apa yang kita', 'ink']], [['belajar?', 'red']]], M, 222, { size: 100 });
-    var L = [['Langkah perkahwinan yang berkat bermula dengan *pengurusan kewangan yang bijak* tanpa hutang.', 372], ['Emas 999 *5D Hard Gold* memberi rupa mewah dan *ketahanan padu* pada berat yang jimat.', 580], ['*Mulakan tabungan emas seawal hari pertama bekerja* supaya anda bersedia menghadapi fasa besar kehidupan.', 788]];
+    var L = [['Langkah perkahwinan yang berkat bermula dengan *pengurusan kewangan yang bijak* tanpa hutang.', 372], ['Emas 916 memberi *rupa mewah* dan *ketahanan padu* pada berat yang jimat.', 580], ['*Mulakan tabungan emas seawal hari pertama bekerja* supaya anda bersedia menghadapi fasa besar kehidupan.', 788]];
     L.forEach(function (r, k) { card(M, r[1], 936, 192, { bar: 1 }); numBox(108, r[1] + 22, 66, String(k + 1)); para(r[0], 204, r[1] + 52, 770, 28, { lh: 1.4 }); });
   },
   // 7 — CTA (gelap + potret)
