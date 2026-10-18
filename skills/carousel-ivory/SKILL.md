@@ -23,6 +23,8 @@ Dibina daripada rujukan `references/rujukan/` (kiraan withdraw GAP, gaya sahaja)
 - **Kisah** (watak generik, dilema → penyelesaian → simulasi → pengajaran): `assets/template/slides.js`.
 - **Penerangan** (copywriting berformat "Kini withdraw GAP boleh…", langkah + formula + nota): `references/slides-penerangan-withdraw-gap-1x1.js`. Cover = foto produk BESAR dan jelas di atas kertas cerah (fadePhoto ~880px), bukan medalion — Taufik mahu produk nampak jelas.
 
+- **Senarai N sebab/tanda** (cth "5 Sebab Cikgu…"): `references/slides-senarai-5-sebab-1x1.js` — 7 slaid, fungsi `sebab()` (tajuk 2 baris + kad perenggan + penjejak nombor + digit ghost).
+
 ## Fail
 ```
 assets/template/ engine.js (JANGAN EDIT) · slides.js (EDIT D + teks) · index.html · render.js · fonts/ · ring-contoh.png
