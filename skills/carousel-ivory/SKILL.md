@@ -19,6 +19,10 @@ Dibina daripada rujukan `references/rujukan/` (kiraan withdraw GAP, gaya sahaja)
 7. **Tiga pengajaran**: 3 kad bernombor.
 8. **CTA (maroon)**: soalan komen + potret Taufik + tanda tangan nama/jawatan. Tiada titik kemajuan.
 
+## Dua struktur (pilih ikut copywriting)
+- **Kisah** (watak generik, dilema → penyelesaian → simulasi → pengajaran): `assets/template/slides.js`.
+- **Penerangan** (copywriting berformat "Kini withdraw GAP boleh…", langkah + formula + nota): `references/slides-penerangan-withdraw-gap-1x1.js`. Cover = foto produk BESAR dan jelas di atas kertas cerah (fadePhoto ~880px), bukan medalion — Taufik mahu produk nampak jelas.
+
 ## Fail
 ```
 assets/template/ engine.js (JANGAN EDIT) · slides.js (EDIT D + teks) · index.html · render.js · fonts/ · ring-contoh.png
