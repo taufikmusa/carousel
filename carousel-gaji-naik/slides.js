@@ -9,23 +9,24 @@ var D = { handle: '@taufik.pg' };
 var BGK = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p1'];     // foto untuk latar kabur setiap slaid
 window.BG = function (i, x0, dark) {
   var im = IMG[BGK[i]];
-  if (dark) bgPhoto(x0, im, { dark: true, zoom: 2.6, fx: .5, fy: .55, wash: '196,16,46', a: .62 });   // maroon gelap (tidak terang)
+  if (dark) bgSatin(x0, i * 11 + 4);   // satin merah ceri (rujukan Taufik)
   else bgPhoto(x0, im, { zoom: 2.6, fx: .5, fy: .45, wash: '251,247,240', a: .72 });
 };
 var PH = 440, PY = 1080 - PH;   // kawasan foto bawah
 function slide(i, dark, eye, l1, l2, text, img, o) {
   o = o || {}; scriptHead(i, N, dark); scriptEye(eye, 150, dark);
-  headline([[[l1, dark ? 'sw' : 'si']], [[l2, dark ? 'sg' : 'sr']]], M, 258, { size: 100, maxW: 936, lh: .96 });
+  headline([[[l1, dark ? 'white' : 'ink']], [[l2, dark ? 'goldl' : 'red']]], M, 262, { size: 104, maxW: 936, lh: .95 });
   para(text, M, 438, 800, 34, { band: true, dark: dark, lh: 1.4 });
-  photoFade(IMG[img], PY + 30, PH - 30, { dark: dark, fx: o.fx, fy: o.fy, zoom: o.zoom, fade: .42 });
+  photoFade(IMG[img], PY + 30, PH - 30, { fx: o.fx, fy: o.fy, zoom: o.zoom, fade: .3, filter: dark ? 'saturate(1.15) contrast(1.05)' : undefined });
 }
 var SLIDES = [
-  // 1 — cover
+  // 1 — cover (satin merah ceri, tajuk serif putih+emas, foto tajam)
   function (i) {
     scriptHead(i, N, true);
-    headline([[['Gaji Naik,', 'sw']], [['Dompet', 'sw']], [['tetap kering.', 'sg']]], M, 205, { size: 124, maxW: 936, lh: .98 });
-    T('5 tanda yang anda patut kenal pasti.', M, 540, F.ss(500, 38), '#F6E9D0');
-    photoFade(IMG.p1, 590, 490, { dark: true, fade: .3 });
+    var by = headline([[['Gaji Naik,', 'white']], [['Dompet', 'white']], [['tetap kering.', 'goldl']]], M, 200, { size: 132, maxW: 936, lh: .97 });
+    swoosh(M - 10, M + 640, by + 22, 7);
+    T('5 tanda yang anda patut kenal pasti.', M, by + 78, F.ss(500, 40), '#FFFFFF');
+    photoFade(IMG.p1, 560, 520, { fade: .16, filter: 'saturate(1.15) contrast(1.05)' });
   },
   function (i) { slide(i, false, 'Tanda 01', 'GAJI NAIK,', 'BELANJA NAIK.', 'Setiap kenaikan gaji diikuti *kenaikan taraf belanja.* Gaji bertambah *RM500,* komitmen dan perbelanjaan baru turut melonjak dalam jumlah yang sama.', 'p2', { fy: .4 }); },
   function (i) { slide(i, true, 'Tanda 02', 'MEWAH JADI', 'KEPERLUAN.', 'Barangan mewah dahulu kini bertukar menjadi keperluan. Standard hidup yang terus dinaikkan *menelan setiap sen* kenaikan pendapatan anda.', 'p3'); },
@@ -35,7 +36,7 @@ var SLIDES = [
   // 7 — CTA
   function (i) {
     scriptHead(i, N, true);
-    headline([[['KUNCI GAJI', 'sw']], [['JADI ASET!', 'sg']]], M, 215, { size: 112, maxW: 936, lh: .96 });
+    headline([[['KUNCI GAJI', 'white']], [['JADI ASET!', 'goldl']]], M, 215, { size: 118, maxW: 936, lh: .96 });
     para('Punca utama kegagalan kewangan *bukan kerana gaji kecil.* Tetapi *nafsu gaya hidup* yang tidak pernah kenyang.', M, 410, 560, 34, { band: true, dark: true, lh: 1.4 });
     X.save(); var g = X.createLinearGradient(0, 0, SW, 0); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.3, '#E3BB55'); g.addColorStop(1, '#B27F17'); X.strokeStyle = g; X.lineWidth = 5; X.beginPath(); X.moveTo(0, 960); X.quadraticCurveTo(500, 890, SW, 800); X.stroke(); X.restore();
     cutoutBC(IMG.me, 810, SH, 640);
