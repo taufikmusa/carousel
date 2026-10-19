@@ -74,7 +74,7 @@ function headline(lines, x, y, o = {}) {
   const size0 = o.size ?? 118, maxW = o.maxW ?? SW - 2 * M, lh = o.lh ?? .98;
   const meas = size => Math.max(...lines.map(l => { wsp = size * .05; const w = l.reduce((a, [t, st]) => a + tw(t, STY[st][0](STY[st][1], size), -size * (st === 'goldi' || st === 'whitei' || st === 'goldil' ? .01 : .025)), 0); wsp = 0; return w; }));
   const size = Math.min(size0, size0 * maxW / meas(size0)); let by = y;
-  lines.forEach((l, i) => { if (i) by += size * lh; let cx = x; wsp = size * .05; l.forEach(([t, st]) => { const ls = -size * (st === 'goldi' || st === 'whitei' || st === 'goldil' ? .01 : .025); T(t, cx, by, STY[st][0](STY[st][1], size), STY[st][2], 'left', ls); cx += tw(t, STY[st][0](STY[st][1], size), ls); }); wsp = 0; });
+  lines.forEach((l, i) => { if (i) by += size * lh; let cx = x; wsp = size * .05; l.forEach(([t, st]) => { const ls = -size * (st === 'goldi' || st === 'whitei' || st === 'goldil' ? .01 : .025); const sk = window.HSTROKE && window.HSTROKE[st]; if (sk) { X.save(); X.font = STY[st][0](STY[st][1], size); X.letterSpacing = ls + 'px'; X.wordSpacing = wsp + 'px'; X.lineJoin = 'round'; X.miterLimit = 2; X.shadowColor = 'rgba(40,0,8,.55)'; X.shadowBlur = size * .08; X.shadowOffsetY = size * .045; X.strokeStyle = sk; X.lineWidth = size * .075; X.strokeText(t, cx, by); X.restore(); } T(t, cx, by, STY[st][0](STY[st][1], size), STY[st][2], 'left', ls); cx += tw(t, STY[st][0](STY[st][1], size), ls); }); wsp = 0; });
   return by;
 }
 function eyebrow(s, x, y, dark) { X.save(); X.fillStyle = dark ? TH.eyeD : TH.eyeL; X.fillRect(x, y - 9, 40, 3); X.restore(); T(s.toUpperCase(), x + 58, y, F.ss(700, 24), dark ? TH.eyeD : TH.eyeL, 'left', 4.2); }
