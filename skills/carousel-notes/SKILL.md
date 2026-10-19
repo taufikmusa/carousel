@@ -16,6 +16,6 @@ Taufik panggil: "carousel notes". Sesuai untuk senarai pendek yang orang save (h
 ## Peraturan
 - Edit `HOOKS` dalam slides.js (tajuk, nombor mula, 5 item). Kekalkan ≤5 item/kad dan ayat pendek (≤ ~60 aksara) supaya kad tak melimpah.
 - Penanda akaun atas (`acct`) = bulatan "T." + TAUFIK MUSA + @taufik.pg dalam pil lutsinar gelap supaya jelas di atas foto cerah.
-- Font: Poppins 800/500 (tajuk, senarai), Caveat 700 (skrip cover). Warna: merah jambu #FF7EB6, penanda #F9D3E3, emas Notes #B5871A.
+- Font: Poppins 800/500 (tajuk, senarai), Caveat 700 (skrip cover). Warna aksen default merah jambu #FF7EB6 + penanda #F9D3E3 (tukar dengan `var ACCENT = {a:"#FFC400", hl:"#FFF27A"}` = kuning cerah, Taufik pilih ini). Item tanpa nombor: `[null, teks]`. Warna Notes emas #B5871A, emas Notes #B5871A.
 - Teks BM kolokial, "anda" bukan "korang". Foto emas sebenar; tiada AI foto.
 - Saiz 1:1 (Taufik mahu 1:1 untuk Facebook). Untuk 4:5 set `window.SH_OVERRIDE = 1350` di slides.js dan laras `cy`.
