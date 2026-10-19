@@ -172,7 +172,8 @@ function bgVelvet(x0, seed) {
 function bgPhoto(x0, im, opt = {}) {
   X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip(); const s = Math.max(SW / im.width, SH / im.height) * (opt.zoom || 2.2); X.filter = 'blur(26px)'; X.drawImage(im, x0 + SW / 2 - im.width * s * (opt.fx ?? .5), SH / 2 - im.height * s * (opt.fy ?? .5), im.width * s, im.height * s); X.filter = 'none'; X.restore();
   X.fillStyle = 'rgba(' + (opt.wash || '251,247,240') + ',' + (opt.a ?? .62) + ')'; X.fillRect(x0, 0, SW, SH);
-  const g = X.createLinearGradient(0, 0, 0, SH); g.addColorStop(0, 'rgba(255,255,255,.55)'); g.addColorStop(1, 'rgba(255,255,255,0)'); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
+  if (!opt.dark) { const g = X.createLinearGradient(0, 0, 0, SH); g.addColorStop(0, 'rgba(255,255,255,.55)'); g.addColorStop(1, 'rgba(255,255,255,0)'); X.fillStyle = g; X.fillRect(x0, 0, SW, SH); }
+  else { const v = X.createRadialGradient(x0 + SW / 2, SH * .5, SW * .25, x0 + SW / 2, SH * .5, SW * .85); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,.45)'); X.fillStyle = v; X.fillRect(x0, 0, SW, SH); }
 }
 // bar atas: 01/07 — LABEL
 function topbar(i, n, label, dark) {
