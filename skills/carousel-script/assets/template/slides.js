@@ -6,8 +6,6 @@ var THEME = 'maroon';
 var DARK = [0, 2, 4, 6];
 var ASSETS = { p1: 'p1.jpg', p2: 'p2.jpg', p3: 'p3.jpg', p4: 'p4.jpg', p5: 'p5.jpg', p6: 'p6.jpg', me: 'me.png' };
 var D = { handle: '@taufik.pg' };
-// garis tepi + bayang pada tajuk supaya nampak timbul (gelap: putih/emas; cerah: hitam/merah)
-var HSTROKE = { white: '#5A0416', goldl: '#4E2D04', ink: '#FFFFFF', red: '#FFFFFF' };
 var BGK = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p1'];     // foto untuk latar kabur setiap slaid
 window.BG = function (i, x0, dark) {
   var im = IMG[BGK[i]];

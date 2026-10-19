@@ -22,7 +22,7 @@ Slaid 1 cover (gelap) · 2–6 isi berselang cerah/gelap/cerah/gelap/cerah · 7 
 Dompet = `dompet-wealthcard-safari` · app/kira = `kad-dinar-dan-app-gap-ipad` · jongkong tangan = `jongkong-1kg-tapak-tangan` · koleksi = `koleksi-binder-kad` · dinar = `kad-10-dinar-dulang-hitam` · ukiran = `jongkong-merak-100g-dulang-merah`. Foto gelap untuk slaid gelap, foto cerah untuk slaid cerah. Jangan guna foto produk akaun orang lain.
 
 ## Peraturan
-- **Tajuk timbul**: `var HSTROKE = {white:'#5A0416', goldl:'#4E2D04', ink:'#FFFFFF', red:'#FFFFFF'}` dalam slides.js = garis tepi tebal + bayang lembut di belakang tajuk (Taufik minta supaya tulisan nampak timbul). Kekalkan.
+- **Tanpa stroke pada tajuk**: Taufik dah cuba garis tepi/stroke (HSTROKE) dan kata nampak buruk. Jangan tambah; kekalkan tajuk satin bersih.
 - Tajuk Playfair 900: putih + emas (`white`/`goldl`) di slaid gelap, hitam + merah (`ink`/`red`) di cerah; cover ada swoosh emas bawah baris emas. Foto slaid gelap ditapis `saturate(1.15) contrast(1.05)`.
 - **Saiz tetap 1:1 (1080x1080)** — Taufik tak mahu 4:5. Latar = foto slaid itu dikaburkan (tone sama dengan foto): gelap = SATIN MERAH CERI pekat (`bgSatin`: gradien #E02143→#6E0618 + pita cahaya berkilau + bokeh; rujukan Taufik — foto emas tajam di atasnya, TIDAK kabur); cerah = kabur + lapisan krim. Jangan guna gradien maroon terang.
 - Salin copywriting Taufik; ringkaskan jika perlu, jangan tambah fakta. "anda" bukan "korang". Watak generik.
