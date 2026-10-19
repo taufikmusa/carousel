@@ -22,7 +22,7 @@ Slaid 1 cover (gelap) · 2–6 isi berselang cerah/gelap/cerah/gelap/cerah · 7 
 Dompet = `dompet-wealthcard-safari` · app/kira = `kad-dinar-dan-app-gap-ipad` · jongkong tangan = `jongkong-1kg-tapak-tangan` · koleksi = `koleksi-binder-kad` · dinar = `kad-10-dinar-dulang-hitam` · ukiran = `jongkong-merak-100g-dulang-merah`. Foto gelap untuk slaid gelap, foto cerah untuk slaid cerah. Jangan guna foto produk akaun orang lain.
 
 ## Peraturan
-- **Saiz tetap 1:1 (1080x1080)** — Taufik tak mahu 4:5. Latar = foto slaid itu dikaburkan (tone sama dengan foto): gelap = kabur + lapisan maroon DALAM (`wash '74,6,20' a .86`, jangan terang/jangan perang), cerah = kabur + lapisan krim. Jangan guna gradien maroon terang.
+- **Saiz tetap 1:1 (1080x1080)** — Taufik tak mahu 4:5. Latar = foto slaid itu dikaburkan (tone sama dengan foto): gelap = kabur + lapisan CHERRY RED lutsinar (`wash '196,16,46' a .62`; Taufik pilih ni selepas maroon dalam). Untuk maroon dalam guna `'74,6,20' a .86`, cerah = kabur + lapisan krim. Jangan guna gradien maroon terang.
 - Salin copywriting Taufik; ringkaskan jika perlu, jangan tambah fakta. "anda" bukan "korang". Watak generik.
 - Potret Taufik hanya di CTA. Handle `@taufik.pg` di bar atas setiap slaid.
 - Warna lain: `THEME` (maroon default; emerald navy electric earth soft luxury fresh).

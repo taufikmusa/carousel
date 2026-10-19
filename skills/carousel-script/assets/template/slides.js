@@ -9,7 +9,7 @@ var D = { handle: '@taufik.pg' };
 var BGK = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p1'];     // foto untuk latar kabur setiap slaid
 window.BG = function (i, x0, dark) {
   var im = IMG[BGK[i]];
-  if (dark) bgPhoto(x0, im, { dark: true, zoom: 2.6, fx: .5, fy: .55, wash: '74,6,20', a: .86 });   // maroon gelap (tidak terang)
+  if (dark) bgPhoto(x0, im, { dark: true, zoom: 2.6, fx: .5, fy: .55, wash: '196,16,46', a: .62 });   // maroon gelap (tidak terang)
   else bgPhoto(x0, im, { zoom: 2.6, fx: .5, fy: .45, wash: '251,247,240', a: .72 });
 };
 var PH = 440, PY = 1080 - PH;   // kawasan foto bawah
