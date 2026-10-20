@@ -13,7 +13,7 @@ D.gram = (D.bundar === 'round' ? Math.round : Math.floor)(D.jumlah / D.gap * 1e4
 var RM = function (n) { return 'RM' + n.toLocaleString('en-US'); };
 var G = D.gram.toFixed(4), GR = G + ' gram', JUM = RM(D.jumlah), GAPS = RM(D.gap) + '/gram';
 var CUT;
-window.BG = function (i, x0, dark) { CUT = CUT || makeCut(IMG.produk); if (dark) bgVelvet(x0, i * 7 + 3); else bgPhoto(x0, IMG.produk, { zoom: 2.4, fx: .3 + (i % 3) * .2, a: .6 }); };
+window.BG = function (i, x0, dark) { CUT = CUT || makeCut(IMG.produk); if (dark) bgSatin(x0, i * 11 + 4); else bgPhoto(x0, IMG.produk, { zoom: 2.4, fx: .3 + (i % 3) * .2, a: .6 }); };
 var GLASS = { fill: 'rgba(255,255,255,.80)', edge: 'rgba(231,210,160,.9)' };
 
 function row(y, title, text, ok) { card(M, y, 936, 96, Object.assign({ bar: 1 }, GLASS)); if (ok) checkCircle(146, y + 48, 26); else crossCircle(146, y + 48, 26); T(title, 192, y + 40, F.ss(800, 30), K.maroon); T(text, 192, y + 76, F.ss(500, 26), K.ink); }
@@ -22,7 +22,7 @@ var SLIDES = [
   function (i) {
     topbar(i, N, 'Self-reward naik pangkat', true);
     headline([[['Raikan kenaikan', 'sw']], [['pangkat dengan', 'sw']], [['gelang emas 916.', 'sg']]], M, 235, { size: 100, maxW: 936 });
-    putCut(CUT, 560, 700, 700, { rot: 0 });
+    putCut(CUT, 560, 735, 680, { rot: 0 });
   },
   function (i) {
     topbar(i, N, 'Dilema self-reward', false);

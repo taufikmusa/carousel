@@ -161,6 +161,17 @@ function putCut(cut, cx, cy, w, o = {}) {
 }
 function bokeh(x0, seed, n, area) { const R = rng(seed); X.save(); for (let k = 0; k < n; k++) { const x = x0 + area[0] + R() * area[2], y = area[1] + R() * area[3], r = 8 + R() * 38, g = X.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, 'rgba(255,235,190,' + (.10 + R() * .3) + ')'); g.addColorStop(1, 'rgba(255,235,190,0)'); X.fillStyle = g; X.beginPath(); X.arc(x, y, r, 0, 7); X.fill(); } X.restore(); }
 // latar gelap beludru: gradien + lipatan + bokeh
+function bgSatin(x0, seed, hue) {
+  hue = hue || { a: '#E02143', b: '#B80F2C', c: '#6E0618' };
+  let g = X.createLinearGradient(x0, 0, x0 + SW, SH); g.addColorStop(0, hue.a); g.addColorStop(.45, hue.b); g.addColorStop(1, hue.c); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
+  X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip(); X.filter = 'blur(26px)';
+  const R = rng(seed); for (let k = 0; k < 6; k++) { const y = R() * SH, th = 60 + R() * 120, a = .16 + R() * .22, sl = (R() - .3) * 380;
+    g = X.createLinearGradient(0, y, 0, y + th); g.addColorStop(0, 'rgba(255,170,175,0)'); g.addColorStop(.5, 'rgba(255,190,195,' + a + ')'); g.addColorStop(1, 'rgba(255,170,175,0)'); X.fillStyle = g;
+    X.beginPath(); X.moveTo(x0 - 80, y + sl * .3); X.quadraticCurveTo(x0 + SW * .5, y - sl, x0 + SW + 80, y + sl * .5); X.lineTo(x0 + SW + 80, y + sl * .5 + th); X.quadraticCurveTo(x0 + SW * .5, y - sl + th, x0 - 80, y + sl * .3 + th); X.fill(); }
+  X.filter = 'none'; X.restore();
+  X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip(); X.globalCompositeOperation = 'multiply'; g = X.createRadialGradient(x0 + SW * .45, SH * .35, SW * .2, x0 + SW * .5, SH * .5, SW * .95); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(120,10,25,1)'); X.fillStyle = g; X.fillRect(x0, 0, SW, SH); X.restore();
+  bokeh(x0, seed + 5, 10, [SW * .45, 0, SW * .55, SH * .6]);
+}
 function bgVelvet(x0, seed) {
   let g = X.createLinearGradient(x0, 0, x0 + SW, SH); g.addColorStop(0, TH.d1); g.addColorStop(.5, TH.d2); g.addColorStop(1, TH.d3); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
   X.save(); X.globalAlpha = .5; for (let k = 0; k < 5; k++) { const y = 520 + k * 120; g = X.createLinearGradient(0, y, 0, y + 150); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.5, 'rgba(255,255,255,.07)'); g.addColorStop(1, 'rgba(0,0,0,.18)'); X.fillStyle = g; X.beginPath(); X.moveTo(x0, y + 80); X.quadraticCurveTo(x0 + 400, y - 60 + k * 18, x0 + SW, y + 50); X.lineTo(x0 + SW, y + 220); X.lineTo(x0, y + 240); X.fill(); } X.restore();
