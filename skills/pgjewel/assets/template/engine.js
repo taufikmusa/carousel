@@ -182,7 +182,7 @@ function numCircle(cx, cy, r, t) { checkCircle(cx, cy, r); X.save(); X.beginPath
 
 // ---- backgrounds ----
 function paper(i, x0, dark) {
-  if (window.BG) { window.BG(i, x0, dark); return; }
+  if (window.BG && window.BG(i, x0, dark) !== false) return;
   if (dark) {
     X.fillStyle = TH.d0; X.fillRect(x0, 0, SW, SH);
     let g = X.createRadialGradient(x0 + SW * .5, SH * .62, 60, x0 + SW * .5, SH * .62, SW * 1.05); g.addColorStop(0, TH.d1); g.addColorStop(.55, TH.d2); g.addColorStop(1, TH.d3); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
@@ -193,6 +193,33 @@ function paper(i, x0, dark) {
   const g = X.createRadialGradient(x0 + SW / 2, SH * .4, 60, x0 + SW / 2, SH * .5, SW * .95); g.addColorStop(0, 'rgba(255,255,255,.9)'); g.addColorStop(1, TH.paperTint); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
   const R = rng(x0 + 5); X.save(); X.globalAlpha = .03; for (let k = 0; k < 4500; k++) { X.fillStyle = R() < .5 ? '#000' : TH.grain; X.fillRect(x0 + R() * SW, R() * SH, 1.5, 1.5); } X.restore();
 }
+function bgSatin(x0, seed, hue) {
+  hue = hue || { a: '#E02143', b: '#B80F2C', c: '#6E0618' };
+  let g = X.createLinearGradient(x0, 0, x0 + SW, SH); g.addColorStop(0, hue.a); g.addColorStop(.45, hue.b); g.addColorStop(1, hue.c); X.fillStyle = g; X.fillRect(x0, 0, SW, SH);
+  X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip(); X.filter = 'blur(26px)';
+  const R = rng(seed); for (let k = 0; k < 6; k++) { const y = R() * SH, th = 60 + R() * 120, a = .16 + R() * .22, sl = (R() - .3) * 380;
+    g = X.createLinearGradient(0, y, 0, y + th); g.addColorStop(0, 'rgba(255,170,175,0)'); g.addColorStop(.5, 'rgba(255,190,195,' + a + ')'); g.addColorStop(1, 'rgba(255,170,175,0)'); X.fillStyle = g;
+    X.beginPath(); X.moveTo(x0 - 80, y + sl * .3); X.quadraticCurveTo(x0 + SW * .5, y - sl, x0 + SW + 80, y + sl * .5); X.lineTo(x0 + SW + 80, y + sl * .5 + th); X.quadraticCurveTo(x0 + SW * .5, y - sl + th, x0 - 80, y + sl * .3 + th); X.fill(); }
+  X.filter = 'none'; X.restore();
+  X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip(); X.globalCompositeOperation = 'multiply'; g = X.createRadialGradient(x0 + SW * .45, SH * .35, SW * .2, x0 + SW * .5, SH * .5, SW * .95); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(120,10,25,1)'); X.fillStyle = g; X.fillRect(x0, 0, SW, SH); X.restore();
+  bokeh(x0, seed + 5, 10, [SW * .45, 0, SW * .55, SH * .6]);
+}
+
+// ---- pgjewel v2: gaya krim berpusat (rujukan: "Kini withdraw GAP boleh", 7 slaid + CTA) ----
+function pill(i, n, dark) { X.save(); X.strokeStyle = dark ? TH.eyeD : K.maroon; X.lineWidth = 2.5; rr(947, 34, 104, 44, 22); X.stroke(); X.restore(); T((i + 1) + '/' + n, 999, 66, F.ss(800, 25), dark ? TH.eyeD : K.maroon, 'center'); }
+function foot(dark) { T('@taufik.pg', SW / 2, 1056, F.ss(700, 27), dark ? TH.eyeD : K.maroon, 'center', 1); }
+function goldItalic(s, y, size, line) {
+  T(s, SW / 2, y, F.pfi(700, size), goldFill, 'center', -size * .01);
+  if (line) { const w = tw(s, F.pfi(700, size), -size * .01), g = X.createLinearGradient(SW / 2 - w / 2, 0, SW / 2 + w / 2, 0); g.addColorStop(0, 'rgba(201,151,28,0)'); g.addColorStop(.5, '#C9971C'); g.addColorStop(1, 'rgba(201,151,28,0)'); X.save(); X.strokeStyle = g; X.lineWidth = 3; X.beginPath(); X.moveTo(SW / 2 - w / 2, y + size * .17); X.quadraticCurveTo(SW / 2, y + size * .1, SW / 2 + w / 2, y + size * .17); X.stroke(); X.restore(); }
+}
+function redTitle(s, y, maxSize, maxW) { const sz = Math.min(maxSize, fit(s, function (f) { return F.pf(900, f); }, maxW || 900, -.03)); T(s, SW / 2, y, F.pf(900, sz), redFill, 'center', -sz * .03); return sz; }
+function goldPill(s, cy, w) { const x = SW / 2 - w / 2, h = 70; X.save(); X.shadowColor = 'rgba(80,50,0,.3)'; X.shadowBlur = 14; X.shadowOffsetY = 5; rr(x, cy - h / 2, w, h, 24); const g = X.createLinearGradient(0, cy - h / 2, 0, cy + h / 2); g.addColorStop(0, TH.tag[0]); g.addColorStop(.55, TH.tag[1]); g.addColorStop(1, TH.tag[2]); X.fillStyle = g; X.fill(); X.restore(); T(s, SW / 2, cy + 15, F.ss(700, 44), '#FFFFFF', 'center'); }
+function frac(cx, cy, num, den, size) { const w = Math.max(tw(num, F.ss(800, size)), tw(den, F.ss(800, size))) + 12; T(num, cx, cy - 8, F.ss(800, size), K.ink, 'center'); X.save(); X.strokeStyle = K.ink; X.lineWidth = 2.5; X.beginPath(); X.moveTo(cx - w / 2, cy + 2); X.lineTo(cx + w / 2, cy + 2); X.stroke(); X.restore(); T(den, cx, cy + size + 4, F.ss(800, size), K.ink, 'center'); }
+function redBox(x, y, w, h, s, size, col) { box(x, y, w, h, 'red', 22); T(s, x + w / 2, y + h / 2 + size * .34, F.ss(800, size), col || '#FFFFFF', 'center'); }
+function ingot(x, y, w, h, d) { const g = X.createLinearGradient(0, y, 0, y + h + d); g.addColorStop(0, '#F6D774'); g.addColorStop(1, '#C9941C'); X.save(); X.fillStyle = g; X.fillRect(x, y + d, w, h); X.fillStyle = '#FBE9A0'; X.beginPath(); X.moveTo(x, y + d); X.lineTo(x + d, y); X.lineTo(x + w + d, y); X.lineTo(x + w, y + d); X.fill(); X.fillStyle = '#A9780F'; X.beginPath(); X.moveTo(x + w, y + d); X.lineTo(x + w + d, y); X.lineTo(x + w + d, y + h); X.lineTo(x + w, y + h + d); X.fill(); X.strokeStyle = '#8A5C0C'; X.lineWidth = 2; X.strokeRect(x, y + d, w, h); X.restore(); }
+function iconBars(cx, cy) { ingot(cx - 60, cy - 36, 96, 30, 18); ingot(cx - 78, cy - 4, 96, 30, 18); ingot(cx - 8, cy - 4, 96, 30, 18); }
+function iconTools(cx, cy) { X.save(); X.translate(cx, cy); const g = X.createLinearGradient(0, -50, 0, 50); g.addColorStop(0, '#F2C960'); g.addColorStop(1, '#B27F17'); X.fillStyle = g; X.strokeStyle = '#8A5C0C'; X.lineWidth = 2; X.rotate(.78); rr(-9, -58, 18, 116, 8); X.fill(); X.stroke(); X.beginPath(); X.arc(0, -58, 30, 0, 7); X.fill(); X.stroke(); X.fillStyle = '#FBE9A0'; X.beginPath(); X.arc(-4, -62, 9, 0, 7); X.fill(); X.rotate(-1.56); rr(-9, -58, 18, 116, 8); X.fillStyle = g; X.fill(); X.stroke(); rr(-34, -80, 68, 30, 8); X.fill(); X.stroke(); X.restore(); }
+function iconBox(cx, cy) { X.save(); X.translate(cx, cy); X.lineJoin = 'round'; X.strokeStyle = '#7A4F12'; X.lineWidth = 2; X.fillStyle = '#E4B263'; X.beginPath(); X.moveTo(-58, -20); X.lineTo(0, -48); X.lineTo(58, -20); X.lineTo(0, 8); X.closePath(); X.fill(); X.stroke(); X.fillStyle = '#D19A45'; X.beginPath(); X.moveTo(-58, -20); X.lineTo(0, 8); X.lineTo(0, 66); X.lineTo(-58, 38); X.closePath(); X.fill(); X.stroke(); X.fillStyle = '#B9822E'; X.beginPath(); X.moveTo(58, -20); X.lineTo(0, 8); X.lineTo(0, 66); X.lineTo(58, 38); X.closePath(); X.fill(); X.stroke(); X.fillStyle = '#fff'; X.beginPath(); X.moveTo(18, 30); X.lineTo(44, 18); X.lineTo(44, 44); X.lineTo(18, 56); X.closePath(); X.fill(); X.restore(); }
 
 window.ready = Promise.all([
   ...[['PF', 'PlayfairDisplay-700.ttf', 700, 'normal'], ['PF', 'PlayfairDisplay-800.ttf', 800, 'normal'], ['PF', 'PlayfairDisplay-900.ttf', 900, 'normal'], ['PFI', 'PlayfairDisplay-400i.ttf', 400, 'italic'], ['PFI', 'PlayfairDisplay-700i.ttf', 700, 'italic'],
@@ -200,6 +227,6 @@ window.ready = Promise.all([
     .map(([fam, file, w, st]) => new FontFace(fam, `url(fonts/${file})`, { weight: String(w), style: st }).load().then(f => document.fonts.add(f))),
   ...Object.entries(ASSETS).map(([k, f]) => new Promise((res, rej) => { const i = new Image(); i.onload = () => { IMG[k] = i; res(); }; i.onerror = () => rej(new Error('missing img/' + f)); i.src = 'img/' + f; })),
 ]).then(() => {
-  SLIDES.forEach((fn, i) => { const x0 = i * SW, dark = (window.DARK || []).includes(i); paper(i, x0, dark); X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip(); X.translate(x0, 0); fn(i); footer(i, N, dark); X.restore(); });
+  SLIDES.forEach((fn, i) => { const x0 = i * SW, dark = (window.DARK || []).includes(i); paper(i, x0, dark); X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip(); X.translate(x0, 0); fn(i); if (!window.NOFOOTER) footer(i, N, dark); X.restore(); });
   return true;
 });
