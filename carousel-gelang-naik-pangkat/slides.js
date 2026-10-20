@@ -34,7 +34,7 @@ var SLIDES = [
     row(770, 'Gelang emas 916', 'Aset yang boleh dipandang dan bernilai kekal.', true);
   },
   function (i) {
-    topbar(i, N, 'Pilihan beliau', true);
+    topbar(i, N, 'Pilihan dia', true);
     headline([[['Tebus gelang', 'sw']], [['terus dari GAP.', 'sg']]], M, 225, { size: 108 });
     para('Dia tebus *gelang emas 916* bernilai *' + JUM + '* terus dari akaun GAP sendiri.', M, 410, 800, 33, { dark: true });
     putCut(CUT, 560, 800, 720, { rot: .03 }); priceTag(840, 560, 300, 112, JUM, -.06);
