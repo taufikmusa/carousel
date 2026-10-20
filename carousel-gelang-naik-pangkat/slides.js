@@ -21,26 +21,25 @@ function row(y, title, text, ok) { card(M, y, 936, 96, Object.assign({ bar: 1 },
 var SLIDES = [
   function (i) {
     topbar(i, N, 'Self-reward naik pangkat', true);
-    headline([[['Reward diri', 'sw']], [['gelang emas 916', 'sg']], [['bukan beg', 'sw']], [['yang jatuh nilai.', 'sg']]], M, 232, { size: 100 });
-    para('Ramai orang reward diri dengan beg jenama yang nilainya *jatuh 50 peratus* sebaik keluar kedai.', M, 640, 480, 31, { dark: true });
-    putCut(CUT, 790, 820, 560, { rot: -.04 });
+    headline([[['Raikan', 'sw']], [['kenaikan pangkat', 'sw']], [['dengan gelang', 'sg']], [['emas 916.', 'sg']]], M, 235, { size: 108, maxW: 936 });
+    putCut(CUT, 690, 870, 760, { rot: -.04 });
   },
   function (i) {
     topbar(i, N, 'Dilema self-reward', false);
     headline([[['Ganjaran atau', 'si']], [['tambah ', 'si'], ['liabiliti?', 'sr']]], M, 225, { size: 108 });
-    para('Lepas penat berhempas-pulas bekerja, dia nak *tanda ingatan fizikal* atas kejayaannya.', M, 420, 936, 33);
-    row(550, 'Beg jenama', 'Nilai jatuh 50 peratus sebaik keluar kedai.', false);
+    para('Selepas berhempas-pulas bekerja, *emas jadi ingatan fizikal* atas kejayaan anda.', M, 420, 936, 33);
+    row(550, 'Beg jenama', 'Nilainya jatuh sebaik keluar kedai.', false);
     row(660, 'Barangan fesyen', 'Akhirnya terperap dalam almari.', false);
-    row(770, 'Gelang emas 916', 'Aset yang boleh dipandang dan bernilai kekal.', true);
+    row(770, 'Aset emas 916', 'Boleh dipandang dan bernilai kekal.', true);
   },
   function (i) {
-    topbar(i, N, 'Pilihan dia', true);
-    headline([[['Tebus gelang', 'sw']], [['terus dari GAP.', 'sg']]], M, 225, { size: 108 });
-    para('Dia tebus *gelang emas 916* bernilai *' + JUM + '* terus dari akaun GAP sendiri.', M, 410, 800, 33, { dark: true });
+    topbar(i, N, 'Tebus dari GAP', true);
+    headline([[['Tahu tak anda', 'sw']], [['kini boleh tebus?', 'sg']]], M, 225, { size: 108 });
+    para('Tahu tak anda kini boleh tebus *gelang emas 916* bernilai *' + JUM + '* terus dari akaun *GAP Public Gold?*', M, 410, 800, 33, { dark: true });
     putCut(CUT, 560, 800, 720, { rot: .03 }); priceTag(840, 560, 300, 112, JUM, -.06);
   },
   function (i) {
-    topbar(i, N, 'Perincian pengiraan', false);
+    topbar(i, N, 'Saya kongsikan detail pengiraan', false);
     headline([[['Gelang Emas ', 'si'], ['916', 'sr']]], M, 215, { size: 104 });
     T(D.produk + ' (' + D.berat + ')', M, 266, F.ss(600, 24), K.muted, 'left', .3);
     card(M, 300, 936, 440, Object.assign({ r: 26 }, GLASS));
@@ -55,11 +54,11 @@ var SLIDES = [
     headline([[[JUM + ' ÷ ' + RM(D.gap), 'sw']]], M, 205, { size: 88 });
     var gs = Math.min(230, fit(G, function (f) { return F.ix(900, f); }, 900, -.03)); T(G, SW / 2, 205 + 40 + gs * .78, F.ix(900, gs), goldFillL, 'center', -gs * .03);
     T('gram sahaja!', SW / 2, 205 + 40 + gs * .78 + 78, F.ss(800, 54), '#FFFFFF', 'center');
-    para('Sistem hanya tolak *' + GR + '* GAP pada harga ' + GAPS + '. *Tiada rasa bersalah* berbelanja, sebab tunai bertukar jadi *emas fizikal* yang sentiasa bernilai.', M, 640, 936, 31, { dark: true });
+    para('Sistem hanya menolak *' + GR + '* GAP pada harga ' + GAPS + '. *Tiada rasa bersalah* berbelanja, kerana tunai bertukar menjadi *emas fizikal* yang sentiasa bernilai.', M, 640, 936, 31, { dark: true });
     putCut(CUT, 800, 915, 390, { rot: -.05 });
   },
   function (i) {
-    topbar(i, N, 'Tiga pengajaran penting', false);
+    topbar(i, N, 'Tiga pengajaran dari perkongsian ini', false);
     headline([[['Apa yang kita ', 'si'], ['belajar?', 'sr']]], M, 222, { size: 96 });
     var L = [['Self-reward sebenar adalah *ganjaran yang membina kekayaan,* bukan menambah liabiliti.', 340], ['Emas perhiasan 916 memberi *kepuasan emosi pemakaian* sekaligus berfungsi sebagai *dana kecemasan.*', 560], ['Tukarkan *tabiat berbelanja* kepada *tabiat mengumpul aset emas* bersama Public Gold.', 780]];
     L.forEach(function (r, k) { card(M, r[1], 936, 190, Object.assign({ r: 24 }, GLASS)); numCircle(150, r[1] + 95, 38, String(k + 1)); para(r[0], 222, r[1] + 70, 740, 29, { lh: 1.4 }); });
