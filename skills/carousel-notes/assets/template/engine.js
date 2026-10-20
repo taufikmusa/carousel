@@ -228,7 +228,7 @@ function paper(i, x0, dark) {
 }
 
 // ---- carousel-notes: kad "Apple Notes" atas foto penuh ----
-const PK = Object.assign({ a: '#FF7EB6', hl: '#F9D3E3', gold: '#B5871A' }, window.ACCENT || {});   // tukar warna aksen: var ACCENT = {a:'#FFC800', hl:'#FFF08A'} di slides.js
+const PK = Object.assign({ a: '#FFC400', hl: '#FFF27A', gold: '#B5871A' }, window.ACCENT || {});   // tukar warna aksen: var ACCENT = {a:'#FF7EB6', hl:'#F9D3E3'} (merah jambu) di slides.js
 const FP = (w, s) => `${w} ${s}px PO`;
 function coverPhoto(x0, im, o = {}) {   // foto penuh (cover), o.dim = gelapkan, o.fx/fy fokus
   const s = Math.max(SW / im.width, SH / im.height) * (o.zoom || 1); X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip();
