@@ -28,7 +28,7 @@ var SLIDES = [
   function (i) {
     topbar(i, N, 'Dilema self-reward', false);
     headline([[['Ganjaran atau', 'si']], [['tambah ', 'si'], ['liabiliti?', 'sr']]], M, 225, { size: 108 });
-    para('Selepas berhempas-pulas bekerja, beliau mahu *tanda ingatan fizikal* atas kejayaannya.', M, 420, 936, 33);
+    para('Lepas penat berhempas-pulas bekerja, dia nak *tanda ingatan fizikal* atas kejayaannya.', M, 420, 936, 33);
     row(550, 'Beg jenama', 'Nilai jatuh 50 peratus sebaik keluar kedai.', false);
     row(660, 'Barangan fesyen', 'Akhirnya terperap dalam almari.', false);
     row(770, 'Gelang emas 916', 'Aset yang boleh dipandang dan bernilai kekal.', true);
@@ -36,7 +36,7 @@ var SLIDES = [
   function (i) {
     topbar(i, N, 'Pilihan beliau', true);
     headline([[['Tebus gelang', 'sw']], [['terus dari GAP.', 'sg']]], M, 225, { size: 108 });
-    para('Beliau menebus *gelang emas 916* bernilai *' + JUM + '* terus dari akaun GAP beliau.', M, 410, 800, 33, { dark: true });
+    para('Dia tebus *gelang emas 916* bernilai *' + JUM + '* terus dari akaun GAP sendiri.', M, 410, 800, 33, { dark: true });
     putCut(CUT, 560, 800, 720, { rot: .03 }); priceTag(840, 560, 300, 112, JUM, -.06);
   },
   function (i) {
@@ -55,7 +55,7 @@ var SLIDES = [
     headline([[[JUM + ' ÷ ' + RM(D.gap), 'sw']]], M, 205, { size: 88 });
     var gs = Math.min(230, fit(G, function (f) { return F.ix(900, f); }, 900, -.03)); T(G, SW / 2, 205 + 40 + gs * .78, F.ix(900, gs), goldFillL, 'center', -gs * .03);
     T('gram sahaja!', SW / 2, 205 + 40 + gs * .78 + 78, F.ss(800, 54), '#FFFFFF', 'center');
-    para('Sistem hanya menolak *' + GR + '* GAP pada harga ' + GAPS + '. *Tiada rasa bersalah* berbelanja, kerana tunai bertukar menjadi *emas fizikal* yang sentiasa bernilai.', M, 640, 936, 31, { dark: true });
+    para('Sistem hanya tolak *' + GR + '* GAP pada harga ' + GAPS + '. *Tiada rasa bersalah* berbelanja, sebab tunai bertukar jadi *emas fizikal* yang sentiasa bernilai.', M, 640, 936, 31, { dark: true });
     putCut(CUT, 800, 915, 390, { rot: -.05 });
   },
   function (i) {
