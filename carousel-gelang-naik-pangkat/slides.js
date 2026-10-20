@@ -21,8 +21,8 @@ function row(y, title, text, ok) { card(M, y, 936, 96, Object.assign({ bar: 1 },
 var SLIDES = [
   function (i) {
     topbar(i, N, 'Self-reward naik pangkat', true);
-    headline([[['Raikan', 'sw']], [['kenaikan pangkat', 'sw']], [['dengan gelang', 'sg']], [['emas 916.', 'sg']]], M, 235, { size: 108, maxW: 936 });
-    putCut(CUT, 690, 870, 760, { rot: -.04 });
+    headline([[['Raikan kenaikan', 'sw']], [['pangkat dengan', 'sw']], [['gelang emas 916.', 'sg']]], M, 235, { size: 100, maxW: 936 });
+    putCut(CUT, 560, 700, 700, { rot: 0 });
   },
   function (i) {
     topbar(i, N, 'Dilema self-reward', false);
@@ -34,9 +34,9 @@ var SLIDES = [
   },
   function (i) {
     topbar(i, N, 'Tebus dari GAP', true);
-    headline([[['Tahu tak anda', 'sw']], [['kini boleh tebus?', 'sg']]], M, 225, { size: 108 });
-    para('Tahu tak anda kini boleh tebus *gelang emas 916* bernilai *' + JUM + '* terus dari akaun *GAP Public Gold?*', M, 410, 800, 33, { dark: true });
-    putCut(CUT, 560, 800, 720, { rot: .03 }); priceTag(840, 560, 300, 112, JUM, -.06);
+    headline([[['Tahu ', 'sw'], ['tak?', 'sg']]], M, 235, { size: 170 });
+    para('Anda kini boleh tebus *gelang emas 916* bernilai *' + JUM + '* terus dari akaun *GAP Public Gold.*', M, 330, 800, 33, { dark: true });
+    putCut(CUT, 560, 735, 700, { rot: 0 }); priceTag(830, 520, 300, 112, JUM, -.06);
   },
   function (i) {
     topbar(i, N, 'Saya kongsikan detail pengiraan', false);
