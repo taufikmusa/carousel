@@ -248,8 +248,8 @@ function acct(cy = 150, name = 'TAUFIK MUSA', handle = '@taufik.pg') {
 // kad Notes. head = {t1,t2} tajuk (t1 tebal, t2 nipis), items = [[no, teks]], cy = tengah menegak. Pulangkan {x,y,w,h}
 function notesCard(head, items, o = {}) {
   const w = o.w || 820, x = (SW - w) / 2, pad = 62, mw = w - pad * 2, fs = o.fs || 37, lh = fs * 1.2;
-  const lines = items.map(([no, txt]) => { const pre = no ? no + '. ' : ''; const words = txt.split(' '); const out = [[]]; let cx = pre ? tw(pre, FP(800, fs)) : 0; words.forEach(wd => { const ww = tw(wd + ' ', FP(500, fs)); if (cx + ww > mw + 4 && out[out.length - 1].length) { out.push([]); cx = 0; } out[out.length - 1].push(wd); cx += ww; }); return { no, out }; });
-  const nl = lines.reduce((a, l) => a + l.out.length, 0), h = 112 + 112 + nl * lh + 46 + (o.extra || 0), y = o.y != null ? o.y : Math.max(236, Math.min((o.cy || SH / 2) - h / 2, SH - h - 40));
+  const lines = items.map(([no, txt]) => { const pre = no ? no + '. ' : ''; const qa = txt.indexOf('|') >= 0 ? txt.split('|') : ['', txt]; const words = qa[0].split(' ').filter(Boolean).map(t => ({ t, b: 1 })).concat(qa[1].trim().split(' ').filter(Boolean).map(t => ({ t, b: 0 }))); const out = [[]]; let cx = pre ? tw(pre, FP(800, fs)) : 0; words.forEach(wd => { const ww = tw(wd.t + ' ', FP(wd.b ? 800 : 500, fs)); if (cx + ww > mw + 4 && out[out.length - 1].length) { out.push([]); cx = 0; } out[out.length - 1].push(wd); cx += ww; }); return { no, out }; });   // item "Soalan?|Jawapan" = soalan tebal
+  const nl = lines.reduce((a, l) => a + l.out.length, 0), h = 112 + 112 + nl * lh + 46 + (o.extra || 0) + (o.gap || 0) * items.length, y = o.y != null ? o.y : Math.max(236, Math.min((o.cy || SH / 2) - h / 2, SH - h - 40));
   X.save(); X.shadowColor = 'rgba(0,0,0,.22)'; X.shadowBlur = 40; X.shadowOffsetY = 12; rr(x, y, w, h, 56); X.fillStyle = 'rgba(250,250,250,.93)'; X.fill(); X.restore();
   // header Notes
   X.save(); X.strokeStyle = PK.gold; X.lineWidth = 6; X.lineCap = 'round'; X.lineJoin = 'round'; X.beginPath(); X.moveTo(x + pad + 16, y + 52); X.lineTo(x + pad, y + 68); X.lineTo(x + pad + 16, y + 84); X.stroke(); X.restore();
@@ -262,7 +262,7 @@ function notesCard(head, items, o = {}) {
   X.beginPath(); X.arc(hx + 2, ty + 28, 11, 0, 7); X.fill(); const ex = hx + 6 + Math.min(full + 14, mw + 12); X.fillRect(ex - 2, ty - 62, 4, 84); X.beginPath(); X.arc(ex, ty - 62, 11, 0, 7); X.fill();
   T(head.t1 + ' ', x + pad, ty, FP(800, tfs), '#26232A', 'left', -1.5); T(head.t2, x + pad + t1w, ty, FP(500, tfs), '#26232A', 'left', -1.5);
   // senarai
-  let ly = ty + 70; lines.forEach(({ no, out }) => { out.forEach((ws, k) => { let cx = x + pad; if (k === 0 && no) { T(no, cx, ly, FP(800, fs), '#26232A', 'left', -1); cx += tw(no, FP(800, fs), -1); T('.', cx, ly, FP(800, fs), PK.a); cx += tw('. ', FP(800, fs)); } T(ws.join(' '), cx, ly, FP(500, fs), '#26232A', 'left', -.8); ly += lh; }); });
+  let ly = ty + 70; lines.forEach(({ no, out }) => { out.forEach((ws, k) => { let cx = x + pad; if (k === 0 && no) { T(no, cx, ly, FP(800, fs), '#26232A', 'left', -1); cx += tw(no, FP(800, fs), -1); T('.', cx, ly, FP(800, fs), PK.a); cx += tw('. ', FP(800, fs)); } ws.forEach(wd => { const f = FP(wd.b ? 800 : 500, fs); T(wd.t, cx, ly, f, '#26232A', 'left', -.8); cx += tw(wd.t + ' ', f, -.8); }); ly += lh; }); if (o.gap) ly += o.gap; });
   return { x, y, w, h };
 }
 
