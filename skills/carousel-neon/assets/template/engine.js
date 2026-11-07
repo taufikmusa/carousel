@@ -23,7 +23,7 @@ function chrome(i, n) {
   T(a, M, 104, F.b(40), L); const wa = tw(a, F.b(40)); T(b, M + wa + 4, 104, F.b(40), 'rgba(255,255,255,.4)');
   X.save(); X.strokeStyle = 'rgba(198,255,61,.5)'; X.lineWidth = 3; X.lineCap = 'round'; X.beginPath(); X.moveTo(M + wa + tw(b, F.b(40)) + 26, 93); X.lineTo(M + wa + tw(b, F.b(40)) + 130, 93); X.stroke(); X.restore();
   X.save(); X.fillStyle = L; X.beginPath(); X.arc(M + 8, SH - 74, 8, 0, 7); X.fill(); X.restore(); T('@taufik.pg', M + 28, SH - 64, F.b(32), 'rgba(255,255,255,.9)');
-  if (i < n - 1) T('GESEK  →', SW - M, SH - 64, F.b(26), 'rgba(255,255,255,.38)', 'right', 3);
+  if (i < n - 1) T('SWIPE  →', SW - M, SH - 64, F.b(26), 'rgba(255,255,255,.38)', 'right', 3);
 }
 
 // ---- teks ----  *kata* = lime
@@ -60,28 +60,45 @@ function bubble(x, y, w, h, tx, ty, o = {}) {
   X.fillStyle = o.fill || G1; X.fillRect(bx - 20, by + (down ? -5 : -3), 40, 8); X.restore();
 }
 
-// ---- watak "Bayang": hantu lime licin. pose: idle | think | cheer | sad | wave | peek; o = {outline, flip} ----
-function ghost(cx, base, s = 1, pose = 'idle', o = {}) {
-  X.save(); X.translate(cx, base); X.scale((o.flip || 1) * s, s); X.lineJoin = 'round'; X.lineCap = 'round';
-  const col = o.outline ? 'rgba(198,255,61,.07)' : L, ink = o.outline ? L : BK;
-  // bayang tanah
-  X.fillStyle = 'rgba(198,255,61,.14)'; X.beginPath(); X.ellipse(0, 6, 98, 14, 0, 0, 7); X.fill();
-  const body = () => { X.beginPath(); X.moveTo(-100, -150); X.arc(0, -150, 100, Math.PI, 0); X.lineTo(100, -26); for (let k = 0; k < 4; k++) { const x2 = 100 - (k + 1) * 50; X.quadraticCurveTo(100 - k * 50 - 25, 22, x2, -26); } X.closePath(); };
-  const arm = (x1, y1, x2, y2) => { X.strokeStyle = col; X.lineWidth = 44; X.beginPath(); X.moveTo(x1, y1); X.lineTo(x2, y2); X.stroke(); if (o.outline) { X.strokeStyle = L; X.lineWidth = 4; X.setLineDash([10, 10]); X.beginPath(); X.arc(x2, y2, 22, 0, 7); X.stroke(); X.setLineDash([]); } };
-  if (!o.outline) { if (pose === 'think') arm(-80, -80, -44, -108); else if (pose === 'cheer') { arm(-86, -120, -134, -230); arm(86, -120, 134, -230); } else if (pose === 'wave') { arm(-92, -80, -108, -64); arm(88, -130, 138, -214); } else if (pose === 'sad') { arm(-96, -90, -102, -50); arm(96, -90, 102, -50); } else if (pose !== 'peek') { arm(-96, -90, -112, -54); arm(96, -90, 112, -54); } }
-  body(); X.fillStyle = col; X.fill();
-  if (o.outline) { X.setLineDash([14, 12]); X.strokeStyle = L; X.lineWidth = 5; X.stroke(); X.setLineDash([]); }
-  else { const g = X.createLinearGradient(0, -250, 0, 20); g.addColorStop(0, 'rgba(255,255,255,.28)'); g.addColorStop(.5, 'rgba(255,255,255,0)'); body(); X.fillStyle = g; X.fill(); }
-  // muka
-  const ey = pose === 'sad' ? -138 : -154;
-  X.fillStyle = ink; X.beginPath(); X.ellipse(-36, ey, 17, pose === 'sad' ? 20 : 27, 0, 0, 7); X.ellipse(36, ey, 17, pose === 'sad' ? 20 : 27, 0, 0, 7); X.fill();
-  if (!o.outline) { X.fillStyle = L; X.beginPath(); X.arc(-30, ey - 10, 6, 0, 7); X.arc(42, ey - 10, 6, 0, 7); X.fill(); }
-  X.strokeStyle = ink; X.lineWidth = 6; X.beginPath();
-  if (pose === 'sad') X.arc(0, -78, 20, Math.PI + .35, 2 * Math.PI - .35); else if (pose === 'cheer') { X.arc(0, -110, 24, .1, Math.PI - .1); } else if (pose === 'think') { X.moveTo(-14, -98); X.lineTo(14, -102); } else X.arc(0, -112, 18, .2, Math.PI - .2);
-  X.stroke();
-  if (pose === 'sad') { X.strokeStyle = ink; X.lineWidth = 6; X.beginPath(); X.moveTo(-62, -176); X.lineTo(-18, -192); X.moveTo(62, -176); X.lineTo(18, -192); X.stroke(); }
+// ---- watak "Blur": kucing lime berwajah blur (mata juling, kelopak layu). pose: idle | think | cheer | sad | wave; o = {outline, flip} ----
+function cat(cx, base, s = 1, pose = 'idle', o = {}) {
+  X.save(); X.translate(cx, base); X.scale((o.flip || 1) * s * .86, s * .86); X.lineJoin = 'round'; X.lineCap = 'round';
+  const out = !!o.outline, col = L, ink = out ? L : BK;
+  const fillOrDash = () => { if (out) { X.fillStyle = BK; X.fill(); X.setLineDash([14, 12]); X.strokeStyle = L; X.lineWidth = 5; X.stroke(); X.setLineDash([]); } else { X.fillStyle = col; X.fill(); } };
+  X.fillStyle = 'rgba(198,255,61,.14)'; X.beginPath(); X.ellipse(0, 8, 120, 15, 0, 0, 7); X.fill();
+  // ekor
+  X.beginPath(); X.moveTo(72, -34); X.bezierCurveTo(150, -20, 170, -120, 128, -170); X.lineWidth = 30; X.strokeStyle = out ? BK : col; X.stroke();
+  if (out) { X.lineWidth = 36; X.strokeStyle = L; X.setLineDash([10, 12]); X.beginPath(); X.moveTo(72, -34); X.bezierCurveTo(150, -20, 170, -120, 128, -170); X.stroke(); X.lineWidth = 24; X.setLineDash([]); X.strokeStyle = BK; X.stroke(); }
+  // lengan (belakang badan)
+  const arm = (x1, y1, x2, y2) => { X.lineWidth = 40; X.strokeStyle = out ? L : col; if (out) X.setLineDash([8, 10]); X.beginPath(); X.moveTo(x1, y1); X.lineTo(x2, y2); X.stroke(); X.setLineDash([]); };
+  if (pose === 'cheer') { arm(-74, -96, -120, -220); arm(74, -96, 120, -220); } else if (pose === 'wave') { arm(74, -100, 122, -226); } else if (pose === 'think') { arm(-52, -64, -30, -134); }
+  // badan
+  X.beginPath(); X.ellipse(0, -66, 92, 70, 0, 0, 7); fillOrDash();
+  // kaki depan
+  X.beginPath(); X.ellipse(-40, -10, 30, 18, 0, 0, 7); X.ellipse(40, -10, 30, 18, 0, 0, 7); fillOrDash();
+  // telinga
+  const droop = pose === 'sad' ? 18 : 0;
+  [-1, 1].forEach(sd => { X.beginPath(); X.moveTo(sd * 78, -208); X.lineTo(sd * (56 + droop), -302 + droop * 2.2); X.lineTo(sd * 8, -250); X.closePath(); fillOrDash(); if (!out) { X.beginPath(); X.moveTo(sd * 62, -222); X.lineTo(sd * (50 + droop * .8), -278 + droop * 1.8); X.lineTo(sd * 24, -246); X.closePath(); X.fillStyle = 'rgba(8,8,8,.28)'; X.fill(); } });
+  // kepala
+  X.beginPath(); X.ellipse(0, -172, 86, 76, 0, 0, 7); fillOrDash();
+  if (!out) { const g = X.createLinearGradient(0, -250, 0, -100); g.addColorStop(0, 'rgba(255,255,255,.3)'); g.addColorStop(.6, 'rgba(255,255,255,0)'); X.beginPath(); X.ellipse(0, -172, 86, 76, 0, 0, 7); X.fillStyle = g; X.fill(); }
+  // mata blur: putih besar, anak mata kecil juling, kelopak layu
+  const ey = pose === 'sad' ? -166 : -176, eyes = [[-34, -5, 4], [34, 6, 9]];
+  eyes.forEach(([ex, px, py], k) => {
+    X.save(); X.beginPath(); X.ellipse(ex, ey, 25, 29, 0, 0, 7); X.fillStyle = out ? BK : W; X.fill(); X.lineWidth = out ? 4 : 0; X.strokeStyle = L; if (out) X.stroke(); X.clip();
+    X.fillStyle = ink; X.beginPath(); X.arc(ex + px * 1.2, ey + py, 10, 0, 7); X.fill();
+    X.fillStyle = out ? BK : col; X.beginPath(); X.rect(ex - 30, ey - 34, 60, pose === 'cheer' ? 14 : (k ? 32 : 26)); X.fill(); X.strokeStyle = ink; X.lineWidth = 5; X.beginPath(); X.moveTo(ex - 30, ey - 34 + (pose === 'cheer' ? 14 : (k ? 32 : 26))); X.lineTo(ex + 30, ey - 34 + (pose === 'cheer' ? 14 : (k ? 32 : 26))); X.stroke(); X.restore();
+  });
+  // hidung, mulut, misai
+  X.fillStyle = ink; X.beginPath(); X.moveTo(-8, -146); X.lineTo(8, -146); X.lineTo(0, -135); X.closePath(); X.fill();
+  X.strokeStyle = ink; X.lineWidth = 5; X.beginPath();
+  if (pose === 'sad') { X.moveTo(-14, -112); X.quadraticCurveTo(0, -126, 14, -112); } else if (pose === 'cheer') { X.arc(0, -134, 20, .15, Math.PI - .15); } else { X.moveTo(-18, -128); X.quadraticCurveTo(-9, -116, 0, -130); X.quadraticCurveTo(9, -116, 18, -128); }
+  X.stroke(); X.lineWidth = 3.5; X.globalAlpha = .75; [[-1, -146, -1], [-1, -136, 0], [-1, -126, 1]].forEach(([sd, yy, sl]) => { [-1, 1].forEach(side => { X.beginPath(); X.moveTo(side * 54, yy); X.lineTo(side * 120, yy + sl * 12 - 4); X.stroke(); }); }); X.globalAlpha = 1;
+  // tanda blur: ? untuk idle/think, titisan peluh untuk sad
+  if (pose === 'think' || pose === 'idle') { X.fillStyle = L; X.font = '800 70px UB'; X.textAlign = 'center'; if (out) X.globalAlpha = .6; X.fillText('?', 112, -250); X.globalAlpha = 1; }
   X.restore();
 }
+const ghost = cat;   // keserasian: slaid lama panggil ghost()
 // garis masa mendatar: titik-titik + label
 function timeline(x1, x2, y, labels) { X.save(); X.strokeStyle = 'rgba(198,255,61,.5)'; X.lineWidth = 4; X.setLineDash([2, 14]); X.lineCap = 'round'; X.beginPath(); X.moveTo(x1, y); X.lineTo(x2, y); X.stroke(); X.setLineDash([]); labels.forEach(([t, px]) => { X.beginPath(); X.arc(px, y, 11, 0, 7); X.fillStyle = L; X.fill(); T(t, px, y + 52, F.b(28), W, 'center', 2); }); X.restore(); }
 function cutoutBC(im, cx, by, h) { const w = h * im.width / im.height; X.drawImage(im, cx - w / 2, by - h, w, h); }

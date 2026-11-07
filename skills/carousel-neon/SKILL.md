@@ -1,11 +1,11 @@
 ---
 name: carousel-neon
-description: 'Carousel IG 1080x1440 (3:4) gaya HITAM + LIME NEON: latar hitam bertitik halus + cahaya lime, tajuk Unbounded 800 putih dengan *kata lime*, isi Space Grotesk, tag pil kecil, kad gelap bergaris lime, kad lime penuh untuk petikan, watak hantu "Bayang" (lime licin; versi bergaris putus = diri masa depan) pelbagai pose, penomboran "01/08" kiri atas dan "@taufik.pg" kiri bawah di SETIAP slaid, "GESEK →" di kanan bawah. Guna bila Taufik sebut "gaya neon", "gaya Bayang", "hitam lime", atau minta carousel mindset/motivasi/refleksi dengan latar hitam yang BUKAN doodle kuning. Potret Taufik outline putih di slaid terakhir.'
+description: 'Carousel IG 1080x1440 (3:4) gaya HITAM + LIME NEON: latar hitam bertitik halus + cahaya lime, tajuk Unbounded 800 putih dengan *kata lime*, isi Space Grotesk, tag pil kecil, kad gelap bergaris lime, kad lime penuh untuk petikan, watak kucing blur (lime licin; versi bergaris putus = diri masa depan) pelbagai pose, penomboran "01/08" kiri atas dan "@taufik.pg" kiri bawah di SETIAP slaid, "SWIPE →" di kanan bawah. Guna bila Taufik sebut "gaya neon", "gaya kucing blur", "hitam lime", atau minta carousel mindset/motivasi/refleksi dengan latar hitam yang BUKAN doodle kuning. Potret Taufik outline putih di slaid terakhir.'
 ---
 
-# carousel-neon — hitam + lime, watak hantu "Bayang" (1080x1440)
+# carousel-neon — hitam + lime, watak kucing blur (1080x1440)
 
-Panggilan Taufik: "gaya neon" / "gaya Bayang". Dipilih Taufik (pilihan A) selepas gaya doodle kuning (`carousel-doodle`) — sengaja berbeza: warna lime, font lebar Unbounded, watak hantu.
+Panggilan Taufik: "gaya neon" / "gaya kucing blur". Dipilih Taufik (pilihan A) selepas gaya doodle kuning (`carousel-doodle`) — sengaja berbeza: warna lime, font lebar Unbounded, watak hantu.
 
 ## Mula
 ```
