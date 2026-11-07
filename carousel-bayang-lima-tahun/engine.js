@@ -60,45 +60,39 @@ function bubble(x, y, w, h, tx, ty, o = {}) {
   X.fillStyle = o.fill || G1; X.fillRect(bx - 20, by + (down ? -5 : -3), 40, 8); X.restore();
 }
 
-// ---- watak "Blur": kucing lime berwajah blur (mata juling, kelopak layu). pose: idle | think | cheer | sad | wave; o = {outline, flip} ----
-function cat(cx, base, s = 1, pose = 'idle', o = {}) {
-  X.save(); X.translate(cx, base); X.scale((o.flip || 1) * s * .86, s * .86); X.lineJoin = 'round'; X.lineCap = 'round';
-  const out = !!o.outline, col = L, ink = out ? L : BK;
-  const fillOrDash = () => { if (out) { X.fillStyle = BK; X.fill(); X.setLineDash([14, 12]); X.strokeStyle = L; X.lineWidth = 5; X.stroke(); X.setLineDash([]); } else { X.fillStyle = col; X.fill(); } };
-  X.fillStyle = 'rgba(198,255,61,.14)'; X.beginPath(); X.ellipse(0, 8, 120, 15, 0, 0, 7); X.fill();
-  // ekor
-  X.beginPath(); X.moveTo(72, -34); X.bezierCurveTo(150, -20, 170, -120, 128, -170); X.lineWidth = 30; X.strokeStyle = out ? BK : col; X.stroke();
-  if (out) { X.lineWidth = 36; X.strokeStyle = L; X.setLineDash([10, 12]); X.beginPath(); X.moveTo(72, -34); X.bezierCurveTo(150, -20, 170, -120, 128, -170); X.stroke(); X.lineWidth = 24; X.setLineDash([]); X.strokeStyle = BK; X.stroke(); }
-  // lengan (belakang badan)
-  const arm = (x1, y1, x2, y2) => { X.lineWidth = 40; X.strokeStyle = out ? L : col; if (out) X.setLineDash([8, 10]); X.beginPath(); X.moveTo(x1, y1); X.lineTo(x2, y2); X.stroke(); X.setLineDash([]); };
-  if (pose === 'cheer') { arm(-74, -96, -120, -220); arm(74, -96, 120, -220); } else if (pose === 'wave') { arm(74, -100, 122, -226); } else if (pose === 'think') { arm(-52, -64, -30, -134); }
-  // badan
-  X.beginPath(); X.ellipse(0, -66, 92, 70, 0, 0, 7); fillOrDash();
-  // kaki depan
-  X.beginPath(); X.ellipse(-40, -10, 30, 18, 0, 0, 7); X.ellipse(40, -10, 30, 18, 0, 0, 7); fillOrDash();
-  // telinga
-  const droop = pose === 'sad' ? 18 : 0;
-  [-1, 1].forEach(sd => { X.beginPath(); X.moveTo(sd * 78, -208); X.lineTo(sd * (56 + droop), -302 + droop * 2.2); X.lineTo(sd * 8, -250); X.closePath(); fillOrDash(); if (!out) { X.beginPath(); X.moveTo(sd * 62, -222); X.lineTo(sd * (50 + droop * .8), -278 + droop * 1.8); X.lineTo(sd * 24, -246); X.closePath(); X.fillStyle = 'rgba(8,8,8,.28)'; X.fill(); } });
-  // kepala
-  X.beginPath(); X.ellipse(0, -172, 86, 76, 0, 0, 7); fillOrDash();
-  if (!out) { const g = X.createLinearGradient(0, -250, 0, -100); g.addColorStop(0, 'rgba(255,255,255,.3)'); g.addColorStop(.6, 'rgba(255,255,255,0)'); X.beginPath(); X.ellipse(0, -172, 86, 76, 0, 0, 7); X.fillStyle = g; X.fill(); }
-  // mata blur: putih besar, anak mata kecil juling, kelopak layu
-  const ey = pose === 'sad' ? -166 : -176, eyes = [[-34, -5, 4], [34, 6, 9]];
-  eyes.forEach(([ex, px, py], k) => {
-    X.save(); X.beginPath(); X.ellipse(ex, ey, 25, 29, 0, 0, 7); X.fillStyle = out ? BK : W; X.fill(); X.lineWidth = out ? 4 : 0; X.strokeStyle = L; if (out) X.stroke(); X.clip();
-    X.fillStyle = ink; X.beginPath(); X.arc(ex + px * 1.2, ey + py, 10, 0, 7); X.fill();
-    X.fillStyle = out ? BK : col; X.beginPath(); X.rect(ex - 30, ey - 34, 60, pose === 'cheer' ? 14 : (k ? 32 : 26)); X.fill(); X.strokeStyle = ink; X.lineWidth = 5; X.beginPath(); X.moveTo(ex - 30, ey - 34 + (pose === 'cheer' ? 14 : (k ? 32 : 26))); X.lineTo(ex + 30, ey - 34 + (pose === 'cheer' ? 14 : (k ? 32 : 26))); X.stroke(); X.restore();
-  });
-  // hidung, mulut, misai
-  X.fillStyle = ink; X.beginPath(); X.moveTo(-8, -146); X.lineTo(8, -146); X.lineTo(0, -135); X.closePath(); X.fill();
-  X.strokeStyle = ink; X.lineWidth = 5; X.beginPath();
-  if (pose === 'sad') { X.moveTo(-14, -112); X.quadraticCurveTo(0, -126, 14, -112); } else if (pose === 'cheer') { X.arc(0, -134, 20, .15, Math.PI - .15); } else { X.moveTo(-18, -128); X.quadraticCurveTo(-9, -116, 0, -130); X.quadraticCurveTo(9, -116, 18, -128); }
-  X.stroke(); X.lineWidth = 3.5; X.globalAlpha = .75; [[-1, -146, -1], [-1, -136, 0], [-1, -126, 1]].forEach(([sd, yy, sl]) => { [-1, 1].forEach(side => { X.beginPath(); X.moveTo(side * 54, yy); X.lineTo(side * 120, yy + sl * 12 - 4); X.stroke(); }); }); X.globalAlpha = 1;
-  // tanda blur: ? untuk idle/think, titisan peluh untuk sad
-  if (pose === 'think' || pose === 'idle') { X.fillStyle = L; X.font = '800 70px UB'; X.textAlign = 'center'; if (out) X.globalAlpha = .6; X.fillText('?', 112, -250); X.globalAlpha = 1; }
+// ---- ikon garisan (gaya profesional). ic(nama,cx,cy,saiz,{dash,col,fill}) ----
+// nama: person phone briefcase coins chain bulb book home shield trend check cross target hourglass calendar spark
+function ic(name, cx, cy, s = 100, o = {}) {
+  X.save(); X.translate(cx, cy); X.scale(s / 100, s / 100); X.strokeStyle = o.col || L; X.fillStyle = o.col || L; X.lineWidth = 6; X.lineCap = 'round'; X.lineJoin = 'round'; if (o.dash) X.setLineDash([2, 11]);
+  const P = (fn, fill) => { X.beginPath(); fn(); if (fill) X.fill(); else X.stroke(); };
+  const sf = !!o.fill && !o.dash;
+  switch (name) {
+    case 'person': P(() => X.arc(0, -22, 22, 0, 7), sf); P(() => { X.moveTo(-42, 44); X.quadraticCurveTo(-42, 8, 0, 8); X.quadraticCurveTo(42, 8, 42, 44); X.closePath(); }, sf); break;
+    case 'phone': P(() => X.roundRect(-26, -46, 52, 92, 12)); P(() => { X.moveTo(-8, 34); X.lineTo(8, 34); }); P(() => { X.moveTo(-12, -30); X.lineTo(12, -30); }); break;
+    case 'briefcase': P(() => X.roundRect(-44, -22, 88, 62, 10)); P(() => { X.moveTo(-18, -22); X.lineTo(-18, -36); X.lineTo(18, -36); X.lineTo(18, -22); }); P(() => { X.moveTo(-44, 6); X.lineTo(44, 6); }); break;
+    case 'coins': [[-6, 22], [-6, 4], [-6, -14]].forEach(([x, y]) => P(() => X.ellipse(x, y, 34, 13, 0, 0, 7))); P(() => { X.moveTo(-40, -14); X.lineTo(-40, 22); X.moveTo(28, -14); X.lineTo(28, 22); }); break;
+    case 'chain': P(() => X.roundRect(-46, -16, 54, 32, 16)); P(() => X.roundRect(-8, -16, 54, 32, 16)); break;
+    case 'bulb': P(() => { X.arc(0, -10, 30, Math.PI * .8, Math.PI * 2.2); X.quadraticCurveTo(26, 24, 16, 28); X.lineTo(-16, 28); X.quadraticCurveTo(-26, 24, -28, 8); }); P(() => { X.moveTo(-14, 42); X.lineTo(14, 42); }); P(() => { X.moveTo(-8, 28); X.lineTo(-8, 10); X.lineTo(8, 10); X.lineTo(8, 28); }); break;
+    case 'book': P(() => { X.moveTo(0, -30); X.quadraticCurveTo(-24, -42, -46, -34); X.lineTo(-46, 34); X.quadraticCurveTo(-24, 26, 0, 38); X.quadraticCurveTo(24, 26, 46, 34); X.lineTo(46, -34); X.quadraticCurveTo(24, -42, 0, -30); X.lineTo(0, 38); }); break;
+    case 'home': P(() => { X.moveTo(-46, -2); X.lineTo(0, -42); X.lineTo(46, -2); }); P(() => { X.moveTo(-34, -10); X.lineTo(-34, 40); X.lineTo(34, 40); X.lineTo(34, -10); }); P(() => X.roundRect(-10, 14, 20, 26, 4)); break;
+    case 'shield': P(() => { X.moveTo(0, -44); X.lineTo(38, -30); X.lineTo(38, 4); X.quadraticCurveTo(36, 30, 0, 46); X.quadraticCurveTo(-36, 30, -38, 4); X.lineTo(-38, -30); X.closePath(); }); P(() => { X.moveTo(-14, 2); X.lineTo(-4, 14); X.lineTo(16, -10); }); break;
+    case 'trend': P(() => { X.moveTo(-44, 30); X.lineTo(-14, 0); X.lineTo(6, 16); X.lineTo(42, -26); }); P(() => { X.moveTo(18, -28); X.lineTo(44, -28); X.lineTo(44, -2); }); break;
+    case 'check': P(() => X.arc(0, 0, 44, 0, 7)); P(() => { X.moveTo(-18, 2); X.lineTo(-5, 16); X.lineTo(20, -14); }); break;
+    case 'cross': P(() => X.arc(0, 0, 44, 0, 7)); P(() => { X.moveTo(-16, -16); X.lineTo(16, 16); X.moveTo(16, -16); X.lineTo(-16, 16); }); break;
+    case 'target': P(() => X.arc(0, 0, 44, 0, 7)); P(() => X.arc(0, 0, 26, 0, 7)); P(() => X.arc(0, 0, 7, 0, 7), true); break;
+    case 'hourglass': P(() => { X.moveTo(-30, -44); X.lineTo(30, -44); X.lineTo(30, -32); X.quadraticCurveTo(30, -6, 0, 0); X.quadraticCurveTo(30, 6, 30, 32); X.lineTo(30, 44); X.lineTo(-30, 44); X.lineTo(-30, 32); X.quadraticCurveTo(-30, 6, 0, 0); X.quadraticCurveTo(-30, -6, -30, -32); X.closePath(); }); break;
+    case 'calendar': P(() => X.roundRect(-42, -34, 84, 78, 12)); P(() => { X.moveTo(-42, -10); X.lineTo(42, -10); X.moveTo(-18, -46); X.lineTo(-18, -26); X.moveTo(18, -46); X.lineTo(18, -26); }); P(() => X.arc(0, 20, 6, 0, 7), true); break;
+    case 'spark': P(() => { for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4, r = k % 2 ? 12 : 44; X.lineTo(Math.cos(a) * r, Math.sin(a) * r); } X.closePath(); }, sf); break;
+  }
   X.restore();
 }
-const ghost = cat;   // keserasian: slaid lama panggil ghost()
+// jubin ikon: segi empat bulat gelap bergaris lime; o.dash = versi "5 tahun lagi", o.solid = jubin lime penuh
+function tile(cx, cy, size, name, o = {}) {
+  const x = cx - size / 2, y = cy - size / 2;
+  X.save(); rr(x, y, size, size, size * .24);
+  if (o.solid) { X.fillStyle = L; X.fill(); } else { const g = X.createLinearGradient(x, y, x, y + size); g.addColorStop(0, '#1B1B1B'); g.addColorStop(1, '#0F0F0F'); X.fillStyle = g; X.fill(); X.strokeStyle = o.dash ? 'rgba(198,255,61,.55)' : L; X.lineWidth = 4; if (o.dash) X.setLineDash([12, 10]); X.stroke(); X.setLineDash([]); }
+  X.restore(); ic(name, cx, cy, size * .56, { col: o.solid ? BK : L, dash: o.dash, fill: o.fill });
+}
 // garis masa mendatar: titik-titik + label
 function timeline(x1, x2, y, labels) { X.save(); X.strokeStyle = 'rgba(198,255,61,.5)'; X.lineWidth = 4; X.setLineDash([2, 14]); X.lineCap = 'round'; X.beginPath(); X.moveTo(x1, y); X.lineTo(x2, y); X.stroke(); X.setLineDash([]); labels.forEach(([t, px]) => { X.beginPath(); X.arc(px, y, 11, 0, 7); X.fillStyle = L; X.fill(); T(t, px, y + 52, F.b(28), W, 'center', 2); }); X.restore(); }
 function cutoutBC(im, cx, by, h) { const w = h * im.width / im.height; X.drawImage(im, cx - w / 2, by - h, w, h); }

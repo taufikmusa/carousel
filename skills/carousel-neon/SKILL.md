@@ -1,11 +1,11 @@
 ---
 name: carousel-neon
-description: 'Carousel IG 1080x1440 (3:4) gaya HITAM + LIME NEON: latar hitam bertitik halus + cahaya lime, tajuk Unbounded 800 putih dengan *kata lime*, isi Space Grotesk, tag pil kecil, kad gelap bergaris lime, kad lime penuh untuk petikan, watak kucing blur (lime licin; versi bergaris putus = diri masa depan) pelbagai pose, penomboran "01/08" kiri atas dan "@taufik.pg" kiri bawah di SETIAP slaid, "SWIPE →" di kanan bawah. Guna bila Taufik sebut "gaya neon", "gaya kucing blur", "hitam lime", atau minta carousel mindset/motivasi/refleksi dengan latar hitam yang BUKAN doodle kuning. Potret Taufik outline putih di slaid terakhir.'
+description: 'Carousel IG 1080x1440 (3:4) gaya HITAM + LIME NEON: latar hitam bertitik halus + cahaya lime, tajuk Unbounded 800 putih dengan *kata lime*, isi Space Grotesk, tag pil kecil, kad gelap bergaris lime, kad lime penuh untuk petikan, ikon garisan profesional (TANPA watak/maskot) (lime licin; versi bergaris putus = diri masa depan) pelbagai pose, penomboran "01/08" kiri atas dan "@taufik.pg" kiri bawah di SETIAP slaid, "SWIPE →" di kanan bawah. Guna bila Taufik sebut "gaya neon", "gaya ikon garisan", "hitam lime", atau minta carousel mindset/motivasi/refleksi dengan latar hitam yang BUKAN doodle kuning. Potret Taufik outline putih di slaid terakhir.'
 ---
 
-# carousel-neon — hitam + lime, watak kucing blur (1080x1440)
+# carousel-neon — hitam + lime, ikon garisan profesional (TANPA watak/maskot) (1080x1440)
 
-Panggilan Taufik: "gaya neon" / "gaya kucing blur". Dipilih Taufik (pilihan A) selepas gaya doodle kuning (`carousel-doodle`) — sengaja berbeza: warna lime, font lebar Unbounded, watak hantu.
+Panggilan Taufik: "gaya neon" / "gaya ikon garisan". Dipilih Taufik (pilihan A) selepas gaya doodle kuning (`carousel-doodle`) — sengaja berbeza: warna lime, font lebar Unbounded, watak hantu.
 
 ## Mula
 ```
@@ -16,7 +16,7 @@ Hantar JPG dalam chat; commit kod sahaja. `N` dalam slides.js menentukan "01/0N"
 
 ## API (engine.js)
 `title([baris],x,y,maxW,maxSize)` Unbounded, auto-muat, `*lime*` · `para(s,x,y,maxW,size,{font,color,align,lh})` · `tag(s,x,y,{fill})` pil garisan lime · `chip(s,cx,cy,size,{outline,col})` · `card(x,y,w,h,{accent,stroke,fill,lw})` · `num(cx,cy,r,n)` · `bubble(x,y,w,h,tailX,tailY,{stroke})` · `arrowR(x1,y,x2)` · `sparkle` · `timeline` · `cutoutBC`.
-Watak: `ghost(cx,base,skala,pose,{outline,flip})` pose = idle | think | cheer | sad | wave. `outline:true` = bayang bergaris putus (diri 5 tahun lagi / orang yang tak berubah).
+Ikon: `ic(nama,cx,cy,saiz,{dash,col,fill})` + `tile(cx,cy,saiz,nama,{dash,solid,fill})` jubin ikon. Nama: person phone briefcase coins chain bulb book home shield trend check cross target hourglass calendar spark. `dash:true` = versi "5 tahun lagi/tak berubah". JANGAN guna celengan/piggy bank, watak atau maskot (Taufik: kucing/hantu ditolak, mahu kemas profesional).
 
 ## Struktur 8 slaid (contoh)
 cover (Bayang hari ini vs bayang masa depan) → petikan sumber (kad accent) → senarai kad "= SAMA" → dua jenis orang (gelembung sembang) → bar kemajuan kosong → kad lime petikan guru + transformasi watak → garis masa langkah kecil → CTA (dua kad pilihan + potret + nama).
