@@ -51,3 +51,4 @@ Default Inter 900. Untuk rupa lain, baris pertama `slides.js`: `var HEAD = {fami
 Default kekal krim `#F3EFE7` + biru `#2A4BA0` + oren `#EE8130`. Untuk palet lain letak di baris atas slides.js: `var PALETTE = {bg,ink,blue,orange}` (enjin gabung ke `K`). `blue` = warna tajuk baris 2, `orange` = warna highlighter lalai (boleh override `hl` per slaid).
 - **Electric Studio** (rujukan Taufik): `{bg:'#F5F5F0', ink:'#10121B', blue:'#3040FF', orange:'#C8E83A'}`, highlighter lime `#DFFF70`, digit cover `#AAB2FF`, berus CTA `[#3040FF,#DFFF70,#10121B,#AAB2FF]`. Contoh: carousel KWSP "5 kesilapan".
 Taufik hantar tangkapan skrin palet (4 hex) → petakan: primary→blue, accent→highlighter, dark→ink, light→bg. Skill asal tak berubah.
+- **Fresh Signal** (rujukan Taufik): `{bg:'#F8F5EC', ink:'#006638', blue:'#FF784F', orange:'#C6CE76'}` (hijau = teks/primary, koral = baris tajuk 2, lime = highlighter `hl`+digit `#D6DB9C`). Contoh: carousel PTPTN "5 cara graduan".
