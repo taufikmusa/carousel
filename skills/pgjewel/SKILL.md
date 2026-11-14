@@ -3,7 +3,7 @@ name: pgjewel
 description: 'Carousel IG/Facebook 1080x1080 (1:1) untuk PRODUK PG JEWEL (cincin, gelang, bangle, rantai, loket) — gaya KRIM berpusat "Kini withdraw GAP boleh": tajuk italic emas + tajuk merah tua tebal Playfair, pil nombor 1/8 kanan atas, produk dipotong besar, kad produk + jadual kiraan, 3 langkah "Bagaimana GAP ditolak?" (ikon jongkong/tukul/kotak, kotak merah RM), formula + nota penting, contoh pengiraan 1-4 + "Belum ada akaun GAP?", dan slaid 8 CTA Taufik (satin merah ceri + potret + PG Code/WhatsApp). Guna bila Taufik sebut "pgjewel" atau beri copywriting tebus gram GAP jadi barang kemas + tangkapan skrin produk (pgjewel.my). Kiraan jumlah/gram automatik. Rujukan: references/rujukan/gaya-pgjewel-krim-withdraw-gap.jpg.'
 ---
 
-# pgjewel — carousel produk PG Jewel (gaya krim berpusat, 8 slaid)
+# pgjewel — carousel PG Jewel (gaya krim berpusat, 8 slaid) — produk/kiraan ATAU analisis/edukasi
 
 Rujukan (Taufik: "aku nak skill pgjewel macam ni"): `references/rujukan/gaya-pgjewel-krim-withdraw-gap.jpg` — 7 slaid penerangan krim + **slaid 8 = CTA Taufik** (gelap satin merah ceri, potret outline putih).
 Gaya lama (foto-latar, velvet) disimpan sebagai rujukan sahaja: `references/slides-gaya-foto-latar-merisik.js`, `references/rujukan/gaya-pgjewel-lama-foto-latar.jpg`.
@@ -36,3 +36,11 @@ Gaya krim: `pill(i,N,dark)` · `foot(dark)` · `goldItalic(s,y,size,line)` · `r
 - Slaid 1 = tajuk besar + produk penuh; jangan letak teks kecil/perenggan (nampak tak premium).
 - Foto produk sebenar sahaja — jangan jana/tiru foto AI. Potret Taufik hanya di slaid CTA (outline putih).
 - Warna slaid gelap = satin merah ceri (pilihan Taufik); slaid krim = merah tua + emas. `THEME` lain hanya bila diminta.
+
+## Varian ANALISIS / EDUKASI (graf emas, DCA, tip simpanan — bukan produk)
+Contoh penuh: `references/slides-analisis-graf-emas.js` (carousel "graf setahun vs lima tahun"). Gaya sama (krim, italic emas + merah tebal, pil i/8, kotak merah) dengan peraturan tambahan (Taufik: "update skill pgjewel macam ni"):
+- **Slaid 1 cover = latar SATIN MERAH CERI (gelap)** dengan susunan cover krim: italic emas (`goldItalicD`) + tajuk putih besar + 1 baris + foto emas besar pudar (`fadeDark`, bukan `fadePhoto` kerana multiply gelapkan di latar gelap). **TANPA muka/potret** di cover. Tetapkan `DARK = [0, 7]; NODOTS = [0, 7]` dan `pill(i,N,true)`, `foot(true)`.
+- Slaid 2–7 krim: `goldItalic` + `redTitle` (nombor besar cth `-4.72%`) + 1 baris tebal + kandungan: `miniChart` (carta ILUSTRASI berlabel) + `stat` kad, kad 2 lajur ✕/✓ (`crossCircle`/`checkCircle`), 3 langkah `numCircle`, kad petikan guru (kotak merah, atribusi "Tn Mohd Zulkifli Shafie"), bar `box('red')` ringkasan. Teks MINIMAL.
+- Slaid terakhir = CTA satin + potret + PG Code/WhatsApp/laman (sama seperti varian produk).
+- Carta tanpa data sebenar WAJIB label "ILUSTRASI, bukan data sebenar"; angka hanya dari copywriting.
+- Mula dengan `new_carousel.sh`, salin `references/slides-analisis-graf-emas.js` ke `slides.js` sebagai titik mula.

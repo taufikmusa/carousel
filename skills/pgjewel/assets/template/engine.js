@@ -221,6 +221,22 @@ function iconBars(cx, cy) { ingot(cx - 60, cy - 36, 96, 30, 18); ingot(cx - 78, 
 function iconTools(cx, cy) { X.save(); X.translate(cx, cy); const g = X.createLinearGradient(0, -50, 0, 50); g.addColorStop(0, '#F2C960'); g.addColorStop(1, '#B27F17'); X.fillStyle = g; X.strokeStyle = '#8A5C0C'; X.lineWidth = 2; X.rotate(.78); rr(-9, -58, 18, 116, 8); X.fill(); X.stroke(); X.beginPath(); X.arc(0, -58, 30, 0, 7); X.fill(); X.stroke(); X.fillStyle = '#FBE9A0'; X.beginPath(); X.arc(-4, -62, 9, 0, 7); X.fill(); X.rotate(-1.56); rr(-9, -58, 18, 116, 8); X.fillStyle = g; X.fill(); X.stroke(); rr(-34, -80, 68, 30, 8); X.fill(); X.stroke(); X.restore(); }
 function iconBox(cx, cy) { X.save(); X.translate(cx, cy); X.lineJoin = 'round'; X.strokeStyle = '#7A4F12'; X.lineWidth = 2; X.fillStyle = '#E4B263'; X.beginPath(); X.moveTo(-58, -20); X.lineTo(0, -48); X.lineTo(58, -20); X.lineTo(0, 8); X.closePath(); X.fill(); X.stroke(); X.fillStyle = '#D19A45'; X.beginPath(); X.moveTo(-58, -20); X.lineTo(0, 8); X.lineTo(0, 66); X.lineTo(-58, 38); X.closePath(); X.fill(); X.stroke(); X.fillStyle = '#B9822E'; X.beginPath(); X.moveTo(58, -20); X.lineTo(0, 8); X.lineTo(0, 66); X.lineTo(58, 38); X.closePath(); X.fill(); X.stroke(); X.fillStyle = '#fff'; X.beginPath(); X.moveTo(18, 30); X.lineTo(44, 18); X.lineTo(44, 44); X.lineTo(18, 56); X.closePath(); X.fill(); X.restore(); }
 
+// ---- pgjewel v2.1: varian ANALISIS/EDUKASI (graf, DCA, tip) ----
+// foto tanpa 'multiply' untuk latar gelap (cover satin). fade = lebar pudar tepi
+function fadeDark(im, cx, cy, w, fade) { const h = w * im.height / im.width, O = document.createElement('canvas'); O.width = Math.ceil(w); O.height = Math.ceil(h); const c = O.getContext('2d'); c.drawImage(im, 0, 0, w, h); [[0, 0, fade, 0], [w, 0, w - fade, 0], [0, 0, 0, fade], [0, h, 0, h - fade]].forEach(p => { const g = c.createLinearGradient(p[0], p[1], p[2], p[3]); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,1)'); c.globalCompositeOperation = 'destination-in'; c.fillStyle = g; c.fillRect(0, 0, w, h); }); X.drawImage(O, cx - w / 2, cy - h / 2); }
+function goldItalicD(s, y, size) { T(s, SW / 2, y, F.pfi(700, size), goldFillL, 'center', -size * .01); }
+// carta ILUSTRASI dalam kad (pts [[x 0..1, y 0..1]], y=0 atas). Sentiasa dilabel "bukan data sebenar"
+function miniChart(x, y, w, h, pts) {
+  card(x, y, w, h, { r: 26, bar: 1 });
+  X.save(); X.strokeStyle = K.line; X.lineWidth = 2; for (let k = 1; k < 4; k++) { X.beginPath(); X.moveTo(x + 36, y + 30 + (h - 60) * k / 4); X.lineTo(x + w - 30, y + 30 + (h - 60) * k / 4); X.stroke(); }
+  const P = pts.map(p => [x + 48 + (w - 96) * p[0], y + 34 + (h - 68) * p[1]]);
+  X.beginPath(); X.moveTo(P[0][0], P[0][1]); for (let j = 1; j < P.length; j++) { const mx = (P[j - 1][0] + P[j][0]) / 2; X.bezierCurveTo(mx, P[j - 1][1], mx, P[j][1], P[j][0], P[j][1]); }
+  X.lineWidth = 9; X.lineCap = 'round'; X.strokeStyle = K.red1; X.stroke();
+  const e = P[P.length - 1]; X.beginPath(); X.arc(e[0], e[1], 12, 0, 7); X.fillStyle = '#fff'; X.fill(); X.lineWidth = 6; X.strokeStyle = K.red1; X.stroke(); X.restore();
+  T('ILUSTRASI, bukan data sebenar', x + 36, y + h - 12, F.ss(500, 20), K.muted);
+}
+function stat(x, y, w, h, label, val, unit) { card(x, y, w, h, { r: 22, bar: 1 }); T(label, x + 36, y + 44, F.ss(600, 24), K.muted); T(val, x + 36, y + 92, F.ss(800, 40), K.maroon); if (unit) T(unit, x + 36, y + 124, F.ss(500, 22), K.muted); }
+
 window.ready = Promise.all([
   ...[['PF', 'PlayfairDisplay-700.ttf', 700, 'normal'], ['PF', 'PlayfairDisplay-800.ttf', 800, 'normal'], ['PF', 'PlayfairDisplay-900.ttf', 900, 'normal'], ['PFI', 'PlayfairDisplay-400i.ttf', 400, 'italic'], ['PFI', 'PlayfairDisplay-700i.ttf', 700, 'italic'],
     ['IX', 'Inter-900.woff2', 900, 'normal'], ['IX', 'Inter-800.woff2', 800, 'normal'], ['IX', 'Inter-500.woff2', 500, 'normal'], ['SS', 'SourceSerif4-500.ttf', 500, 'normal'], ['SS', 'SourceSerif4-600.ttf', 600, 'normal'], ['SS', 'SourceSerif4-700.ttf', 700, 'normal'], ['SS', 'SourceSerif4-800.ttf', 800, 'normal']]
