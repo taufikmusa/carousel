@@ -4,6 +4,7 @@
 // slides.js defines: N, ASSETS {key:'file'}, SLIDES [fn(x, i)].  DO NOT EDIT per carousel.
 const SW = 1080, SH = 1350, M = 70;
 const K = { bg: '#F3EFE7', ink: '#121212', blue: '#2A4BA0', orange: '#EE8130', muted: '#3a3a3a' };
+if (window.PALETTE) Object.assign(K, window.PALETTE);   // varian warna: var PALETTE = {bg,ink,blue,orange} di slides.js (default = krim/biru/oren)
 const cv = document.getElementById('c'); cv.width = SW * N; cv.height = SH; cv.style.width = (SW * N / 4) + 'px'; cv.style.height = (SH / 4) + 'px';
 const X = cv.getContext('2d');
 const IMG = {};

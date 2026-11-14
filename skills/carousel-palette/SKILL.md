@@ -46,3 +46,8 @@ Default Inter 900. Untuk rupa lain, baris pertama `slides.js`: `var HEAD = {fami
 - Potret Taufik HANYA di slaid CTA (outline putih wajib). Cover & isi tanpa potret.
 - Ayat dari copywriting Taufik; jangan tambah fakta. Teks rekaan (tagline/caption) senaraikan dalam laporan. Angka/harga hanya dari Taufik atau sumber bertarikh.
 - Bahasa Melayu Malaysia; istilah teknikal kekal English.
+
+## Varian warna (`var PALETTE` di slaid.js — gaya SAMA, warna lain)
+Default kekal krim `#F3EFE7` + biru `#2A4BA0` + oren `#EE8130`. Untuk palet lain letak di baris atas slides.js: `var PALETTE = {bg,ink,blue,orange}` (enjin gabung ke `K`). `blue` = warna tajuk baris 2, `orange` = warna highlighter lalai (boleh override `hl` per slaid).
+- **Electric Studio** (rujukan Taufik): `{bg:'#F5F5F0', ink:'#10121B', blue:'#3040FF', orange:'#C8E83A'}`, highlighter lime `#DFFF70`, digit cover `#AAB2FF`, berus CTA `[#3040FF,#DFFF70,#10121B,#AAB2FF]`. Contoh: carousel KWSP "5 kesilapan".
+Taufik hantar tangkapan skrin palet (4 hex) → petakan: primary→blue, accent→highlighter, dark→ink, light→bg. Skill asal tak berubah.
