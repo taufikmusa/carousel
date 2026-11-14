@@ -1,6 +1,6 @@
 ---
 name: carousel-gradient
-description: 'Carousel IG/FB 1080x1080 (1:1) gaya ANALISIS KORPORAT BERSIH: latar putih + swoosh lilac, tajuk Poppins 800 hitam tebal, pil gradien biru→ungu→merah jambu→oren dengan teks putih italic besar, tag pil gradien kecil di atas-kiri, sub-teks italic dengan garis gradien, kad lilac dengan jubin ikon gradien, carta ilustrasi, footer gelombang gradien + "i/N", lencana @taufik.pg atas-kanan. Teks MINIMAL. Rujukan: gaya "MetaNext" analisis industri (references/rujukan). Guna bila Taufik sebut "gaya gradient", "gaya analisis", "macam MetaNext", atau minta carousel data/analisis yang kemas-profesional. Potret Taufik outline putih di slaid terakhir.'
+description: 'Carousel IG/FB 1080x1080 (1:1) gaya ANALISIS KORPORAT BERSIH: latar krim + swoosh coklat, tajuk Poppins 800 hitam tebal, pil palet Taufik Cream #FFFEC5 + Dark Coffee #39241F (tiada gradien; Taufik minta tukar supaya tak nampak sama dengan rujukan) dengan teks putih italic besar, tag pil coklat gelap kecil di atas-kiri, sub-teks italic dengan garis gradien, kad lilac dengan jubin ikon gradien, carta ilustrasi, footer gelombang coklat + "i/N", lencana @taufik.pg atas-kanan. Teks MINIMAL. Rujukan: gaya "MetaNext" analisis industri (references/rujukan). Guna bila Taufik sebut "gaya gradient", "gaya analisis", "macam MetaNext", atau minta carousel data/analisis yang kemas-profesional. Potret Taufik outline putih di slaid terakhir.'
 ---
 
 # carousel-gradient — putih + gradien, teks minimal (1080x1080)

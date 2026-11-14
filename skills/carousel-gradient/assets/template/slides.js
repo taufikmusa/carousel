@@ -29,7 +29,7 @@ var SLIDES = [
     title(['Jangan Nilai Satu', 'Tahun Sahaja'], 268, 90);
     pill('+114.05%', 400, 112); T('5 tahun', 650, 515, F.hi(40), INK);
     chart(M, 590, 600, 300, [[0, .92], [.2, .8], [.4, .62], [.55, .66], [.75, .3], [1, .08]], BLU, PUR); note('ILUSTRASI, bukan data sebenar', M + 24, 920);
-    card(690, 590, 330, 300, {}); tile(855, 680, 96, 'up', 'a'); T('Harga emas', 855, 770, F.b(26), MUTE, 'center'); T('lebih 2x', 855, 822, F.h(46), INK, 'center'); T('ganda', 855, 862, F.h(34), PUR, 'center');
+    card(690, 590, 330, 300, {}); tile(855, 680, 96, 'up', 'a'); T('Harga emas', 855, 770, F.b(26), MUTE, 'center'); T('lebih 2x', 855, 822, F.h(46), INK, 'center'); T('ganda', 855, 862, F.h(34), '#6B4A3F', 'center');
   },
   // 4 — DCA
   function (i) {
@@ -52,7 +52,7 @@ var SLIDES = [
     tag('KESILAPAN BIASA');
     title(['Jangka Panjang,', 'Bukan Harian'], 268, 90);
     card(M, 440, 462, 400, {}); tile(M + 80, 540, 100, 'cross', 'b'); T('Semak harga', M + 40, 690, F.h(36), INK); T('tiap jam', M + 40, 734, F.h(36), INK); T('Emosi terganggu', M + 40, 790, F.b(26), MUTE);
-    card(556, 440, 462, 400, { stroke: PUR }); tile(556 + 80, 540, 100, 'check', 'a'); T('Tambah gram', 556 + 40, 690, F.h(36), INK); T('setiap bulan', 556 + 40, 734, F.h(36), INK); T('Simpanan bertambah', 556 + 40, 790, F.b(26), MUTE);
+    card(556, 440, 462, 400, { stroke: INK }); tile(556 + 80, 540, 100, 'check', 'a'); T('Tambah gram', 556 + 40, 690, F.h(36), INK); T('setiap bulan', 556 + 40, 734, F.h(36), INK); T('Simpanan bertambah', 556 + 40, 790, F.b(26), MUTE);
     sub(['Guna duit lebihan,', 'bukan duit kecemasan.'], 915, 38);
   },
   // 7 — kesimpulan
@@ -60,7 +60,7 @@ var SLIDES = [
     tag('KESIMPULAN');
     title(['Lihat Perjalanan', 'Yang Panjang'], 268, 90);
     pill('FOKUS TAMBAH GRAM', 400, 62, { x: M - 18 });
-    card(M, 560, 956, 230, { fill: '#fff', stroke: LIL2 }); T('“', M + 30, 690, F.h(120), PNK);
+    card(M, 560, 956, 230, { fill: CR, stroke: INK }); T('“', M + 30, 690, F.h(120), '#8A6A55');
     para('Jangan bazirkan emosi memantau graf setiap 20 minit. Yang penting, *gram emas bertambah* setiap bulan.', M + 120, 630, 780, 32);
     T('Tn Mohd Zulkifli Shafie', M + 120, 770, F.b(22), MUTE);
     sub(['Prestasi lalu bukan jaminan', 'harga terus naik.'], 860, 32);

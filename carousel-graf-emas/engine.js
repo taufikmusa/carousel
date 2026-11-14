@@ -1,7 +1,8 @@
 // carousel-gradient engine — putih + swoosh lilac, gradien biru→ungu→merah jambu→oren, Poppins 800 (rujukan: gaya "MetaNext" analisis industri). 1080x1080 (1:1).
 // slides.js tetapkan N, ASSETS (pilihan), SLIDES [fn(i)]. Tag atas-kiri, lencana @taufik.pg atas-kanan, footer gelombang + "i/N" di setiap slaid. JANGAN EDIT per carousel.
 const SW = 1080, SH = window.SH_OVERRIDE || 1080, M = 62;
-const INK = '#0E0B1F', LIL = '#EEE9FD', LIL2 = '#E2D9FB', PUR = '#6A2BE8', BLU = '#2B6CFF', PNK = '#E8318F', ORG = '#FF8A1F', MUTE = '#4A4565';
+// palet Taufik: Cream #FFFEC5 + Dark Coffee #39241F (tiada gradien)
+const CR = '#FFFEC5', INK = '#39241F', LIL = '#F4F0A8', LIL2 = '#E3DC8A', PUR = '#39241F', BLU = '#39241F', PNK = '#6B4A3F', ORG = '#8A6A55', MUTE = '#6B5148';
 const cv = document.getElementById('c'); cv.width = SW * N; cv.height = SH; cv.style.width = (SW * N / 4) + 'px'; cv.style.height = (SH / 4) + 'px';
 const X = cv.getContext('2d'); const IMG = {};
 const F = { h: s => `800 ${s}px PO`, hi: s => `italic 800 ${s}px PO`, b: s => `600 ${s}px PO`, m: s => `500 ${s}px PO` };
@@ -9,25 +10,25 @@ function rng(s) { return () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.im
 function rr(x, y, w, h, r) { X.beginPath(); X.roundRect(x, y, w, h, r); }
 function tw(s, f, ls = 0) { X.save(); X.font = f; X.letterSpacing = ls + 'px'; const w = X.measureText(s).width; X.restore(); return w; }
 function T(s, x, y, f, fill = INK, align = 'left', ls = 0) { X.save(); X.font = f; X.textAlign = align; X.letterSpacing = ls + 'px'; X.fillStyle = fill; X.fillText(s, x, y); X.restore(); }
-function grad(x1, x2, stops) { const g = X.createLinearGradient(x1, 0, x2, 0); (stops || [[0, BLU], [.38, PUR], [.7, PNK], [1, ORG]]).forEach(([o, c]) => g.addColorStop(o, c)); return g; }
+function grad(x1, x2, stops) { return INK; }   // pepejal: coklat gelap
 function gradV(y1, y2, stops) { const g = X.createLinearGradient(0, y1, 0, y2); stops.forEach(([o, c]) => g.addColorStop(o, c)); return g; }
 
 // ---- latar: putih + swoosh lilac + gelombang gradien di bawah ----
 function bg(x0, i) {
-  X.fillStyle = '#FCFBFF'; X.fillRect(x0, 0, SW, SH);
+  X.fillStyle = CR; X.fillRect(x0, 0, SW, SH);
   X.save(); X.beginPath(); X.rect(x0, 0, SW, SH); X.clip();
   const flip = i % 2;
-  [[.16, 0, -60], [.10, 40, 30]].forEach(([a, dy, dx], k) => { X.beginPath(); const sx = flip ? x0 : x0 + SW; const d = flip ? 1 : -1; X.moveTo(sx, 40 + dy); X.bezierCurveTo(sx + d * -520, 120 + dy, sx + d * -260, 520 + dy, sx + d * -430 + dx * d, 980); X.lineTo(sx, 980); X.closePath(); const g = X.createLinearGradient(sx, 0, sx + d * -500, 900); g.addColorStop(0, 'rgba(150,110,255,' + a + ')'); g.addColorStop(1, 'rgba(150,110,255,0)'); X.fillStyle = g; X.fill(); });
+  [[.16, 0, -60], [.10, 40, 30]].forEach(([a, dy, dx], k) => { X.beginPath(); const sx = flip ? x0 : x0 + SW; const d = flip ? 1 : -1; X.moveTo(sx, 40 + dy); X.bezierCurveTo(sx + d * -520, 120 + dy, sx + d * -260, 520 + dy, sx + d * -430 + dx * d, 980); X.lineTo(sx, 980); X.closePath(); const g = X.createLinearGradient(sx, 0, sx + d * -500, 900); g.addColorStop(0, 'rgba(57,36,31,' + a * .45 + ')'); g.addColorStop(1, 'rgba(57,36,31,0)'); X.fillStyle = g; X.fill(); });
   X.restore();
 }
 function footer(x0, i, n, left) {
   X.save(); X.beginPath(); X.rect(0, 0, SW, SH); X.clip();
   X.beginPath(); X.moveTo(0, SH - 70); X.bezierCurveTo(260, SH - 120, 520, SH - 20, 760, SH - 78); X.bezierCurveTo(900, SH - 110, 1000, SH - 130, SW, SH - 116); X.lineTo(SW, SH); X.lineTo(0, SH); X.closePath();
-  X.fillStyle = grad(0, SW, [[0, '#4B2BC8'], [.55, '#9B2FD0'], [1, ORG]]); X.fill();
-  X.beginPath(); X.moveTo(SW - 380, SH); X.bezierCurveTo(SW - 220, SH - 70, SW - 120, SH - 120, SW, SH - 150); X.lineTo(SW, SH); X.closePath(); X.fillStyle = 'rgba(255,170,40,.75)'; X.fill();
+  X.fillStyle = INK; X.fill();
+  X.beginPath(); X.moveTo(SW - 380, SH); X.bezierCurveTo(SW - 220, SH - 70, SW - 120, SH - 120, SW, SH - 150); X.lineTo(SW, SH); X.closePath(); X.fillStyle = 'rgba(255,254,197,.22)'; X.fill();
   X.restore();
-  T(left || 'Taufik Musa | Dealer Public Gold', M, SH - 36, F.hi(24), '#fff');
-  const lab = (i + 1) + '/' + n, w = tw(lab, F.h(28)) + 56; X.save(); rr(SW - M - w, SH - 66, w, 52, 26); X.fillStyle = '#fff'; X.fill(); X.restore(); T(lab, SW - M - w / 2, SH - 30, F.h(28), INK, 'center');
+  T(left || 'Taufik Musa | Dealer Public Gold', M, SH - 36, F.hi(24), CR);
+  const lab = (i + 1) + '/' + n, w = tw(lab, F.h(28)) + 56; X.save(); rr(SW - M - w, SH - 66, w, 52, 26); X.fillStyle = CR; X.fill(); X.restore(); T(lab, SW - M - w / 2, SH - 30, F.h(28), INK, 'center');
 }
 // lencana kanan-atas: gelung gradien + @taufik.pg
 function brand() {
@@ -38,8 +39,8 @@ function brand() {
 // tag pil gradien atas-kiri (oren → ungu), teks putih italic
 function tag(s) {
   const f = F.hi(30), w = tw(s, f) + 64, x = M + 32, y = 70, h = 56;
-  X.save(); X.fillStyle = grad(M, M + 40, [[0, PNK], [1, BLU]]); X.beginPath(); X.moveTo(M + 8, y + h); X.lineTo(M + 26, y); X.lineTo(M + 34, y); X.lineTo(M + 16, y + h); X.closePath(); X.fill();
-  rr(x, y, w, h, 16); X.fillStyle = grad(x, x + w, [[0, ORG], [.35, PNK], [1, PUR]]); X.fill(); X.restore(); T(s, x + 32, y + 40, f, '#fff');
+  X.save(); X.fillStyle = INK; X.beginPath(); X.moveTo(M + 8, y + h); X.lineTo(M + 26, y); X.lineTo(M + 34, y); X.lineTo(M + 16, y + h); X.closePath(); X.fill();
+  rr(x, y, w, h, 16); X.fillStyle = INK; X.fill(); X.restore(); T(s, x + 32, y + 40, f, CR);
   return x + w;
 }
 // tajuk hitam tebal. lines = baris; kembalikan y bawah
@@ -47,12 +48,12 @@ function title(lines, y, size = 92, lh = 1.04) { lines.forEach((l, i) => T(l, M,
 // pil gradien dengan teks putih italic besar
 function pill(s, y, size = 100, o = {}) {
   const f = F.hi(size), w = Math.min(SW - 2 * M + 20, tw(s, f, -size * .02) + size * .9), h = size * 1.3, x = o.x != null ? o.x : M - 18;
-  X.save(); X.shadowColor = 'rgba(110,40,230,.28)'; X.shadowBlur = 24; X.shadowOffsetY = 10; rr(x, y, w, h, h * .3); X.fillStyle = grad(x, x + w, o.stops); X.fill(); X.restore();
-  T(s, x + size * .42, y + h * .74, f, '#fff', 'left', -size * .02); return { w, h, bottom: y + h };
+  X.save(); X.shadowColor = 'rgba(57,36,31,.25)'; X.shadowBlur = 20; X.shadowOffsetY = 8; rr(x, y, w, h, h * .3); X.fillStyle = INK; X.fill(); X.restore();
+  T(s, x + size * .42, y + h * .74, f, CR, 'left', -size * .02); return { w, h, bottom: y + h };
 }
 // sub: garis gradien kiri + teks italic tebal (boleh 2 baris) ; *tebal*
 function sub(lines, y, size = 38) {
-  X.save(); X.fillStyle = gradV(y - size, y + lines.length * size * 1.25, [[0, PNK], [1, BLU]]); X.beginPath(); X.moveTo(M + 6, y + lines.length * size * 1.25 - size * .6); X.lineTo(M + 20, y - size * .8); X.lineTo(M + 30, y - size * .8); X.lineTo(M + 16, y + lines.length * size * 1.25 - size * .6); X.closePath(); X.fill(); X.restore();
+  X.save(); X.fillStyle = INK; X.beginPath(); X.moveTo(M + 6, y + lines.length * size * 1.25 - size * .6); X.lineTo(M + 20, y - size * .8); X.lineTo(M + 30, y - size * .8); X.lineTo(M + 16, y + lines.length * size * 1.25 - size * .6); X.closePath(); X.fill(); X.restore();
   lines.forEach((l, i) => T(l, M + 52, y + i * size * 1.25, F.hi(size), INK)); return y + lines.length * size * 1.25;
 }
 // perenggan kecil; *kata* = tebal
@@ -65,7 +66,7 @@ function card(x, y, w, h, o = {}) { X.save(); rr(x, y, w, h, o.r || 34); X.fillS
 
 // ---- ikon putih dalam jubin gradien ----
 function glyph(name, s) {
-  X.save(); X.scale(s / 100, s / 100); X.strokeStyle = '#fff'; X.fillStyle = '#fff'; X.lineWidth = 7; X.lineCap = 'round'; X.lineJoin = 'round';
+  X.save(); X.scale(s / 100, s / 100); X.strokeStyle = CR; X.fillStyle = CR; X.lineWidth = 7; X.lineCap = 'round'; X.lineJoin = 'round';
   const P = (fn, fill) => { X.beginPath(); fn(); if (fill) X.fill(); else X.stroke(); };
   switch (name) {
     case 'down': P(() => { X.moveTo(-40, -28); X.lineTo(-10, 2); X.lineTo(8, -14); X.lineTo(40, 26); }); P(() => { X.moveTo(14, 28); X.lineTo(42, 28); X.lineTo(42, 0); }); break;
@@ -86,26 +87,26 @@ function glyph(name, s) {
 }
 // jubin: kind 'a' = biru→ungu, 'b' = oren→merah jambu, 'c' = ungu→merah jambu
 function tile(cx, cy, size, name, kind = 'a') {
-  const x = cx - size / 2, y = cy - size / 2, st = { a: [BLU, PUR], b: [ORG, PNK], c: [PUR, PNK] }[kind];
-  X.save(); X.shadowColor = 'rgba(100,50,220,.25)'; X.shadowBlur = 16; X.shadowOffsetY = 6; rr(x, y, size, size, size * .26); const g = X.createLinearGradient(x, y, x + size, y + size); g.addColorStop(0, st[0]); g.addColorStop(1, st[1]); X.fillStyle = g; X.fill(); X.restore();
+  const x = cx - size / 2, y = cy - size / 2, st = { a: [INK, INK], b: ['#6B4A3F', '#4A332C'], c: [INK, '#5A3E35'] }[kind];
+  X.save(); X.shadowColor = 'rgba(57,36,31,.25)'; X.shadowBlur = 14; X.shadowOffsetY = 6; rr(x, y, size, size, size * .26); const g = X.createLinearGradient(x, y, x + size, y + size); g.addColorStop(0, st[0]); g.addColorStop(1, st[1]); X.fillStyle = g; X.fill(); X.restore();
   X.save(); X.translate(cx, cy); glyph(name, size * .6); X.restore();
 }
 // carta ilustrasi: pts = [[0..1,0..1]] (y 0=atas). arah mewarna. Dilabel "ILUSTRASI" oleh pemanggil
 function chart(x, y, w, h, pts, col1 = PUR, col2 = PNK) {
-  X.save(); card(x, y, w, h, { fill: '#FFFFFF', stroke: LIL2 });
+  X.save(); card(x, y, w, h, { fill: CR, stroke: INK });
   X.strokeStyle = LIL2; X.lineWidth = 2; for (let k = 1; k < 4; k++) { X.beginPath(); X.moveTo(x + 30, y + 30 + (h - 60) * k / 4); X.lineTo(x + w - 30, y + 30 + (h - 60) * k / 4); X.stroke(); }
   const P = pts.map(([a, b]) => [x + 40 + (w - 80) * a, y + 36 + (h - 72) * b]);
   X.beginPath(); X.moveTo(P[0][0], P[0][1]); for (let k = 1; k < P.length; k++) { const mx = (P[k - 1][0] + P[k][0]) / 2; X.bezierCurveTo(mx, P[k - 1][1], mx, P[k][1], P[k][0], P[k][1]); }
   X.lineWidth = 9; X.lineCap = 'round'; X.strokeStyle = grad(x, x + w, [[0, col1], [1, col2]]); X.stroke();
-  X.lineTo(P[P.length - 1][0], y + h - 30); X.lineTo(P[0][0], y + h - 30); X.closePath(); const g = X.createLinearGradient(0, y, 0, y + h); g.addColorStop(0, 'rgba(120,60,240,.22)'); g.addColorStop(1, 'rgba(120,60,240,0)'); X.fillStyle = g; X.fill();
-  const e = P[P.length - 1]; X.beginPath(); X.arc(e[0], e[1], 12, 0, 7); X.fillStyle = '#fff'; X.fill(); X.lineWidth = 6; X.strokeStyle = col2; X.stroke(); X.restore();
+  X.lineTo(P[P.length - 1][0], y + h - 30); X.lineTo(P[0][0], y + h - 30); X.closePath(); const g = X.createLinearGradient(0, y, 0, y + h); g.addColorStop(0, 'rgba(57,36,31,.2)'); g.addColorStop(1, 'rgba(57,36,31,0)'); X.fillStyle = g; X.fill();
+  const e = P[P.length - 1]; X.beginPath(); X.arc(e[0], e[1], 12, 0, 7); X.fillStyle = CR; X.fill(); X.lineWidth = 6; X.strokeStyle = INK; X.stroke(); X.restore();
 }
 // foto: potong ke kotak bulat sudut, fade atas ke latar (photoFade)
 function photoFade(im, x, y, w, h, o = {}) {
   const s = Math.max(w / im.width, h / im.height); X.save(); X.beginPath(); X.rect(x, y, w, h); X.clip();
   X.drawImage(im, x + w / 2 - im.width * s * (o.fx ?? .5), y + h / 2 - im.height * s * (o.fy ?? .5), im.width * s, im.height * s);
-  const g = X.createLinearGradient(0, y, 0, y + h * (o.fade ?? .55)); g.addColorStop(0, '#FCFBFF'); g.addColorStop(1, 'rgba(252,251,255,0)'); X.fillStyle = g; X.fillRect(x, y, w, h);
-  if (o.left) { const g2 = X.createLinearGradient(x, 0, x + w * o.left, 0); g2.addColorStop(0, '#FCFBFF'); g2.addColorStop(1, 'rgba(252,251,255,0)'); X.fillStyle = g2; X.fillRect(x, y, w, h); }
+  const g = X.createLinearGradient(0, y, 0, y + h * (o.fade ?? .55)); g.addColorStop(0, CR); g.addColorStop(1, 'rgba(255,254,197,0)'); X.fillStyle = g; X.fillRect(x, y, w, h);
+  if (o.left) { const g2 = X.createLinearGradient(x, 0, x + w * o.left, 0); g2.addColorStop(0, CR); g2.addColorStop(1, 'rgba(255,254,197,0)'); X.fillStyle = g2; X.fillRect(x, y, w, h); }
   X.restore();
 }
 function cutoutBC(im, cx, by, h) { const w = h * im.width / im.height; X.drawImage(im, cx - w / 2, by - h, w, h); }
