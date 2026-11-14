@@ -2,7 +2,7 @@
 var NOFOOTER = true;
 var N = 8;
 var THEME = 'maroon';
-var DARK = [7]; var NODOTS = [7];
+var DARK = [0, 7]; var NODOTS = [0, 7];
 var ASSETS = { emas: 'emas.jpg', gap: 'gap.jpg', me: 'thumbs-up.png' };
 var D = { pgcode: 'PG00359605', wa: '60132740711', web: 'simpanemasfizikal.com' };
 window.BG = function (i, x0, dark) { if (dark) { bgSatin(x0, i * 11 + 4); return true; } return false; };
@@ -20,11 +20,14 @@ function miniChart(x, y, w, h, pts) {
 function stat(x, y, w, h, label, val, unit) { card(x, y, w, h, { r: 22, bar: 1 }); T(label, x + 36, y + 44, F.ss(600, 24), K.muted); T(val, x + 36, y + 92, F.ss(800, 40), K.maroon); if (unit) T(unit, x + 36, y + 124, F.ss(500, 22), K.muted); }
 
 var SLIDES = [
-  // 1 — cover
+  // 1 — cover (gelap satin + potret, sama gaya slaid 8)
   function (i) {
-    pill(i, N); goldItalic('Kalau tengok graf emas', 175, 84); redTitle('setahun, risau?', 325, 150, 900);
-    T('Tapi graf lima tahun cerita lain.', SW / 2, 410, F.ss(700, 40), K.ink, 'center');
-    fadePhoto(IMG.emas, 540, 735, 1000, 130); foot();
+    pill(i, N, true);
+    headline([[['Kalau tengok', 'white']], [['graf emas', 'goldl']], [['setahun,', 'white']], [['risau?', 'goldil']]], M, 200, { size: 100, maxW: 600 });
+    para('Tapi graf *lima tahun* cerita lain.', M, 700, 450, 32, { dark: true });
+    cutoutBC(IMG.me, 850, SH, 730);
+    T('Taufik Musa', M, 880, F.pf(900, 50), goldFillL); T('Dealer Public Gold', M, 916, F.ss(700, 25), '#FFFFFF', 'left', 1.5);
+    foot(true);
   },
   // 2 — graf setahun
   function (i) {
