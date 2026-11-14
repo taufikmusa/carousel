@@ -52,3 +52,4 @@ Default kekal krim `#F3EFE7` + biru `#2A4BA0` + oren `#EE8130`. Untuk palet lain
 - **Electric Studio** (rujukan Taufik): `{bg:'#F5F5F0', ink:'#10121B', blue:'#3040FF', orange:'#C8E83A'}`, highlighter lime `#DFFF70`, digit cover `#AAB2FF`, berus CTA `[#3040FF,#DFFF70,#10121B,#AAB2FF]`. Contoh: carousel KWSP "5 kesilapan".
 Taufik hantar tangkapan skrin palet (4 hex) → petakan: primary→blue, accent→highlighter, dark→ink, light→bg. Skill asal tak berubah.
 - **Fresh Signal** (rujukan Taufik): `{bg:'#F8F5EC', ink:'#006638', blue:'#FF784F', orange:'#C6CE76'}` (hijau = teks/primary, koral = baris tajuk 2, lime = highlighter `hl`+digit `#D6DB9C`). Contoh: carousel PTPTN "5 cara graduan".
+- **Quiet Luxury** (rujukan Taufik): `{bg:'#F4EDE3', ink:'#222022', blue:'#630002', orange:'#BDA174'}` (merah tua = baris tajuk 2, emas = highlighter, digit cover `#E4D7BE`). Sesuai topik emas/premium. Contoh: carousel Auto Debit.
