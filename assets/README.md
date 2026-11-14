@@ -77,3 +77,7 @@ Guna untuk `carousel-pastel` (pastel keluarga) dan `carousel-red` (pop-art merah
 | bangle-916-PGJG180673.jpg | 916 Gold Bangle PGJG180673 (11.73g) | RM6,933 (upah RM329 termasuk) |
 | cincin-999-gelombang-cinta-PGJR181413.png | 999/24K Gold Ring Gelombang Cinta PGJR181413 5D Hard Gold | RM1,653–RM1,970 (upah RM137–164 termasuk) |
 Harga boleh berubah — sahkan dengan Taufik sebelum guna dalam post.
+
+## broll-taufik/ (foto Taufik dari Google Drive "Broll aku", 1080px)
+g100-meja-thumbsup-1/2 (depan logo G100, duduk kerusi) · publicgold-31kg-thumbsup / -tunjuk / -senyum / -tangan (depan jongkong 31kg Malaysia Book of Records + logo Public Gold) · pegang-jongkong-10g-dekat (selfie dekat pegang 10g).
+Sumber Drive: folder "Broll aku" 1b1C0vXTEklIVvVcmJAUvHKiPaZIkcf2V (1.png–33.png) dan "Broll emas dan lain lain" 10LXgO55QhsSOThJeOCtTp79QyFMZf44n (jongkong/dinar/artikel/Tab-xx). Boleh ambil lagi dengan Google Drive connector (parentId).
