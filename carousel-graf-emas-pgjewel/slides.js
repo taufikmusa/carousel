@@ -3,6 +3,9 @@ var NOFOOTER = true;
 var N = 8;
 var THEME = 'maroon';
 var DARK = [0, 7]; var NODOTS = [0, 7];
+// foto gelap tanpa 'multiply' supaya sesuai latar satin
+function fadeDark(im, cx, cy, w, fade) { var h = w * im.height / im.width, O = document.createElement('canvas'); O.width = Math.ceil(w); O.height = Math.ceil(h); var c = O.getContext('2d'); c.drawImage(im, 0, 0, w, h); c.globalCompositeOperation = 'destination-in'; [[0, 0, fade, 0], [w, 0, w - fade, 0], [0, 0, 0, fade], [0, h, 0, h - fade]].forEach(function (p) { var g = c.createLinearGradient(p[0], p[1], p[2], p[3]); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,1)'); c.fillStyle = g; c.globalCompositeOperation = 'destination-in'; c.fillRect(0, 0, w, h); }); X.drawImage(O, cx - w / 2, cy - h / 2); }
+function goldItalicD(s, y, size) { T(s, SW / 2, y, F.pfi(700, size), goldFillL, 'center', -size * .01); }
 var ASSETS = { emas: 'emas.jpg', gap: 'gap.jpg', me: 'thumbs-up.png' };
 var D = { pgcode: 'PG00359605', wa: '60132740711', web: 'simpanemasfizikal.com' };
 window.BG = function (i, x0, dark) { if (dark) { bgSatin(x0, i * 11 + 4); return true; } return false; };
@@ -20,14 +23,11 @@ function miniChart(x, y, w, h, pts) {
 function stat(x, y, w, h, label, val, unit) { card(x, y, w, h, { r: 22, bar: 1 }); T(label, x + 36, y + 44, F.ss(600, 24), K.muted); T(val, x + 36, y + 92, F.ss(800, 40), K.maroon); if (unit) T(unit, x + 36, y + 124, F.ss(500, 22), K.muted); }
 
 var SLIDES = [
-  // 1 — cover (gelap satin + potret, sama gaya slaid 8)
+  // 1 — cover (susunan asal, warna satin merah gelap)
   function (i) {
-    pill(i, N, true);
-    headline([[['Kalau tengok', 'white']], [['graf emas', 'goldl']], [['setahun,', 'white']], [['risau?', 'goldil']]], M, 200, { size: 100, maxW: 600 });
-    para('Tapi graf *lima tahun* cerita lain.', M, 700, 450, 32, { dark: true });
-    cutoutBC(IMG.me, 850, SH, 730);
-    T('Taufik Musa', M, 880, F.pf(900, 50), goldFillL); T('Dealer Public Gold', M, 916, F.ss(700, 25), '#FFFFFF', 'left', 1.5);
-    foot(true);
+    pill(i, N, true); goldItalicD('Kalau tengok graf emas', 175, 84); T('setahun, risau?', SW / 2, 325, F.pf(900, 150 * 0 + fit('setahun, risau?', function (f) { return F.pf(900, f); }, 900, -.03)), '#FFFFFF', 'center', -4);
+    T('Tapi graf lima tahun cerita lain.', SW / 2, 410, F.ss(700, 40), '#FFFFFF', 'center');
+    fadeDark(IMG.emas, 540, 745, 1000, 130); foot(true);
   },
   // 2 — graf setahun
   function (i) {
