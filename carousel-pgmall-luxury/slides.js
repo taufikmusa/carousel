@@ -1,7 +1,7 @@
 // carousel-palette VARIAN "Quiet Luxury" (#630002 / #BDA174). "Kenapa Berbelanja di PGMall?" (7 slaid, 1080x1350).
 var PALETTE = { bg: '#F4EDE3', ink: '#222022', blue: '#630002', orange: '#BDA174', muted: '#3b3639' };
 var N = 7;
-var ASSETS = { cover: 'bags.jpg', a: 'basket.jpg', b: 'parcel.jpg', c: 'phone.jpg', d: 'bangle.jpg', me: 'thumbs-up.png' };
+var ASSETS = { cover: 'bags.jpg', a: 'gift.jpg', b: 'parcel.jpg', c: 'phone.jpg', d: 'bangle.jpg', me: 'thumbs-up.png' };
 var RD = '#630002', GD = '#BDA174', DK = '#222022';
 var SLIDES = [
   function (x, i) {
