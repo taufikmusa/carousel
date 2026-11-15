@@ -17,6 +17,14 @@ Render: `python3 music.py && node render.js` dalam folder projek.
 - Potret Taufik WAJIB outline putih: `sh assets/sticker.sh`.
 - Gambar baru dari Taufik: tambah ke `assets/` + kemas kini README.
 
+## Broll Taufik (Google Drive) — LOKASI TETAP
+Taufik simpan broll di 2 folder Drive dan akan terus tambah fail ke SITU SAHAJA. Guna Google Drive connector (ToolSearch "select:mcp__Google_Drive__search_files,mcp__Google_Drive__download_file_content"), jangan minta upload semula.
+- **Broll aku** (selfie Taufik + emas, 33 png): folder `1b1C0vXTEklIVvVcmJAUvHKiPaZIkcf2V` — https://drive.google.com/drive/folders/1b1C0vXTEklIVvVcmJAUvHKiPaZIkcf2V
+- **Broll emas dan lain lain** (foto emas, stok gaya hidup/duit/watak Melayu, Tab-xx): folder `10LXgO55QhsSOThJeOCtTp79QyFMZf44n` — https://drive.google.com/drive/folders/10LXgO55QhsSOThJeOCtTp79QyFMZf44n
+- Cara: `search_files` dengan `parentId = '<folder>'` (tambah `createdTime > '...'` untuk fail baharu sahaja), `download_file_content` ikut fileId; salin dari `tool-results/` ke `<projek>/img/`.
+- Bila Taufik kata "dah update broll": semak fail baharu dalam folder (createdTime), kemas kini katalog dalam `assets/README.md` (bahagian broll-*), commit.
+- Katalog nama + awalan ID sedia ada dalam `assets/README.md`. Pilih foto ikut tema; foto Melayu untuk topik Malaysia; selfie Taufik hanya bila sesuai (bukan setiap slaid).
+
 ## Skill carousel (dalam skills/)
 - `carousel-thumbnail` = DEFAULT bila Taufik minta "carousel" tanpa sebut gaya (latar gelap, Anton + blok berus, potret outline putih).
 - `carousel-pastel` = sticker kartun KELUARGA pastel lembut: Baba (Taufik), Mami, Amani (kakak sulung), Aileen (adik). Guna foto emas sebenar bila sesuai.
