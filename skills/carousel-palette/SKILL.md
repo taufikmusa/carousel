@@ -47,11 +47,20 @@ Default Inter 900. Untuk rupa lain, baris pertama `slides.js`: `var HEAD = {fami
 - Ayat dari copywriting Taufik; jangan tambah fakta. Teks rekaan (tagline/caption) senaraikan dalam laporan. Angka/harga hanya dari Taufik atau sumber bertarikh.
 - Bahasa Melayu Malaysia; istilah teknikal kekal English.
 
-## Varian warna (`var PALETTE` di slaid.js — gaya SAMA, warna lain)
-Default kekal krim `#F3EFE7` + biru `#2A4BA0` + oren `#EE8130`. Untuk palet lain letak di baris atas slides.js: `var PALETTE = {bg,ink,blue,orange}` (enjin gabung ke `K`). `blue` = warna tajuk baris 2, `orange` = warna highlighter lalai (boleh override `hl` per slaid).
-- **Electric Studio** (rujukan Taufik): `{bg:'#F5F5F0', ink:'#10121B', blue:'#3040FF', orange:'#C8E83A'}`, highlighter lime `#DFFF70`, digit cover `#AAB2FF`, berus CTA `[#3040FF,#DFFF70,#10121B,#AAB2FF]`. Contoh: carousel KWSP "5 kesilapan".
-Taufik hantar tangkapan skrin palet (4 hex) → petakan: primary→blue, accent→highlighter, dark→ink, light→bg. Skill asal tak berubah.
-- **Fresh Signal** (rujukan Taufik): `{bg:'#F8F5EC', ink:'#006638', blue:'#FF784F', orange:'#C6CE76'}` (hijau = teks/primary, koral = baris tajuk 2, lime = highlighter `hl`+digit `#D6DB9C`). Contoh: carousel PTPTN "5 cara graduan".
-- **Quiet Luxury** (rujukan Taufik): `{bg:'#F4EDE3', ink:'#222022', blue:'#630002', orange:'#BDA174'}` (merah tua = baris tajuk 2, emas = highlighter, digit cover `#E4D7BE`). Sesuai topik emas/premium. Contoh: carousel Auto Debit.
-- **Cream & Dark Coffee** (palet Taufik): `{bg:'#FFFEC5', ink:'#39241F', blue:'#8A5A44', orange:'#E8DB7E'}` (2 warna asas + kopi sederhana untuk baris tajuk 2, highlighter krim gelap). Contoh: carousel DCA Cikgu Ridwan.
-- **Plum & Rose** (rujukan Taufik): `{bg:'#F5EEE8', ink:'#1a1220', blue:'#462B52', orange:'#E7C9D2'}` + ungu muda `#A77B9E` untuk baris tambahan, highlighter ros `#E7C9D2`. Sesuai topik kahwin/wanita/lembut. Contoh: carousel kos kahwin.
+## WARNA — DEFAULT = Electric Studio (biru + lime)
+**Peraturan Taufik:** bila dia beri copywriting TANPA sebut warna → guna palet DEFAULT **Electric Studio** (tiada `var PALETTE` perlu): `{bg:'#F5F5F0', ink:'#10121B', blue:'#3040FF', orange:'#C8E83A'}`, highlighter `#DFFF70`, digit cover `#AAB2FF`, berus CTA biru/lime/hitam/biru muda. Enjin sudah bawa nilai ini (`K` dalam engine.js).
+Bila dia sebut NAMA WARNA sahaja ("warna quiet luxury", "plum & rose", "fresh signal", "cream coffee") → gaya/susun atur SAMA, tukar palet dengan meletak baris ini di atas slides.js, dan kekalkan semua variasi lain. Tangkapan skrin palet 4 hex → petakan: primary→blue, accent→orange/highlighter, dark→ink, light→bg.
+Nota: `*kata*` di tagline = highlighter; baris tajuk 2 guna `blue`; bila `var PALETTE` dipakai, highlighter = `orange` (atau `hl` jika diberi), digit cover/berus lalai palet lama kecuali `ghost`/`brush`/`numCol`/`strokes` diberi.
+
+Salin-tampal (nama → baris PALETTE):
+| Nama | Baris untuk slides.js |
+|---|---|
+| **Electric Studio (DEFAULT, biru lime)** | tiada — tak perlu `var PALETTE` |
+| **Quiet Luxury** (merah tua + emas, topik emas/premium) | `var PALETTE = { bg:'#F4EDE3', ink:'#222022', blue:'#630002', orange:'#BDA174', muted:'#3b3639' };` CTA strokes `[RD,GD,DK,'#E4D7BE','#8a1a1c']`, `numCol:'#E4D7BE'` |
+| **Fresh Signal** (hijau + koral) | `var PALETTE = { bg:'#F8F5EC', ink:'#006638', blue:'#FF784F', orange:'#C6CE76' };` digit `#D6DB9C` |
+| **Cream & Dark Coffee** | `var PALETTE = { bg:'#FFFEC5', ink:'#39241F', blue:'#8A5A44', orange:'#E8DB7E' };` |
+| **Plum & Rose** (kahwin/wanita) | `var PALETTE = { bg:'#F5EEE8', ink:'#1a1220', blue:'#462B52', orange:'#E7C9D2', muted:'#3a2f40' };` baris tambahan `#A77B9E`, strokes `[PL,MV,RS,'#6b4a7a','#d9b3c0']` |
+| **Krim Biru Oren (asal)** | `var PALETTE = { bg:'#F3EFE7', ink:'#121212', blue:'#2A4BA0', orange:'#EE8130', muted:'#3a3a3a' };` |
+Palet baru daripada Taufik → tambah baris dalam jadual ini + commit.
+
+Contoh projek: KWSP, kos kahwin, duit anak (Quiet Luxury), dealer pasif, harga rumah (default).

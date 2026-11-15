@@ -1,4 +1,4 @@
-// CONTOH template carousel-palette (7 slaid): cover + 5 isi + CTA. Salin pola, tukar teks/gambar.
+// CONTOH template carousel-palette (7 slaid). Warna DEFAULT = Electric Studio (biru + lime). Tukar warna: tambah `var PALETTE = {...}` (lihat SKILL.md): cover + 5 isi + CTA. Salin pola, tukar teks/gambar.
 // Teks di sini hanya contoh gaya — ganti dengan copywriting Taufik.
 var N = 7;
 var ASSETS = {
@@ -9,7 +9,7 @@ var SW_GOLD = [{ c: '#6B4A12', l: '#6B4A12' }, { c: '#C9971C', l: '#C9971C' }, {
 var SLIDES = [
   function (x, i) {
     coverLayout(x, i, N, {
-      num: '5', numCol: '#4F7FD0',
+      num: '5',
       lines: [
         { p: [['Contoh', K.ink]], size: 215 },
         { p: [['Tajuk', K.ink]], size: 215, lh: .84 },

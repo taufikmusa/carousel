@@ -3,8 +3,9 @@
 // full-bleed-less painted art box, colour swatch row, dry-brush strokes on the CTA.
 // slides.js defines: N, ASSETS {key:'file'}, SLIDES [fn(x, i)].  DO NOT EDIT per carousel.
 const SW = 1080, SH = 1350, M = 70;
-const K = { bg: '#F3EFE7', ink: '#121212', blue: '#2A4BA0', orange: '#EE8130', muted: '#3a3a3a' };
-if (window.PALETTE) Object.assign(K, window.PALETTE);   // varian warna: var PALETTE = {bg,ink,blue,orange} di slides.js (default = krim/biru/oren)
+// DEFAULT = Electric Studio (biru + lime). Palet lain: letak `var PALETTE = {bg,ink,blue,orange,[hl,ghost,brush]}` di slides.js (lihat SKILL.md).
+const K = { bg: '#F5F5F0', ink: '#10121B', blue: '#3040FF', orange: '#C8E83A', muted: '#2b2e3a', hl: '#DFFF70', ghost: '#AAB2FF', brush: ['#3040FF', '#C8E83A', '#10121B', '#8F9BFF', '#5566ff'] };
+if (window.PALETTE) { Object.assign(K, { hl: window.PALETTE.orange, ghost: '#4F7FD0', brush: ['#2A4BA0', '#C9A24A', '#D96B3A', '#E9D9A8', '#4A2E5C'] }, window.PALETTE); }   // varian warna: var PALETTE = {bg,ink,blue,orange} di slides.js (default = krim/biru/oren)
 const cv = document.getElementById('c'); cv.width = SW * N; cv.height = SH; cv.style.width = (SW * N / 4) + 'px'; cv.style.height = (SH / 4) + 'px';
 const X = cv.getContext('2d');
 const IMG = {};
@@ -35,7 +36,7 @@ function titleStack(lines, x, y) {
 // wide-tracked mono/bold label e.g. PALETTE 01
 function eyebrow(s, x, y, size = 30) { txt(s.toUpperCase(), x, y, F.bold(size), K.ink, 'left', size * .2); }
 // paragraph, wraps to maxW; *kata penting* = tebal + penanda (highlighter) warna hl. Returns last baseline.
-function tagline(s, x, y, size = 38, maxW = SW - 2 * M, lh = 1.3, hl = K.orange) {
+function tagline(s, x, y, size = 38, maxW = SW - 2 * M, lh = 1.3, hl = K.hl) {
   let hot = false; const words = s.split(' ').map(t => { const h = hot || t.startsWith('*'); if (t.startsWith('*')) hot = true; if (/\*[.,?!]*$/.test(t)) hot = false; return { t: t.replace(/\*/g, ''), h }; });
   const fw = h => h ? F.bold(size) : F.body(size), sp = tw(' ', F.body(size)); const lines = []; let cur = [], cw = 0;
   words.forEach(w => { const ww = tw(w.t, fw(w.h)); if (cur.length && cw + sp + ww > maxW) { lines.push(cur); cur = []; cw = 0; } cw += (cur.length ? sp : 0) + ww; cur.push({ ...w, ww }); });
@@ -50,7 +51,7 @@ function tagline(s, x, y, size = 38, maxW = SW - 2 * M, lh = 1.3, hl = K.orange)
 function caption(s, x, y, size = 28) { txt(s.toUpperCase(), x, y, F.bold(size), K.ink, 'left', size * .18); }
 
 // ---- giant watercolour numeral / glyph (bleeds off canvas, clipped by slide) ----
-function ghost(s, x, y, size, col = '#4F7FD0', seed = 3) {
+function ghost(s, x, y, size, col = K.ghost, seed = 3) {
   const w = Math.ceil(tw(s, F.num(size)) + 40), h = Math.ceil(size * 1.05), O = document.createElement('canvas'); O.width = w; O.height = h; const c = O.getContext('2d');
   const g = c.createLinearGradient(0, 0, 0, h); g.addColorStop(0, col + 'b0'); g.addColorStop(.5, col + '80'); g.addColorStop(1, col + '28');
   c.font = F.num(size); c.fillStyle = g; c.fillText(s, 20, size * .83);
@@ -98,7 +99,7 @@ function swatches(items, x, y, w, h = 84, gap = 16, font = F.mono(26)) {
 // COVER: ghost numeral + big stacked title + cutout bottom-right
 function coverLayout(x, i, n, o) {
   header(x, i, n, true);
-  ghost(o.num, x + (o.numX ?? 200), o.numY ?? 1180, o.numSize ?? 1460, o.numCol || '#4F7FD0');
+  ghost(o.num, x + (o.numX ?? 200), o.numY ?? 1180, o.numSize ?? 1460, o.numCol || K.ghost);
   const by = titleStack(o.lines, x + M + 10, o.titleY ?? 720);
   if (o.im) cutoutBR(IMG[o.im], x + SW + (o.imBleed ?? 40), SH + (o.imDrop ?? 20), o.imH ?? 620);
   return by;
@@ -110,7 +111,7 @@ function itemLayout(x, i, n, o) {
   let size = o.size ?? 140; o.title.forEach(p => { wsp = size * .07; const w = tw(p[0], F.num(size), size * H.ls); wsp = 0; if (w > SW - 2 * M) size = Math.floor(size * (SW - 2 * M) / w); });
   const lines = o.title.map(p => ({ p: [[p[0], p[1] || K.ink]], size, lh: .93 }));
   const by = titleStack(lines, x + M, 170 + 40 + size * .78);
-  const ty = tagline(o.tagline, x + M, by + 66, o.tsize ?? 34, SW - 2 * M, 1.42, o.hl || K.orange);
+  const ty = tagline(o.tagline, x + M, by + 66, o.tsize ?? 34, SW - 2 * M, 1.42, o.hl || K.hl);
   const top = ty + 50, bot = o.sw ? 1186 : 1296;
   artBox(IMG[o.im], x + M, top, SW - 2 * M, bot - top, o.fx, o.fy);
   if (o.sw) swatches(o.sw, x + M, 1214, SW - 2 * M, 80);
@@ -123,7 +124,7 @@ function ctaLayout(x, i, n, o) {
   const by = titleStack(lines, x + M, 270);
   txt(o.follow, x + M, by + 100, F.num(58), K.ink, 'left', -2);
   if (o.sub) tagline(o.sub, x + M, by + 180, 34, SW - 2 * M, 1.42, o.col || K.blue);
-  (o.strokes || ['#2A4BA0', '#C9A24A', '#D96B3A', '#E9D9A8', '#4A2E5C']).forEach((c, k) => brushStroke(x + 150 + k * 95, 800 + (k % 2) * 30 - k * 24, x + 260 + k * 95, 1170 + (k % 2) * 40 - k * 28, 90, c, k + 4));
+  (o.strokes || K.brush).forEach((c, k) => brushStroke(x + 150 + k * 95, 800 + (k % 2) * 30 - k * 24, x + 260 + k * 95, 1170 + (k % 2) * 40 - k * 28, 90, c, k + 4));
   cutoutBC(IMG[o.im], x + SW / 2 + 40, SH - 20, o.imH ?? 700);
 }
 
