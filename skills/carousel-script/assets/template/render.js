@@ -13,6 +13,6 @@ const server = http.createServer((req, res) => { const f = path.join(root, decod
   fs.mkdirSync(path.join(root, 'out'), { recursive: true });
   const pano = path.join(root, 'out', 'panorama.png'); fs.writeFileSync(pano, Buffer.from(png.split(',')[1], 'base64'));
   const n = await page.evaluate(() => window.N || 7), sh = await page.evaluate(() => document.getElementById('c').height);
-  for (let i = 0; i < n; i++) execFileSync('convert', [pano, '-crop', `1080x${sh}+${i * 1080}+0`, '+repage', '-quality', '93', path.join(root, 'out', `0${i + 1}.jpg`)]);
+  for (let i = 0; i < n; i++) execFileSync('convert', [pano, '-crop', `1080x${sh}+${i * 1080}+0`, '+repage', '-quality', '93', path.join(root, 'out', `${String(i + 1).padStart(2, "0")}.jpg`)]);
   await browser.close(); server.close(); console.log('done');
 })();
