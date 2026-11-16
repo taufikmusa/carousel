@@ -9,7 +9,7 @@ var SLIDES = [
       num: '3', numCol: '#E4D7BE',
       lines: [
         { p: [['Bajet RM100,000', DK]], size: 100 },
-        { p: [['simpan ', DK], ['emas?', RD]], size: 150, lh: .9 },
+        { p: [['simpan ', DK], ['emas?', RD]], size: 128, lh: .92 },
         { p: [['Faham 3 pilihan', DK]], size: 100, lh: .95 },
         { p: [['sebelum beli.', RD]], size: 100, lh: .95 },
       ],
