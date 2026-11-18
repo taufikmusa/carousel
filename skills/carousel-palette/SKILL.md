@@ -70,3 +70,6 @@ Salin-tampal (nama → baris PALETTE):
 Palet baru daripada Taufik → tambah baris dalam jadual ini + commit.
 
 Contoh projek: KWSP, kos kahwin, duit anak (Quiet Luxury), dealer pasif, harga rumah (default).
+
+## Tangkapan skrin / graf Taufik
+`itemLayout(..., { im:'graf', fit:true })` = paparan CONTAIN (tak dipotong) atas kotak putih. Guna untuk screenshot harga GAP dan graf emas (potong dahulu ruang kosong/dropdown dengan PIL supaya lebih besar). Letak sumber + tarikh dalam tagline; data bertarikh.

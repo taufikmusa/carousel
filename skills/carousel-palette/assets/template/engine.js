@@ -80,6 +80,13 @@ function artBox(im, x, y, w, h, fx = .5, fy = .5) {
   const s = Math.max(w / im.width, h / im.height), sw = w / s, sh = h / s;
   X.drawImage(im, Math.max(0, Math.min(im.width - sw, fx * im.width - sw / 2)), Math.max(0, Math.min(im.height - sh, fy * im.height - sh / 2)), sw, sh, x, y, w, h); X.restore();
 }
+// screenshot/chart box: object-fit CONTAIN (nothing cropped) on white with thin border
+function artFit(im, x, y, w, h) {
+  X.save(); X.fillStyle = '#fff'; X.fillRect(x, y, w, h);
+  const s = Math.min((w - 16) / im.width, (h - 16) / im.height), dw = im.width * s, dh = im.height * s;
+  X.drawImage(im, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
+  X.strokeStyle = 'rgba(0,0,0,.12)'; X.lineWidth = 2; X.strokeRect(x, y, w, h); X.restore();
+}
 // transparent cutout anchored by its bottom-right corner (may bleed off the slide)
 function cutoutBR(im, rx, by, h) { const w = h * im.width / im.height; X.drawImage(im, rx - w, by - h, w, h); }
 function cutoutBC(im, cx, by, h) { const w = h * im.width / im.height; X.drawImage(im, cx - w / 2, by - h, w, h); }
@@ -113,7 +120,7 @@ function itemLayout(x, i, n, o) {
   const by = titleStack(lines, x + M, 170 + 40 + size * .78);
   const ty = tagline(o.tagline, x + M, by + 66, o.tsize ?? 34, SW - 2 * M, 1.42, o.hl || K.hl);
   const top = ty + 50, bot = o.sw ? 1186 : 1296;
-  artBox(IMG[o.im], x + M, top, SW - 2 * M, bot - top, o.fx, o.fy);
+  if (o.fit) artFit(IMG[o.im], x + M, top, SW - 2 * M, bot - top); else artBox(IMG[o.im], x + M, top, SW - 2 * M, bot - top, o.fx, o.fy);
   if (o.sw) swatches(o.sw, x + M, 1214, SW - 2 * M, 80);
   if (o.caption) caption(o.caption, x + M, 1316);
 }
