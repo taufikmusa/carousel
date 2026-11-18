@@ -67,6 +67,7 @@ Salin-tampal (nama → baris PALETTE):
 | **Purple** (violet + lavender; Taufik sebut "purple" tanpa gambar, jadi aku reka; Plum & Rose pula ungu gelap + ros) | `var PALETTE = { bg:'#F5F1FB', ink:'#1E1433', blue:'#6B3FD4', orange:'#CDB8F5', hl:'#E3D6FA', ghost:'#E6DCF7', muted:'#3b2f55', brush:['#6B3FD4','#CDB8F5','#1E1433','#9B7CE8','#3E2380'] };` |
 | **Pink** (pink lembut, sesuai topik anak/keluarga; Taufik sebut "pink nice for child" tanpa gambar, jadi aku reka) | `var PALETTE = { bg:'#FFF3F6', ink:'#3A1B2A', blue:'#E0457B', orange:'#FFC9D9', hl:'#FFD9E5', ghost:'#FFE1EA', muted:'#5a3446', brush:['#E0457B','#FFC9D9','#3A1B2A','#F59BB8','#B02358'] };` Contoh: anak tiru teladan |
 | **Metallic Silver** (kelabu perak + arang; Taufik sebut "metallic silver" tanpa gambar, jadi aku reka) | `var PALETTE = { bg:'#EEF0F3', ink:'#1B1E24', blue:'#5A6270', orange:'#C9CED6', hl:'#D9DDE4', ghost:'#E1E4E9', muted:'#343942', brush:['#8E96A3','#C9CED6','#1B1E24','#5A6270','#E4E7EC'] };` Contoh: silver vs emas |
+| **Bright Yellow** (kuning terang + arang; baris tajuk 2 coklat emas kerana PUTIH tak terbaca atas kuning; Taufik tanpa gambar, jadi aku reka) | `var PALETTE = { bg:'#FFE94A', ink:'#15130A', blue:'#7A5A00', orange:'#FFF7B0', hl:'#FFF7B0', ghost:'#FFD91F', muted:'#2a2610', brush:['#15130A','#FFF7B0','#FFFFFF','#B8A100','#3a3412'] };` |
 | **Krim Biru Oren (asal)** | `var PALETTE = { bg:'#F3EFE7', ink:'#121212', blue:'#2A4BA0', orange:'#EE8130', muted:'#3a3a3a' };` |
 Palet baru daripada Taufik → tambah baris dalam jadual ini + commit.
 
