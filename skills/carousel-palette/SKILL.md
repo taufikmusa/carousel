@@ -64,6 +64,7 @@ Salin-tampal (nama → baris PALETTE):
 | **Gold** (ivori + emas + coklat gelap; Taufik sebut "palette gold" tanpa gambar, jadi aku reka: boleh ubah bila dia beri hex) | `var PALETTE = { bg:'#FBF7EC', ink:'#1F1A10', blue:'#A8780F', orange:'#E9CF7A', hl:'#F3E3A5', ghost:'#F0E2B0', muted:'#3a3220', brush:['#A8780F','#E9CF7A','#1F1A10','#CDA24A','#F3E3A5'] };` |
 | **Hitam Metallic Exclusive** (latar hitam, teks silver, tajuk champagne; latar GELAP) | `var PALETTE = { bg:'#0E0E10', ink:'#ECEDEF', blue:'#CDB87A', orange:'#3A3C42', hl:'#3A3C42', ghost:'#1C1D21', muted:'#C7CAD1', brush:['#B9BEC7','#CDB87A','#ECEDEF','#6E727B','#3A3C42'] };` `ctaLayout` `strokes` sama dengan `brush`. Contoh: ansuran kereta |
 | **Red Cherry** (ceri merah + burgundy gelap + blush; Taufik sebut "red cherry" tanpa gambar, jadi aku reka) | `var PALETTE = { bg:'#FDF4F2', ink:'#2A0A10', blue:'#C2102E', orange:'#F7CFD3', hl:'#F9D5D8', ghost:'#F7DADC', muted:'#4a2a30', brush:['#C2102E','#F7CFD3','#2A0A10','#E4566B','#8E0B22'] };` Contoh: kad Pokémon |
+| **Purple** (violet + lavender; Taufik sebut "purple" tanpa gambar, jadi aku reka; Plum & Rose pula ungu gelap + ros) | `var PALETTE = { bg:'#F5F1FB', ink:'#1E1433', blue:'#6B3FD4', orange:'#CDB8F5', hl:'#E3D6FA', ghost:'#E6DCF7', muted:'#3b2f55', brush:['#6B3FD4','#CDB8F5','#1E1433','#9B7CE8','#3E2380'] };` |
 | **Krim Biru Oren (asal)** | `var PALETTE = { bg:'#F3EFE7', ink:'#121212', blue:'#2A4BA0', orange:'#EE8130', muted:'#3a3a3a' };` |
 Palet baru daripada Taufik → tambah baris dalam jadual ini + commit.
 
