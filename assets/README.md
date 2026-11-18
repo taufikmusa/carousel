@@ -105,3 +105,10 @@ Tiga set pose (latar sama: dinding kelabu/kaca, baju kotak krim):
 • 13 (100g + 1kg, dua tangan) 1LrgDX… · 14 (kad dinar hijau + 1kg) 1ZeYSS… · 15 (100g Bunga Mas + 50g) 1vfOrU… · 16 (100g + 50g) 189RaP… · 17 (100g + kad merah/hijau) 1X6juZ…
 • 1–8 ialah pose Public Gold/G100 (lihat broll-taufik). 18–33 belum dibuka: 18 15Us1Q… 19 1EmPky… 20 1ma-cW… 21 1-ej6M… 22 1MulnT… 23 1ycJBb… 24 1hnQDq… 25 12spgt… 26 1-p5l8… 27 1OzgV4… 28 1P8ZOX… 29 1hxdog… 30 1bq9yi… 31 1VzBbX… 32 1kzble… 33 1F-Nfd…
 Guna bila perlu muka Taufik dengan emas sebenar (cover, slaid "bukti", testimoni). Taufik: muka hanya bila sesuai, bukan setiap slaid.
+
+## broll-grafik/ (gambar yang Taufik attach dalam chat — simpan terus dalam repo; Drive kekal lokasi utama broll lain)
+| Fail | Isi |
+|---|---|
+| silver-jongkong-gelap.jpg | Susunan jongkong silver latar hitam berkilat (nampak render AI) |
+| silver-bilik-kebal-stor.jpg | Bilik kebal + timbunan jongkong silver di rak (nampak render AI) |
+Peraturan: screenshot harga/graf bertarikh TIDAK disimpan di sini (lapuk, kekal dalam folder projek sahaja). Gambar AI dengan tulisan bercelaru jangan simpan.

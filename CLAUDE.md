@@ -42,3 +42,8 @@ Taufik simpan broll di 2 folder Drive dan akan terus tambah fail ke SITU SAHAJA.
 - `carousel-gradient` = krim #FFFEC5 + coklat gelap #39241F (palet Taufik, tiada gradien) 1080x1080: tajuk Poppins 800 + pil coklat, kad krim + jubin ikon, carta ilustrasi, footer gelombang "i/N", teks MINIMAL (rujukan gaya analisis "MetaNext"). Taufik panggil "gaya gradient". `sh skills/carousel-gradient/scripts/new_carousel.sh carousel-<topik>`.
 - Potret/selfie Taufik HANYA di slaid TERAKHIR (CTA). Cover & slaid isi tanpa potret (nampak macam iklan).
 - Baca SKILL.md skill tu dahulu; mula dengan `sh skills/<skill>/scripts/new_carousel.sh carousel-<topik> <pose...>`.
+
+## Pustaka copywriting + broll grafik (mula 18 Nov 2026)
+- `copywriting/` = copy Taufik yang dah siap (satu `.md` setiap post + `INDEX.md`). **Setiap kali Taufik tampal copywriting baharu, simpan ia di sini (teks ASAL penuh, front-matter: tajuk, tarikh, kata_kunci, guru, data_bertarikh, petikan_disahkan, carousel) dan kemas kini INDEX.md**, kemudian commit. Bukan salin ulang copy lama dari sejarah, mula dari sekarang sahaja.
+- Bila Taufik minta idea/copy ikut kata kunci atau situasi: baca `copywriting/INDEX.md`, cadang 2-3 tajuk + ringkasan, dia pilih. Jika `data_bertarikh: ya`, ingatkan kemas kini angka. Jika `petikan_disahkan: tidak`, ingatkan semak petikan guru/podcast.
+- `assets/broll-grafik/` = gambar yang Taufik attach dalam chat dan berguna semula (kemas kini katalog di `assets/README.md`). TIDAK simpan screenshot harga/graf bertarikh, atau gambar AI bertulisan bercelaru. Broll lain kekal di Drive (jangan salin ke repo).
