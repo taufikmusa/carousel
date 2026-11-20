@@ -8,3 +8,4 @@
 | 2026-11-19 | [hari-lelaki-antarabangsa](2026-11-19-hari-lelaki-antarabangsa.md) | hari lelaki, tanggungjawab, nafkah, anak, ibu bapa, paksa lupa automatik | tidak (tahunan 19 Nov) | tidak |
 | 2026-11-19 | [paksa-dan-lupa](2026-11-19-paksa-dan-lupa.md) | menabung, paksa dan lupa, Tabung Haji, potongan gaji, psikologi emas, GAP RM100 | tidak | tidak |
 | 2026-11-20 | [kaya-formula-hutang](2026-11-20-kaya-formula-hutang.md) | formula kaya, hutang, kereta, rumah, sifar hutang, GAP RM100 | tidak | tidak |
+| 2026-11-20 | [emas-turun-rm507](2026-11-20-emas-turun-rm507.md) | harga emas turun, RM507, penyimpan vs pelabur, DCA, matlamat, kura-kura | YA (GAP 20 Nov 2026) | tidak |
