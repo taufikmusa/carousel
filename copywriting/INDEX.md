@@ -12,3 +12,4 @@
 | 2026-11-20 | [1kg-bawah-500k-promo](2026-11-20-1kg-bawah-500k-promo.md) | 1KG, bawah RM500,000, percuma 5g, 11.11 Emas Impian, premium, inflasi | YA (promo tamat 30 Nov 2026) | tidak |
 | 2026-11-20 | [3-posisi-dunia-emas](2026-11-20-3-posisi-dunia-emas.md) | penyimpan, pelabur, pengedar emas, harga jatuh, jangan panik, duit kecemasan | tidak | tiada petikan |
 | 2026-11-21 | [emas-asb-tabung-haji](2026-11-21-emas-asb-tabung-haji.md) | emas, ASB, Tabung Haji, dividen, inflasi, kepelbagaian, GAP RM100 | tidak | tiada petikan |
+| 2026-11-21 | [emas-jatuh-tetap-emas](2026-11-21-emas-jatuh-tetap-emas.md) | harga emas jatuh, saham, Ar-Rahnu, bila jual emas, 3 keadaan, 200 gram 16 tahun | tidak | tidak |
