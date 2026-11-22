@@ -5,7 +5,7 @@ kata_kunci: simpanan kecemasan, RM1,000, 61 peratus, Kosmo, sistem simpanan, men
 guru: Tn Mohd Zulkifli Shafie
 data_bertarikh: YA (laporan Kosmo 22.11.2026: 61 peratus rakyat tiada simpanan kecemasan RM1,000)
 petikan_disahkan: tidak ("Kalau dah kerja bertahun-tahun tapi simpanan RM1,000 pun tak ada, cubalah menabung emas dengan ilmu pulak..." ikut copy Taufik)
-carousel: carousel-61-peratus-tiada-simpanan (Quiet Luxury, 9 slaid; slaid 2 guna tangkapan skrin Kosmo)
+carousel: carousel-61-peratus-tiada-simpanan (Quiet Luxury, 9 slaid; slaid 1 = tangkapan skrin Kosmo penuh)
 ---
 61% RAKYAT MALAYSIA TIADA SIMPANAN KECEMASAN RM1,000. KITA PULA MACAM MANA?
 

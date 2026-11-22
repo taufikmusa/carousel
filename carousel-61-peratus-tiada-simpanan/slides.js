@@ -1,23 +1,12 @@
 // carousel-palette VARIAN WARNA "Quiet Luxury": merah tua + emas. "61% rakyat tiada simpanan kecemasan RM1,000" (9 slaid, 1080x1350). Data: Kosmo 22.11.2026.
 var PALETTE = { bg: '#F4EDE3', ink: '#222022', blue: '#630002', orange: '#BDA174', muted: '#3b3639' };
 var N = 9;
-var ASSETS = { cover: 'cover.jpg', kosmo: 'kosmo.jpg', a: 'a.jpg', b: 'b.jpg', c: 'c.jpg', d: 'd.jpg', e: 'e.jpg', f: 'f.jpg', g: 'g.jpg', me: 'thumbs-up.png' };
+var ASSETS = { cover: 'cover.jpg', kosmo2: 'kosmo2.jpg', a: 'a.jpg', b: 'b.jpg', c: 'c.jpg', d: 'd.jpg', e: 'e.jpg', f: 'f.jpg', g: 'g.jpg', me: 'thumbs-up.png' };
 var DK = '#222022', RD = '#630002', GD = '#BDA174';
 var SLIDES = [
-  function (x, i) {
-    coverLayout(x, i, N, {
-      num: '61', numCol: '#E4D7BE', numSize: 700,
-      lines: [
-        { p: [['61% rakyat tiada', DK]], size: 90 },
-        { p: [['simpanan', RD]], size: 120, lh: .92 },
-        { p: [['kecemasan RM1,000.', DK]], size: 88, lh: .92 },
-        { p: [['Kita pula macam mana?', DK]], size: 58, lh: 1.3 },
-      ],
-      titleY: 430, im: 'cover', imH: 400,
-    });
-  },
-  function (x, i) { itemLayout(x, i, N, { eyebrow: 'Dilaporkan 22 Nov 2026', title: [['61 PERATUS', DK], ['TIADA RM1,000', RD]], tagline: 'Bekerja 5, 10, 20 tahun, tapi *kereta rosak, anak sakit* atau hilang kerja, mula pening cari duit. Pinjam keluarga, guna kad kredit. *Ke mana perginya duit?* Sumber: Kosmo.', hl: GD, im: 'kosmo', fit: true }); },
-  function (x, i) { itemLayout(x, i, N, { eyebrow: 'Pesan guru emas saya', title: [['TAK ADA', DK], ['SISTEM SIMPANAN', RD]], tagline: '*"Kerja bertahun tapi simpanan RM1,000 pun tak ada, cubalah menabung emas dengan ilmu."* Masalahnya bukan tak bekerja keras, tapi *belum ada sistem* supaya gaji kekal jadi simpanan.', hl: GD, im: 'a' }); },
+  function (x, i) { artBox(IMG.kosmo2, x, 0, 1080, 1350); },
+  function (x, i) { itemLayout(x, i, N, { eyebrow: 'Laporan Kosmo, 22 Nov 2026', title: [['KERJA BERTAHUN,', DK], ['TIADA RM1,000', RD]], tagline: 'Bekerja 5, 10, 20 tahun, tapi *kereta rosak, anak sakit* atau hilang kerja, mula pening cari duit. Pinjam keluarga, guna kad kredit. *Ke mana perginya duit?*', hl: GD, im: 'a' }); },
+  function (x, i) { itemLayout(x, i, N, { eyebrow: 'Pesan guru emas saya', title: [['TAK ADA', DK], ['SISTEM SIMPANAN', RD]], tagline: '*"Kerja bertahun tapi simpanan RM1,000 pun tak ada, cubalah menabung emas dengan ilmu."* Masalahnya bukan tak bekerja keras, tapi *belum ada sistem* supaya gaji kekal jadi simpanan.', hl: GD, im: 'cover' }); },
   function (x, i) { itemLayout(x, i, N, { eyebrow: 'Perkara 01', title: [['JANGAN TUNGGU', DK], ['DUIT LEBIH', RD]], tagline: 'Tunggu duit lebih, *sampai bila-bila pun tak ada.* Asingkan simpanan *sebaik gaji masuk,* walaupun RM100 dahulu.', hl: GD, im: 'b' }); },
   function (x, i) { itemLayout(x, i, N, { eyebrow: 'Perkara 02', title: [['JANGAN BIAR DUIT', DK], ['MUDAH DIBELANJAKAN', RD]], size: 104, tagline: 'Baki bank nampak banyak, rasa *masih mampu berbelanja.* Sebab itu perlukan *disiplin dan sistem simpanan* yang betul.', hl: GD, im: 'c' }); },
   function (x, i) { itemLayout(x, i, N, { eyebrow: 'Perkara 03', title: [['MENABUNG EMAS', DK], ['DENGAN ILMU', RD]], tagline: 'Emas boleh jadi alat *mendisiplinkan simpanan.* Bila duit jadi emas, kita *fikir dua kali* sebelum menjualnya untuk perkara tak penting.', hl: GD, im: 'd' }); },
