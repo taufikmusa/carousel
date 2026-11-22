@@ -13,3 +13,4 @@
 | 2026-11-20 | [3-posisi-dunia-emas](2026-11-20-3-posisi-dunia-emas.md) | penyimpan, pelabur, pengedar emas, harga jatuh, jangan panik, duit kecemasan | tidak | tiada petikan |
 | 2026-11-21 | [emas-asb-tabung-haji](2026-11-21-emas-asb-tabung-haji.md) | emas, ASB, Tabung Haji, dividen, inflasi, kepelbagaian, GAP RM100 | tidak | tiada petikan |
 | 2026-11-21 | [emas-jatuh-tetap-emas](2026-11-21-emas-jatuh-tetap-emas.md) | harga emas jatuh, saham, Ar-Rahnu, bila jual emas, 3 keadaan, 200 gram 16 tahun | tidak | tidak |
+| 2026-11-22 | [61-peratus-tiada-simpanan-rm1000](2026-11-22-61-peratus-tiada-simpanan-rm1000.md) | simpanan kecemasan, RM1,000, 61 peratus, Kosmo, sistem simpanan, GAP RM100 | YA (Kosmo 22.11.2026) | tidak |
