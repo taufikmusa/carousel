@@ -15,3 +15,4 @@
 | 2026-11-21 | [emas-jatuh-tetap-emas](2026-11-21-emas-jatuh-tetap-emas.md) | harga emas jatuh, saham, Ar-Rahnu, bila jual emas, 3 keadaan, 200 gram 16 tahun | tidak | tidak |
 | 2026-11-22 | [61-peratus-tiada-simpanan-rm1000](2026-11-22-61-peratus-tiada-simpanan-rm1000.md) | simpanan kecemasan, RM1,000, 61 peratus, Kosmo, sistem simpanan, GAP RM100 | YA (Kosmo 22.11.2026) | tidak |
 | 2026-11-22 | [emas-ajar-menyimpan-61-peratus](2026-11-22-emas-ajar-menyimpan-61-peratus.md) | simpanan kecemasan, RM1,000, psikologi emas, disiplin, kuasa beli, warisan, GAP RM100 | YA (Kosmo 22.11.2026) | tidak |
+| 2026-11-25 | [pekerja-kilang-simpan-emas](2026-11-25-pekerja-kilang-simpan-emas.md) | pekerja kilang, gaji kecil, RM100 sebulan, RM3 sehari, inflasi, KWSP, langkah pertama | tidak | tiada petikan |
